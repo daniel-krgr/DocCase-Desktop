@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="doccase_desktop.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="24"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uprincipal.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmPrincipal"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uPrincipal"/>
+        <TopLine Value="32"/>
+        <CursorPos X="32" Y="68"/>
+        <UsageCount Value="24"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uConex.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="DM"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="4"/>
+        <CursorPos X="25" Y="16"/>
+        <UsageCount Value="24"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ucadastrousuario.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmCadastroUsuario"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadastroUsuario"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="41"/>
+        <CursorPos X="5" Y="49"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="udonex.pas"/>
+        <ComponentName Value="DM"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="uConex"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="8"/>
+        <UsageCount Value="20"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\Ricardo\AppData\Local\lazarus\onlinepackagemanager\packages\zeosdbo\src\plain\ZPlainLoader.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="181"/>
+        <CursorPos X="10" Y="258"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit>
+      <Unit>
+        <Filename Value="img\icons8-usuário-de-gênero-neutro-48.png"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\lcl\include\customform.inc"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="2377"/>
+        <CursorPos Y="2396"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="17">
+      <Position>
+        <Filename Value="uprincipal.pas"/>
+      </Position>
+      <Position>
+        <Filename Value="uConex.pas"/>
+      </Position>
+      <Position>
+        <Filename Value="uprincipal.pas"/>
+      </Position>
+      <Position>
+        <Filename Value="uConex.pas"/>
+      </Position>
+      <Position>
+        <Filename Value="uprincipal.pas"/>
+        <Caret Line="34" Column="16" TopLine="27"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadastrousuario.pas"/>
+        <Caret Line="14" Column="18"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadastrousuario.pas"/>
+        <Caret Line="18" Column="18"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadastrousuario.pas"/>
+        <Caret Line="19" Column="18"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadastrousuario.pas"/>
+        <Caret Line="20" Column="18"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadastrousuario.pas"/>
+        <Caret Line="21" Column="18"/>
+      </Position>
+      <Position>
+        <Filename Value="uConex.pas"/>
+        <Caret Line="16" Column="25"/>
+      </Position>
+      <Position>
+        <Filename Value="uprincipal.pas"/>
+        <Caret Line="50" Column="6" TopLine="24"/>
+      </Position>
+      <Position>
+        <Filename Value="uprincipal.pas"/>
+        <Caret Line="63" Column="3" TopLine="33"/>
+      </Position>
+      <Position>
+        <Filename Value="uprincipal.pas"/>
+        <Caret Line="70" Column="3" TopLine="36"/>
+      </Position>
+      <Position>
+        <Filename Value="uprincipal.pas"/>
+        <Caret Line="67" Column="5" TopLine="38"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadastrousuario.pas"/>
+        <Caret Line="22" Column="9"/>
+      </Position>
+      <Position>
+        <Filename Value="uprincipal.pas"/>
+        <Caret Line="34" Column="41" TopLine="19"/>
+      </Position>
+      <Position>
+        <Filename Value="uprincipal.pas"/>
+        <Caret Line="71" Column="21" TopLine="36"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

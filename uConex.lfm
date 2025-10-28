@@ -1,0 +1,26 @@
+object DM: TDM
+  OnCreate = DataModuleCreate
+  OldCreateOrder = False
+  Height = 591
+  HorizontalOffset = 505
+  VerticalOffset = 276
+  Width = 1123
+  PPI = 106
+  object ZConnection: TZConnection
+    ControlsCodePage = cCP_UTF8
+    Properties.Strings = (
+      'RawStringEncoding=DB_CP'
+    )
+    AddLogMsgToExceptionOrWarningMsg = False
+    DisableSavepoints = False
+    HostName = 'localhost'
+    Port = 3306
+    Database = 'doccase'
+    User = 'root'
+    Password = 'unipar123'
+    Protocol = 'mysql'
+    LibraryLocation = 'libmysql.dll'
+    Left = 55
+    Top = 44
+  end
+end

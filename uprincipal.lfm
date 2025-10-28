@@ -1,0 +1,365 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 457
+  Height = 671
+  Top = 250
+  Width = 1597
+  Caption = 'Doccase'
+  ClientHeight = 671
+  ClientWidth = 1597
+  WindowState = wsMaximized
+  OnShow = FormShow
+  object pnlNavBar: TPanel
+    Left = 0
+    Height = 25
+    Top = 0
+    Width = 1597
+    Align = alTop
+    BevelOuter = bvNone
+    BorderWidth = 2
+    ClientHeight = 25
+    ClientWidth = 1597
+    Color = 6380359
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 0
+    object sbt_cadastroUsuario: TSpeedButton
+      Left = 79
+      Height = 21
+      Top = 2
+      Width = 118
+      Action = act_cadastroUsuario
+      Align = alLeft
+      Flat = True
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+    end
+    object SpeedButton2: TSpeedButton
+      Left = 197
+      Height = 21
+      Top = 2
+      Width = 56
+      Align = alLeft
+      Caption = 'Relatorio'
+      Flat = True
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+    end
+    object Image1: TImage
+      Left = 5
+      Height = 21
+      Top = 2
+      Width = 74
+      Align = alLeft
+      Picture.Data = {
+        1754506F727461626C654E6574776F726B477261706869634604000089504E47
+        0D0A1A0A0000000D4948445200000042000000150806000000F2DF38A7000000
+        097048597300000EC300000EC301C76FA864000000206348524D00007A250000
+        80830000F9FF000080E9000075300000EA6000003A980000176F925FC5460000
+        03CC4944415478DAECD77DAC97631807F0CF79E9948496843AD6A6182DA542B2
+        84336BC866CD4BABC962DA086BB599A6D09828C96A6D362F99B7D2428C8936B6
+        56D42A898D48586DADB755A717A2A373FCD1F7C753D34FFF768E6B7B76DFF775
+        DFF7F53CF7F7BEAEEF753D154D4D4DFE17AA8B83DA7BFFEEDE861E9889DDE50C
+        6CDEC9E0DE7C32B119011179120FA73F1475D8D9DC3DA2F2A8715D40F80E6FA0
+        17DE6B09A171341077A7BD0723D31FD812819895F6757C96FEE29608C40A3C88
+        AEB8064B706B590B4D545536B3AC11998E2B429437E0B763ECED8026157637FE
+        A3BB0CC3D031B67FC1DB587BA2794449F6A79D768CF927924976753CCDE4E5DF
+        B36E33F1A2F1B8032330115F61F8890A44497F1F5EC3205C8A4B925526610776
+        9D54E3B1BD3BDCBE7015F835FBBAA30267633BE6A255E6CEC202AC4FBD52949B
+        A35F88338F027E2D9E2EE806E1D3E81F28E84707FC77D1A5A01F95B50BD0E678
+        81687D38FAFD98ECB1042BB12A750674C2E98D8DA83479E73ED090B953D26EC5
+        D402001DB009D7E107CCC70B997F2861B41E37656F4DD2F828BC82BB300F17E4
+        9BDEC9F74CC5D51893D09E906F5918DB133139CFA69CE3AAFFE208689BF662F4
+        0BFAD5E18B41B83188575456A0D15B6D6B4055F655156CED2D803B269E5113DD
+        0C8CC3B3780ACB62BB4D42EBC290F519B13313BD0352456CF4C197E896C39F9A
+        0B1E8EC602C8B35225BF9FF09D1E2F2F0B44459E56589AA724CF6051C8D4C13F
+        2D6EDDDEA4217D8F00A0BEB0BE6BDAEDA949F615E6E606880179DF9AE87FC79C
+        ACAF2A80095F07C8F92900D7A01DCEC98D37E0C584C524CC8EAE1BFAE250F4CB
+        8EC7238A21F26F727D8C366EABB776701F2E3FAF944C89EB36A0735EBA2B8759
+        9FC3750A30A5527E51087A70C6E727962704B8AED8188E1A93437789A794F657
+        A6205C87DA80B32F21F453BC6E75D6F72F784B598E589976FC31E647E736E7B5
+        6F67D4373F537F98264B84F8613E7C39F6249BC0A3D8826DB9F5A1B83FE3D101
+        F060F8A3273EC6F3D8907655627C4ED64EC3CBE19CFA1C7C59C2E0B980F27942
+        70556C2C49BDD4E3881028FE8617FE3E3B6373FA53F0120E643C18AF96165655
+        B269A321E386F968C6485DE3293501796F0E73A8F0CE3629E16B13AFC5B01B58
+        20CAD9F823FA3B738B4BF1667423C257CB73B8DA80702D6EC9BB1F29D8A84B96
+        DA83C70B19AE2C107065CAEB366578E464EC6F38E4DBED5BF45C3D937EE7369F
+        CAB2244B93F24687BD5BC52B06E0A2E4F42A685DED0B98FE01F3C69E984094F3
+        8872B2212C5CEAF76A38E4C0F67A564CA17FF7E6E511E5A40E63932566E140EB
+        EAC3FEB2B5BE1978444B96BF060038F20E5A329F1A480000000049454E44AE42
+        6082
+      }
+      Proportional = True
+      Transparent = True
+    end
+    object Image2: TImage
+      Left = 2
+      Height = 21
+      Top = 2
+      Width = 3
+      Align = alLeft
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Height = 50
+    Top = 25
+    Width = 1597
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 50
+    ClientWidth = 1597
+    Color = clInactiveBorder
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 1
+    object Label1: TLabel
+      Left = 8
+      Height = 20
+      Top = 16
+      Width = 56
+      Caption = 'Projetos'
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -15
+      Font.Name = 'Segoe UI Semibold'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object BitBtn1: TBitBtn
+      Left = 1510
+      Height = 30
+      Top = 13
+      Width = 75
+      Anchors = [akTop, akRight]
+      Caption = 'Novo'
+      TabOrder = 0
+    end
+    object BitBtn2: TBitBtn
+      Left = 1432
+      Height = 30
+      Top = 13
+      Width = 75
+      Anchors = [akTop, akRight]
+      Caption = 'Editar'
+      TabOrder = 1
+    end
+  end
+  object Panel3: TPanel
+    Left = 0
+    Height = 596
+    Top = 75
+    Width = 1597
+    Align = alClient
+    BevelOuter = bvNone
+    BorderWidth = 5
+    ClientHeight = 596
+    ClientWidth = 1597
+    Color = clInactiveBorder
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 2
+    object RxDBGrid1: TRxDBGrid
+      Left = 5
+      Height = 586
+      Top = 5
+      Width = 1587
+      ColumnDefValues.BlobText = '(blob)'
+      TitleButtons = False
+      AutoSort = True
+      Columns = <      
+        item
+          Title.Alignment = taCenter
+          Title.Orientation = toHorizontal
+          Title.Caption = 'Nome'
+          Width = 300
+          FieldName = 'nome'
+          EditButtons = <>
+          Filter.DropDownRows = 0
+          Filter.EmptyValue = '(Empty)'
+          Filter.NotEmptyValue = '(Não está vazio)'
+          Filter.AllValue = '(Todos os valores)'
+          Filter.EmptyFont.Style = [fsItalic]
+          Filter.ItemIndex = -1
+          Footers = <>
+        end      
+        item
+          Title.Alignment = taCenter
+          Title.Orientation = toHorizontal
+          Title.Caption = 'Código'
+          Width = 100
+          FieldName = 'codigo'
+          EditButtons = <>
+          Filter.DropDownRows = 0
+          Filter.EmptyValue = '(Empty)'
+          Filter.NotEmptyValue = '(Não está vazio)'
+          Filter.AllValue = '(Todos os valores)'
+          Filter.EmptyFont.Style = [fsItalic]
+          Filter.ItemIndex = -1
+          Footers = <>
+        end      
+        item
+          Title.Alignment = taCenter
+          Title.Orientation = toHorizontal
+          Title.Caption = 'Versão'
+          Width = 100
+          FieldName = 'versao'
+          EditButtons = <>
+          Filter.DropDownRows = 0
+          Filter.EmptyValue = '(Empty)'
+          Filter.NotEmptyValue = '(Não está vazio)'
+          Filter.AllValue = '(Todos os valores)'
+          Filter.EmptyFont.Style = [fsItalic]
+          Filter.ItemIndex = -1
+          Footers = <>
+        end      
+        item
+          Title.Alignment = taCenter
+          Title.Orientation = toHorizontal
+          Title.Caption = 'Descrição'
+          Width = 350
+          FieldName = 'descricao'
+          EditButtons = <>
+          Filter.DropDownRows = 0
+          Filter.EmptyValue = '(Empty)'
+          Filter.NotEmptyValue = '(Não está vazio)'
+          Filter.AllValue = '(Todos os valores)'
+          Filter.EmptyFont.Style = [fsItalic]
+          Filter.ItemIndex = -1
+          Footers = <>
+        end      
+        item
+          Title.Alignment = taCenter
+          Title.Orientation = toHorizontal
+          Title.Caption = 'Detalhe'
+          Width = 350
+          FieldName = 'detalhe'
+          EditButtons = <>
+          Filter.DropDownRows = 0
+          Filter.EmptyValue = '(Empty)'
+          Filter.NotEmptyValue = '(Não está vazio)'
+          Filter.AllValue = '(Todos os valores)'
+          Filter.EmptyFont.Style = [fsItalic]
+          Filter.ItemIndex = -1
+          Footers = <>
+        end      
+        item
+          Title.Alignment = taCenter
+          Title.Orientation = toHorizontal
+          Title.Caption = 'Data do cadastro'
+          Width = 150
+          FieldName = 'data_cadastro'
+          EditButtons = <>
+          Filter.DropDownRows = 0
+          Filter.EmptyValue = '(Empty)'
+          Filter.NotEmptyValue = '(Não está vazio)'
+          Filter.AllValue = '(Todos os valores)'
+          Filter.EmptyFont.Style = [fsItalic]
+          Filter.ItemIndex = -1
+          Footers = <>
+        end>
+      KeyStrokes = <      
+        item
+          Command = rxgcShowFindDlg
+          ShortCut = 16454
+          Enabled = True
+        end      
+        item
+          Command = rxgcShowColumnsDlg
+          ShortCut = 16471
+          Enabled = True
+        end      
+        item
+          Command = rxgcShowFilterDlg
+          ShortCut = 16468
+          Enabled = True
+        end      
+        item
+          Command = rxgcShowSortDlg
+          ShortCut = 16467
+          Enabled = True
+        end      
+        item
+          Command = rxgcShowQuickFilter
+          ShortCut = 16465
+          Enabled = True
+        end      
+        item
+          Command = rxgcHideQuickFilter
+          ShortCut = 16456
+          Enabled = True
+        end      
+        item
+          Command = rxgcSelectAll
+          ShortCut = 16449
+          Enabled = True
+        end      
+        item
+          Command = rxgcDeSelectAll
+          ShortCut = 16429
+          Enabled = True
+        end      
+        item
+          Command = rxgcInvertSelection
+          ShortCut = 16426
+          Enabled = True
+        end      
+        item
+          Command = rxgcOptimizeColumnsWidth
+          ShortCut = 16427
+          Enabled = True
+        end      
+        item
+          Command = rxgcCopyCellValue
+          ShortCut = 16451
+          Enabled = True
+        end>
+      FooterOptions.DrawFullLine = False
+      SearchOptions.QuickSearchOptions = [loCaseInsensitive, loPartialKey]
+      SearchOptions.FromStart = False
+      OptionsRx = [rdgAllowColumnsForm, rdgAllowDialogFind, rdgAllowQuickFilter]
+      Align = alClient
+      Color = clWindow
+      DrawFullLine = False
+      SelectedColor = clHighlight
+      DataSource = ds_projeto_list
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+      TabOrder = 0
+      TitleStyle = tsNative
+    end
+  end
+  object qry_projeto_list: TZQuery
+    Connection = DM.ZConnection
+    SQL.Strings = (
+      'SELECT * FROM projeto'
+    )
+    Params = <>
+    Left = 1336
+    Top = 128
+  end
+  object ds_projeto_list: TDataSource
+    DataSet = qry_projeto_list
+    Left = 1336
+    Top = 192
+  end
+  object ActionList1: TActionList
+    Left = 1432
+    Top = 128
+    object act_novo: TAction
+      Caption = 'act_novo'
+    end
+    object act_editar: TAction
+      Caption = 'act_editar'
+    end
+    object act_cadastroUsuario: TAction
+      Caption = 'act_cadastroUsuario'
+      OnExecute = act_cadastroUsuarioExecute
+    end
+  end
+end

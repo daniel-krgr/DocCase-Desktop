@@ -1,0 +1,275 @@
+object FrmCadastroUsuario: TFrmCadastroUsuario
+  Left = 350
+  Height = 413
+  Top = 250
+  Width = 494
+  BorderIcons = [biSystemMenu]
+  Caption = 'Cadastro de Usuário'
+  ClientHeight = 413
+  ClientWidth = 494
+  Position = poScreenCenter
+  OnShow = FormShow
+  object Panel1: TPanel
+    Left = 0
+    Height = 63
+    Top = 0
+    Width = 494
+    Align = alTop
+    ClientHeight = 63
+    ClientWidth = 494
+    TabOrder = 0
+    object Image1: TImage
+      Left = 7
+      Height = 50
+      Top = 7
+      Width = 43
+      Picture.Data = {
+        1754506F727461626C654E6574776F726B477261706869632F03000089504E47
+        0D0A1A0A0000000D49484452000000300000003008060000005702F987000000
+        097048597300000B1300000B1301009A9C18000002E149444154789CEDD7496F
+        D3401806E0E901F81390A54993D689E338E18884E0046710FC1D9633880A04E2
+        DA2C2DE996668FEDB4371012375AB5706CE238763C93D0E4022AFAD024807A68
+        AB26F576F02BCDD1D2F359339ED708B971E3C6CDC92445C2F2526F312E905D4E
+        2043AE8A876C45DF8D56BAAF62451C454E4DB002D778A9F79697C8EFB8488013
+        0870350CB12A06B6A243B4AC0353D28E17B6B4374C0EAE22C7E11B649B977A70
+        163E52EA0253E8C2C29606F39B6A83C9ED3A678844A3F7EEC2F8BC06E14D1542
+        EB9DD7C8397BFEEC6D733A5E85D09A721C58552276FBD1E8C04E8CEFC0DC6A07
+        0239E5A5DD7EC409646F1A7C30A740E043FBABDD7EC4D5C9603ABC02FEAC7C64
+        B71F71357C340D7E76B90DBEACFCC36E3F62AB786F1ABC3FDB066FA665FF16A2
+        37EC34785F46064F5A7E61B71FD17A406FD849F1DE54EBD8936A33C809A1F560
+        227C5A861BA9D622724A68B709E735E9A2784FAA2926DF7FB9829C14DA6D683D
+        A037EC79DB86BE79C7E14F86D6037AC3D24BCA9F9507BE8C3CA05F1B7A601DB3
+        E7DDB83123003389ED7E9217F0B3781DEF700239E06A78C856F13056C1FB6C45
+        DF61CBDDA76C414B20C7C185FE235E22DF7891409C3653BAEA1862FF4A5E55FF
+        DF95A2251D98A276C014D587F4595BEDC9463FC08BE4332F11B8289E568E4871
+        5C3B9882F629B4A5F8EDC18BE4564222EA25F0A3EA11CE6B7A685DB96B2D5EEA
+        DDE145F2EBB2F8F9FCE8071F429BEACFF90DEDB625F858BDE74F4844330A1FA6
+        6B4385B935550FE4D4A0B97A80994BEEF953F121DA9FD63B30B7A67C34F560F3
+        62FFB179F8CEB800AEB41F98F7F627F8544E85CF8D0AE0BE297E5EE8DF341B1F
+        FCDB6083D9166FF80071013FB7021F5851C0BF2C3F317E80713D301D3F4BFF1F
+        96E586E103C4EAF8BB15F8D9F10FD081E10370353CB0080FDE746B60F80056E1
+        7D1979B48C1FC042BC376DC20056E2BDA996F10344CBDDA65578CF52F3D0F001
+        D832BE1F29769B56E0AF2F1DDE337C00376EDC2047E60F54324B42B5A8408600
+        00000049454E44AE426082
+      }
+    end
+  end
+  object Label1: TLabel
+    Left = 38
+    Height = 15
+    Top = 94
+    Width = 36
+    Caption = 'Nome:'
+  end
+  object Label2: TLabel
+    Left = 38
+    Height = 15
+    Top = 152
+    Width = 64
+    Caption = 'Sobrenome:'
+  end
+  object Label3: TLabel
+    Left = 38
+    Height = 15
+    Top = 210
+    Width = 32
+    Caption = 'Email:'
+  end
+  object Label4: TLabel
+    Left = 38
+    Height = 15
+    Top = 268
+    Width = 35
+    Caption = 'Senha:'
+  end
+  object Label5: TLabel
+    Left = 290
+    Height = 15
+    Top = 94
+    Width = 84
+    Caption = 'Nível de acesso:'
+  end
+  object cbNivelAcesso: TComboBox
+    Left = 290
+    Height = 23
+    Top = 116
+    Width = 100
+    ItemHeight = 15
+    TabOrder = 1
+    Text = 'Selecione'
+  end
+  object Panel3: TPanel
+    Left = 0
+    Height = 36
+    Top = 377
+    Width = 494
+    Align = alBottom
+    BevelOuter = bvNone
+    BorderWidth = 5
+    ClientHeight = 36
+    ClientWidth = 494
+    TabOrder = 2
+    object btCancelar: TBitBtn
+      Left = 339
+      Height = 26
+      Top = 5
+      Width = 75
+      Align = alRight
+      Caption = 'Cancelar'
+      TabOrder = 0
+      OnClick = btCancelarClick
+    end
+    object btSalvar: TBitBtn
+      Left = 414
+      Height = 26
+      Top = 5
+      Width = 75
+      Align = alRight
+      Caption = 'Salvar'
+      TabOrder = 1
+      OnClick = btSalvarClick
+    end
+  end
+  object edtNome: TDBEdit
+    Left = 36
+    Height = 23
+    Top = 116
+    Width = 212
+    DataField = 'nome'
+    DataSource = ds_usuarios
+    MaxLength = 0
+    TabOrder = 3
+  end
+  object edtSobrenome: TDBEdit
+    Left = 38
+    Height = 23
+    Top = 174
+    Width = 210
+    DataField = 'sobrenome'
+    DataSource = ds_usuarios
+    MaxLength = 0
+    TabOrder = 4
+  end
+  object edtEmail: TDBEdit
+    Left = 38
+    Height = 23
+    Top = 232
+    Width = 208
+    DataField = 'email'
+    DataSource = ds_usuarios
+    MaxLength = 0
+    TabOrder = 5
+  end
+  object edtSenha: TDBEdit
+    Left = 36
+    Height = 23
+    Top = 290
+    Width = 210
+    DataField = 'senha'
+    DataSource = ds_usuarios
+    MaxLength = 0
+    TabOrder = 6
+  end
+  object qry_usuarios: TZQuery
+    Connection = DM.ZConnection
+    SQL.Strings = (
+      'select * from usuarios'
+    )
+    Params = <>
+    Left = 398
+    Top = 189
+    object qry_usuariosidusuarios: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'idusuarios'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qry_usuariosnome: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'nome'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 45
+    end
+    object qry_usuariosemail: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'email'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+    object qry_usuariossenha: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'senha'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 80
+    end
+    object qry_usuariosdata_cadastro: TZDateField
+      FieldKind = fkData
+      FieldName = 'data_cadastro'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qry_usuariossobrenome: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'sobrenome'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 120
+    end
+    object qry_usuariosstatus: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'status'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 45
+    end
+    object qry_usuariosimg_user: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'img_user'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+    object qry_usuariosnivel_acesso: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'nivel_acesso'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+  end
+  object ds_usuarios: TDataSource
+    DataSet = qry_usuarios
+    Left = 402
+    Top = 281
+  end
+end
