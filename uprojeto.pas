@@ -28,7 +28,10 @@ type
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
+    DocCase: TLabel;
     Panel1: TPanel;
+    Panel2: TPanel;
+    Panel3: TPanel;
     RichMemo1: TRichMemo;
     sBtNegrito: TSpeedButton;
     sBtCorFonte: TSpeedButton;
@@ -155,8 +158,6 @@ end;
 procedure TfrmProjeto.BitBtn2Click(Sender: TObject);
 begin
   Close;
-  frmProjeto.Free;
-  frmProjeto:= nil;
 end;
 
 procedure TfrmProjeto.sBtFonteClick(Sender: TObject);
