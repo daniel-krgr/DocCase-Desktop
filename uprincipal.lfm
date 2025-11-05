@@ -3,10 +3,12 @@ object frmPrincipal: TfrmPrincipal
   Height = 601
   Top = 250
   Width = 966
+  BorderIcons = [biSystemMenu]
   Caption = 'Doccase'
   ClientHeight = 601
   ClientWidth = 966
   Color = 16118000
+  Position = poDesktopCenter
   OnShow = FormShow
   object projeto1: TPanel
     Cursor = crHandPoint
@@ -14,6 +16,7 @@ object frmPrincipal: TfrmPrincipal
     Height = 90
     Top = 104
     Width = 300
+    Anchors = [akLeft, akRight]
     BevelColor = 16635558
     BevelWidth = 2
     BorderWidth = 8
@@ -28,7 +31,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 18
       Top = 0
       Width = 37
-      Anchors = []
+      Anchors = [akLeft]
       Caption = 'Proj1'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
@@ -46,7 +49,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 90
       Top = 0
       Width = 90
-      Anchors = []
+      Anchors = [akLeft]
       Picture.Data = {
         1754506F727461626C654E6574776F726B47726170686963EC01000089504E47
         0D0A1A0A0000000D4948445200000060000000600806000000E2987738000000
@@ -72,7 +75,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 16
       Top = 72
       Width = 34
-      Anchors = []
+      Anchors = [akLeft]
       Caption = 'Data1'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
@@ -89,7 +92,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 16
       Top = 32
       Width = 38
-      Anchors = []
+      Anchors = [akLeft]
       Caption = 'Autor1'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
@@ -106,8 +109,9 @@ object frmPrincipal: TfrmPrincipal
     Cursor = crHandPoint
     Left = 579
     Height = 90
-    Top = 105
+    Top = 104
     Width = 300
+    Anchors = [akLeft, akRight]
     BevelColor = 16635558
     BevelWidth = 2
     BorderWidth = 8
@@ -122,7 +126,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 18
       Top = 0
       Width = 37
-      Anchors = []
+      Anchors = [akLeft]
       Caption = 'Proj5'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
@@ -140,7 +144,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 90
       Top = 0
       Width = 90
-      Anchors = []
+      Anchors = [akLeft]
       Picture.Data = {
         1754506F727461626C654E6574776F726B47726170686963EC01000089504E47
         0D0A1A0A0000000D4948445200000060000000600806000000E2987738000000
@@ -166,7 +170,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 16
       Top = 72
       Width = 34
-      Anchors = []
+      Anchors = [akLeft]
       Caption = 'Data5'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
@@ -183,7 +187,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 16
       Top = 32
       Width = 38
-      Anchors = []
+      Anchors = [akLeft]
       Caption = 'Autor5'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
@@ -202,6 +206,7 @@ object frmPrincipal: TfrmPrincipal
     Height = 90
     Top = 232
     Width = 300
+    Anchors = [akLeft, akRight]
     BevelColor = 16635558
     BevelWidth = 2
     BorderWidth = 8
@@ -223,7 +228,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 18
       Top = 0
       Width = 37
-      Anchors = []
+      Anchors = [akLeft]
       Caption = 'Proj2'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
@@ -241,7 +246,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 90
       Top = 0
       Width = 90
-      Anchors = []
+      Anchors = [akLeft]
       Picture.Data = {
         1754506F727461626C654E6574776F726B47726170686963EC01000089504E47
         0D0A1A0A0000000D4948445200000060000000600806000000E2987738000000
@@ -267,7 +272,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 16
       Top = 32
       Width = 38
-      Anchors = []
+      Anchors = [akLeft]
       Caption = 'Autor2'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
@@ -284,7 +289,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 16
       Top = 72
       Width = 34
-      Anchors = []
+      Anchors = [akLeft]
       Caption = 'Data2'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
@@ -301,8 +306,9 @@ object frmPrincipal: TfrmPrincipal
     Cursor = crHandPoint
     Left = 579
     Height = 90
-    Top = 233
+    Top = 232
     Width = 300
+    Anchors = [akLeft, akRight]
     BevelColor = 16635558
     BevelWidth = 2
     BorderWidth = 8
@@ -317,7 +323,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 18
       Top = 0
       Width = 37
-      Anchors = []
+      Anchors = [akLeft]
       Caption = 'Proj6'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
@@ -335,7 +341,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 90
       Top = 0
       Width = 90
-      Anchors = []
+      Anchors = [akLeft]
       Picture.Data = {
         1754506F727461626C654E6574776F726B47726170686963EC01000089504E47
         0D0A1A0A0000000D4948445200000060000000600806000000E2987738000000
@@ -361,7 +367,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 16
       Top = 72
       Width = 34
-      Anchors = []
+      Anchors = [akLeft]
       Caption = 'Data6'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
@@ -378,7 +384,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 16
       Top = 32
       Width = 38
-      Anchors = []
+      Anchors = [akLeft]
       Caption = 'Autor6'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
@@ -397,6 +403,7 @@ object frmPrincipal: TfrmPrincipal
     Height = 90
     Top = 488
     Width = 300
+    Anchors = [akLeft, akRight]
     BevelColor = 16635558
     BevelWidth = 2
     BorderWidth = 8
@@ -411,7 +418,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 18
       Top = 0
       Width = 37
-      Anchors = []
+      Anchors = [akLeft]
       Caption = 'Proj4'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
@@ -429,7 +436,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 90
       Top = 0
       Width = 90
-      Anchors = []
+      Anchors = [akLeft]
       Picture.Data = {
         1754506F727461626C654E6574776F726B47726170686963EC01000089504E47
         0D0A1A0A0000000D4948445200000060000000600806000000E2987738000000
@@ -455,7 +462,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 16
       Top = 72
       Width = 34
-      Anchors = []
+      Anchors = [akLeft]
       Caption = 'Data4'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
@@ -472,7 +479,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 16
       Top = 32
       Width = 38
-      Anchors = []
+      Anchors = [akLeft]
       Caption = 'Autor4'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
@@ -491,6 +498,7 @@ object frmPrincipal: TfrmPrincipal
     Height = 90
     Top = 360
     Width = 300
+    Anchors = [akLeft, akRight]
     BevelColor = 16635558
     BevelWidth = 2
     BorderWidth = 8
@@ -505,7 +513,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 18
       Top = 0
       Width = 37
-      Anchors = []
+      Anchors = [akLeft]
       Caption = 'Proj3'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
@@ -523,7 +531,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 90
       Top = 0
       Width = 90
-      Anchors = []
+      Anchors = [akLeft]
       Picture.Data = {
         1754506F727461626C654E6574776F726B47726170686963EC01000089504E47
         0D0A1A0A0000000D4948445200000060000000600806000000E2987738000000
@@ -549,7 +557,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 16
       Top = 72
       Width = 34
-      Anchors = []
+      Anchors = [akLeft]
       Caption = 'Data3'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
@@ -566,7 +574,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 16
       Top = 32
       Width = 38
-      Anchors = []
+      Anchors = [akLeft]
       Caption = 'Autor3'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
@@ -583,8 +591,9 @@ object frmPrincipal: TfrmPrincipal
     Cursor = crHandPoint
     Left = 579
     Height = 90
-    Top = 361
+    Top = 360
     Width = 300
+    Anchors = [akLeft, akRight]
     BevelColor = 16635558
     BevelWidth = 2
     BorderWidth = 8
@@ -599,7 +608,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 18
       Top = 0
       Width = 37
-      Anchors = []
+      Anchors = [akLeft]
       Caption = 'Proj7'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
@@ -617,7 +626,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 90
       Top = 0
       Width = 90
-      Anchors = []
+      Anchors = [akLeft]
       Picture.Data = {
         1754506F727461626C654E6574776F726B47726170686963EC01000089504E47
         0D0A1A0A0000000D4948445200000060000000600806000000E2987738000000
@@ -643,7 +652,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 16
       Top = 72
       Width = 34
-      Anchors = []
+      Anchors = [akLeft]
       Caption = 'Data7'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
@@ -660,7 +669,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 16
       Top = 32
       Width = 38
-      Anchors = []
+      Anchors = [akLeft]
       Caption = 'Autor7'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
@@ -677,8 +686,9 @@ object frmPrincipal: TfrmPrincipal
     Cursor = crHandPoint
     Left = 579
     Height = 90
-    Top = 489
+    Top = 488
     Width = 300
+    Anchors = [akLeft, akRight]
     BevelColor = 16635558
     BevelWidth = 2
     BorderWidth = 8
@@ -693,7 +703,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 18
       Top = 0
       Width = 37
-      Anchors = []
+      Anchors = [akLeft]
       Caption = 'Proj8'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
@@ -711,7 +721,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 90
       Top = 0
       Width = 90
-      Anchors = []
+      Anchors = [akLeft]
       Picture.Data = {
         1754506F727461626C654E6574776F726B47726170686963EC01000089504E47
         0D0A1A0A0000000D4948445200000060000000600806000000E2987738000000
@@ -737,7 +747,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 16
       Top = 72
       Width = 34
-      Anchors = []
+      Anchors = [akLeft]
       Caption = 'Data8'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
@@ -754,7 +764,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 16
       Top = 32
       Width = 38
-      Anchors = []
+      Anchors = [akLeft]
       Caption = 'Autor8'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
@@ -1437,5 +1447,16 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'act_dashboard'
       OnExecute = act_dashboardExecute
     end
+  end
+  object qryNumProjeto: TZQuery
+    Connection = DM.ZConnection
+    Params = <>
+    Left = 896
+    Top = 21
+  end
+  object dsNumProjeto: TDataSource
+    DataSet = qryNumProjeto
+    Left = 816
+    Top = 21
   end
 end

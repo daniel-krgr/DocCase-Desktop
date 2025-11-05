@@ -19,6 +19,7 @@ type
     act_novo: TAction;
     ActionList1: TActionList;
     ds_projeto_list: TDataSource;
+    dsNumProjeto: TDataSource;
     Image1: TImage;
     Image10: TImage;
     Image3: TImage;
@@ -73,6 +74,7 @@ type
     sbtProjetos: TSpeedButton;
     sbtUsuarios: TSpeedButton;
     sbtDashboard: TSpeedButton;
+    qryNumProjeto: TZQuery;
     procedure act_dashboardExecute(Sender: TObject);
     procedure act_novoExecute(Sender: TObject);
     procedure act_projetosExecute(Sender: TObject);
@@ -89,22 +91,75 @@ var
 
 implementation
 uses
-  uCadastroUsuario, uProjeto;
+  uCadastroUsuario, uProjeto, ulistausuario;
 
 {$R *.lfm}
 
 { TfrmPrincipal }
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
+var
+ i: Integer;
+ Panel: TPanel;
+ lblProj, lblAutor, lblData: TLabel;
 begin
- { with qry_projeto_list do
+   // Consulta os 8 projetos mais recentes com nome do time
+  with qry_projeto_list do
   begin
-  Close;
-  sql.Clear;
-  SQL.Text:='SELECT * FROM projeto';
-  Open;
+    Close;
+    SQL.Clear;
+    SQL.Add('SELECT p.nome AS nome_projeto, p.data_cadastro, t.nome AS nome_time ' +
+            'FROM projeto p ' +
+            'LEFT JOIN time t ON t.idtime = p.time_idtime ' +
+            'ORDER BY p.data_cadastro DESC ' +
+            'LIMIT 8');
+    Open;
   end;
-  }
+
+  // Esconde todos os painéis antes de preencher
+  for i := 1 to 8 do
+  begin
+    Panel := TPanel(FindComponent('projeto' + IntToStr(i)));
+    if Assigned(Panel) then
+      Panel.Visible := False;
+  end;
+
+  // Preenche os painéis com os dados retornados
+  qry_projeto_list.First;
+  i := 1;
+  while not qry_projeto_list.Eof do
+  begin
+    Panel := TPanel(FindComponent('projeto' + IntToStr(i)));
+    if Assigned(Panel) then
+    begin
+      lblProj := TLabel(FindComponent('Proj' + IntToStr(i)));
+      lblAutor := TLabel(FindComponent('Autor' + IntToStr(i)));
+      lblData := TLabel(FindComponent('Data' + IntToStr(i)));
+
+      if Assigned(lblProj) then
+        lblProj.Caption := qry_projeto_list.FieldByName('nome_projeto').AsString;
+
+      if Assigned(lblAutor) then
+        lblAutor.Caption := qry_projeto_list.FieldByName('nome_time').AsString;
+
+      if Assigned(lblData) then
+      begin
+        if not qry_projeto_list.FieldByName('data_cadastro').IsNull then
+          lblData.Caption := FormatDateTime('dd/mm/yyyy', qry_projeto_list.FieldByName('data_cadastro').AsDateTime)
+        else
+          lblData.Caption := '';
+      end;
+
+      Panel.Visible := True;
+    end;
+
+    Inc(i);
+    qry_projeto_list.Next;
+  end;
+
+  // Atualiza o total de versões (projetos listados)
+  lblNumerVersao.Caption := IntToStr(i - 1);
+
 end;
 
 procedure TfrmPrincipal.act_novoExecute(Sender: TObject);
@@ -140,14 +195,13 @@ end;
 
 procedure TfrmPrincipal.act_usuariosExecute(Sender: TObject);
 begin
- { if FrmCadastroUsuario = nil then
-  FrmCadastroUsuario:= TFrmCadastroUsuario.Create(self);
-  FrmCadastroUsuario._action_ := 'insert';
-  FrmCadastroUsuario.ShowModal;
-  FrmCadastroUsuario.Free;
-  FrmCadastroUsuario:= nil;
-  }
-  end;
+  if FrmListaDeUsuarios = nil then
+  FrmListaDeUsuarios:= TFrmListaDeUsuarios.Create(self);
+  FrmListaDeUsuarios.ShowModal;
+  FrmListaDeUsuarios.Free;
+  FrmListaDeUsuarios:= nil;
+
+end;
 
 
 end.
