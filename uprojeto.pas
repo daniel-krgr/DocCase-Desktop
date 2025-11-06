@@ -5,8 +5,8 @@ unit uProjeto;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
-  Buttons, RichMemo, SynHighlighterTeX;
+  Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
+  Buttons, DBCtrls, ZDataset, ZAbstractRODataset, RichMemo, SynHighlighterTeX;
 
 type
 
@@ -16,9 +16,10 @@ type
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
     ColorButton1: TColorButton;
-    Edit1: TEdit;
-    Edit2: TEdit;
-    Edit3: TEdit;
+    DBEdit1: TDBEdit;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    dsProjeto: TDataSource;
     FontDialog1: TFontDialog;
     Label1: TLabel;
     Label2: TLabel;
@@ -39,7 +40,10 @@ type
     SpeedButton4: TSpeedButton;
     sBtTamanhoFonte: TSpeedButton;
     sBtFonte: TSpeedButton;
+    qryProjeto: TZQuery;
+    procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure sBtFonteClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure sBtCorFonteClick(Sender: TObject);
@@ -158,6 +162,38 @@ end;
 procedure TfrmProjeto.BitBtn2Click(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TfrmProjeto.FormShow(Sender: TObject);
+begin
+  with qryProjeto do
+  begin
+    if Active then
+    Close;
+
+    SQL.Text:='SELECT * FROM PROJETO WHERE idprojeto = 0';
+    Open;
+
+    Insert;
+  end;
+end;
+procedure TfrmProjeto.BitBtn1Click(Sender: TObject);
+begin
+  with qryProjeto do
+  begin
+    if not Active then
+    append;
+
+    if State = dsBrowse then
+    append;
+
+    qryProjeto.FieldByName('detalhe').AsString:=RichMemo1.Lines.Text;
+    qryProjeto.FieldByName('time_idtime').AsInteger:=1;
+    if not Assigned(qryProjeto.Connection) then
+    raise Exception.Create('erro de conn');
+    qryProjeto.post;
+
+  end;
 end;
 
 procedure TfrmProjeto.sBtFonteClick(Sender: TObject);

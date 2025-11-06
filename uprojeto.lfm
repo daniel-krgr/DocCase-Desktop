@@ -9,6 +9,7 @@ object frmProjeto: TfrmProjeto
   ClientWidth = 1309
   Color = clWhite
   DesignTimePPI = 106
+  OnShow = FormShow
   object Label1: TLabel
     Left = 152
     Height = 19
@@ -79,6 +80,7 @@ object frmProjeto: TfrmProjeto
       Width = 83
       Caption = 'Gravar'
       TabOrder = 0
+      OnClick = BitBtn1Click
     end
     object BitBtn2: TBitBtn
       Left = 153
@@ -89,14 +91,6 @@ object frmProjeto: TfrmProjeto
       TabOrder = 1
       OnClick = BitBtn2Click
     end
-  end
-  object Edit1: TEdit
-    Left = 152
-    Height = 25
-    Top = 136
-    Width = 483
-    TabOrder = 1
-    Text = 'Edit1'
   end
   object Label5: TLabel
     Left = 152
@@ -112,50 +106,19 @@ object frmProjeto: TfrmProjeto
     Width = 124
     Caption = 'Descrição do projeto'
   end
-  object Edit2: TEdit
-    Left = 152
-    Height = 25
-    Top = 185
-    Width = 483
-    TabOrder = 2
-    Text = 'Edit2'
-  end
   object Label7: TLabel
     Left = 152
     Height = 17
     Top = 216
     Width = 110
-    Caption = 'Codigo do projeto'
-  end
-  object Edit3: TEdit
-    Left = 152
-    Height = 25
-    Top = 234
-    Width = 112
-    CharCase = ecUppercase
-    Font.CharSet = ANSI_CHARSET
-    Font.Pitch = fpVariable
-    Font.Quality = fqDraft
-    Font.Style = [fsBold]
-    ParentFont = False
-    TabOrder = 3
-    Text = 'EDIT3'
+    Caption = 'Código do projeto'
   end
   object Label8: TLabel
     Left = 152
     Height = 17
     Top = 278
-    Width = 110
-    Caption = 'Codigo do projeto'
-  end
-  object RichMemo1: TRichMemo
-    Left = 152
-    Height = 294
-    Top = 296
-    Width = 994
-    HideSelection = False
-    TabOrder = 4
-    ZoomFactor = 1
+    Width = 111
+    Caption = 'Detalhe do projeto'
   end
   object sBtNegrito: TSpeedButton
     Left = 1023
@@ -260,7 +223,7 @@ object frmProjeto: TfrmProjeto
     Color = 12255232
     ParentBackground = False
     ParentColor = False
-    TabOrder = 5
+    TabOrder = 1
     object Panel3: TPanel
       Left = 888
       Height = 55
@@ -284,10 +247,63 @@ object frmProjeto: TfrmProjeto
       ParentFont = False
     end
   end
+  object DBEdit1: TDBEdit
+    Left = 152
+    Height = 25
+    Top = 136
+    Width = 480
+    DataField = 'nome'
+    DataSource = dsProjeto
+    MaxLength = 0
+    TabOrder = 2
+  end
+  object DBEdit2: TDBEdit
+    Left = 152
+    Height = 25
+    Top = 184
+    Width = 480
+    DataField = 'descricao'
+    DataSource = dsProjeto
+    MaxLength = 0
+    TabOrder = 3
+  end
+  object DBEdit3: TDBEdit
+    Left = 152
+    Height = 25
+    Top = 232
+    Width = 240
+    DataField = 'codigo'
+    DataSource = dsProjeto
+    MaxLength = 0
+    TabOrder = 4
+  end
+  object RichMemo1: TRichMemo
+    Left = 152
+    Height = 294
+    Top = 296
+    Width = 994
+    HideSelection = False
+    TabOrder = 5
+    ZoomFactor = 1
+  end
   object FontDialog1: TFontDialog
     MinFontSize = 0
     MaxFontSize = 0
     Left = 1174
     Top = 234
+  end
+  object qryProjeto: TZQuery
+    Connection = DM.ZConnection
+    SQL.Strings = (
+      'SELECT * FROM projeto'
+    )
+    Params = <>
+    Left = 891
+    Top = 168
+  end
+  object dsProjeto: TDataSource
+    DataSet = qryProjeto
+    Left = 952
+    Top = 168
   end
 end
