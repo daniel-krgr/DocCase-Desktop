@@ -91,7 +91,7 @@ var
 
 implementation
 uses
-  uCadastroUsuario, uProjeto, ulistausuario;
+  uCadastroUsuario, uProjeto, ulistaprojetos;
 
 {$R *.lfm}
 
@@ -184,23 +184,22 @@ end;
 
 procedure TfrmPrincipal.act_projetosExecute(Sender: TObject);
 begin
-  {if FrmCadastroUsuario = nil then
-  FrmCadastroUsuario:= TFrmCadastroUsuario.Create(self);
-  FrmCadastroUsuario._action_ := 'insert';
-  FrmCadastroUsuario.ShowModal;
-  FrmCadastroUsuario.Free;
-  FrmCadastroUsuario:= nil;
-  }
+  if FrmListaProjetos = nil then
+  FrmListaProjetos:= TFrmListaProjetos.Create(self);
+  FrmListaProjetos.ShowModal;
+  FrmListaProjetos.Free;
+  FrmListaProjetos:= nil;
+
 end;
 
 procedure TfrmPrincipal.act_usuariosExecute(Sender: TObject);
 begin
-  if FrmListaDeUsuarios = nil then
+  {if FrmListaDeUsuarios = nil then
   FrmListaDeUsuarios:= TFrmListaDeUsuarios.Create(self);
   FrmListaDeUsuarios.ShowModal;
   FrmListaDeUsuarios.Free;
   FrmListaDeUsuarios:= nil;
-
+  }
 end;
 
 
