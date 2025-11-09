@@ -13,6 +13,7 @@ type
   { TfrmPrincipal }
 
   TfrmPrincipal = class(TForm)
+    act_adicionarTime: TAction;
     act_projetos: TAction;
     act_usuarios: TAction;
     act_dashboard: TAction;
@@ -70,13 +71,12 @@ type
     projeto7: TPanel;
     projeto8: TPanel;
     qry_projeto_list: TZQuery;
-    sbtNovo: TSpeedButton;
+    sbtDashboard1: TSpeedButton;
     sbtProjetos: TSpeedButton;
     sbtUsuarios: TSpeedButton;
     sbtDashboard: TSpeedButton;
     qryNumProjeto: TZQuery;
     procedure act_dashboardExecute(Sender: TObject);
-    procedure act_novoExecute(Sender: TObject);
     procedure act_projetosExecute(Sender: TObject);
     procedure act_usuariosExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -160,15 +160,6 @@ begin
   // Atualiza o total de versões (projetos listados)
   lblNumerVersao.Caption := IntToStr(i - 1);
 
-end;
-
-procedure TfrmPrincipal.act_novoExecute(Sender: TObject);
-begin
-  if frmProjeto = nil then
-  frmProjeto:= TfrmProjeto.Create(self);
-  frmProjeto.ShowModal;
-  frmProjeto.Free;
-  frmProjeto:= nil;
 end;
 
 procedure TfrmPrincipal.act_dashboardExecute(Sender: TObject);
