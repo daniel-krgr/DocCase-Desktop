@@ -5,8 +5,8 @@ unit uProjeto;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
-  Buttons, RichMemo, SynHighlighterTeX;
+  Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
+  Buttons, DBCtrls, ZDataset, ZAbstractRODataset, RichMemo, SynHighlighterTeX, ZConnection;
 
 type
 
@@ -15,11 +15,13 @@ type
   TfrmProjeto = class(TForm)
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
-    ColorButton1: TColorButton;
-    Edit1: TEdit;
-    Edit2: TEdit;
-    Edit3: TEdit;
-    FontDialog1: TFontDialog;
+    cbTime: TComboBox;
+    DBEdit1: TDBEdit;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    DBMemo1: TDBMemo;
+    dsProjeto: TDataSource;
+    dsTime: TDataSource;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -28,23 +30,29 @@ type
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
+    Label9: TLabel;
     Panel1: TPanel;
-    RichMemo1: TRichMemo;
-    sBtNegrito: TSpeedButton;
-    sBtCorFonte: TSpeedButton;
-    SpeedButton3: TSpeedButton;
-    SpeedButton4: TSpeedButton;
-    sBtTamanhoFonte: TSpeedButton;
-    sBtFonte: TSpeedButton;
+    qryProjetocodigo: TZRawStringField;
+    qryProjetodata_cadastro: TZDateField;
+    qryProjetodescricao: TZRawStringField;
+    qryProjetodetalhe: TZRawCLobField;
+    qryProjetoidprojeto: TZIntegerField;
+    qryProjetonome: TZRawStringField;
+    qryProjetoop_publico: TZRawStringField;
+    qryProjetotime_idtime: TZIntegerField;
+    qryTimeidtime: TZIntegerField;
+    qryTimenome: TZRawStringField;
+    qryProjeto: TZQuery;
+    qryTime: TZQuery;
+    procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
-    procedure sBtFonteClick(Sender: TObject);
-    procedure SpeedButton1Click(Sender: TObject);
-    procedure sBtCorFonteClick(Sender: TObject);
-    procedure sBtTamanhoFonteClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
 
   public
-
+   var
+   _action_:String;//edit,insert
+   idprojeto:Integer;
   end;
 
 var
@@ -56,149 +64,86 @@ implementation
 
 { TfrmProjeto }
 
-{
-  Funções para formatação do texto
-}
-// Toggle Negrito
-procedure ToggleBold(Rich: TRichMemo);
-var
-  fp: TFontParams;
-  iStart, iLen: Integer;
-begin
-  iStart := Rich.SelStart;
-  iLen := Rich.SelLength;
-  // pega atributos no ponto inicial da seleção/caret
-  Rich.GetTextAttributes(iStart, fp);
-  // alterna o fsBold
-  if fsBold in fp.Style then
-    fp.Style := fp.Style - [fsBold]
-  else
-    fp.Style := fp.Style + [fsBold];
-  // aplica para a seleção atual
-  Rich.SetTextAttributes(iStart, iLen, fp);
-end;
-
-// Toggle Itálico
-procedure ToggleItalic(Rich: TRichMemo);
-var
-  fp: TFontParams;
-  iStart, iLen: Integer;
-begin
-  iStart := Rich.SelStart;
-  iLen := Rich.SelLength;
-  Rich.GetTextAttributes(iStart, fp);
-  if fsItalic in fp.Style then
-    fp.Style := fp.Style - [fsItalic]
-  else
-    fp.Style := fp.Style + [fsItalic];
-  Rich.SetTextAttributes(iStart, iLen, fp);
-end;
-
-// Toggle Sublinhado
-procedure ToggleUnderline(Rich: TRichMemo);
-var
-  fp: TFontParams;
-  iStart, iLen: Integer;
-begin
-  iStart := Rich.SelStart;
-  iLen := Rich.SelLength;
-  Rich.GetTextAttributes(iStart, fp);
-  if fsUnderline in fp.Style then
-    fp.Style := fp.Style - [fsUnderline]
-  else
-    fp.Style := fp.Style + [fsUnderline];
-  Rich.SetTextAttributes(iStart, iLen, fp);
-end;
-
-// Mudar cor da fonte
-procedure SetFontColor(Rich: TRichMemo; AColor: TColor);
-var
-  fp: TFontParams;
-  iStart, iLen: Integer;
-begin
-  iStart := Rich.SelStart;
-  iLen := Rich.SelLength;
-  Rich.GetTextAttributes(iStart, fp);
-  fp.Color := AColor;
-  Rich.SetTextAttributes(iStart, iLen, fp);
-end;
-
-// Mudar nome da fonte
-procedure SetFontName(Rich: TRichMemo; const AName: string);
-var
-  fp: TFontParams;
-  iStart, iLen: Integer;
-begin
-  iStart := Rich.SelStart;
-  iLen := Rich.SelLength;
-  Rich.GetTextAttributes(iStart, fp);
-  fp.Name := AName; // field costuma ser 'Name'
-  Rich.SetTextAttributes(iStart, iLen, fp);
-end;
-
-// Mudar tamanho da fonte
-procedure SetFontSize(Rich: TRichMemo; ASize: Integer);
-var
-  fp: TFontParams;
-  iStart, iLen: Integer;
-begin
-  iStart := Rich.SelStart;
-  iLen := Rich.SelLength;
-  Rich.GetTextAttributes(iStart, fp);
-  fp.Size := ASize;
-  Rich.SetTextAttributes(iStart, iLen, fp);
-end;
-{
- Fim da funções para formatação do texto
-}
-
 procedure TfrmProjeto.BitBtn2Click(Sender: TObject);
 begin
   Close;
-  frmProjeto.Free;
-  frmProjeto:= nil;
 end;
 
-procedure TfrmProjeto.sBtFonteClick(Sender: TObject);
-var
-  fp: TFontParams;
+procedure TfrmProjeto.BitBtn1Click(Sender: TObject);
 begin
-  // Pega atributos da seleção atual
-  RichMemo1.GetTextAttributes(RichMemo1.SelStart, fp);
-
-  // Aplica os atributos atuais no FontDialog (para abrir já com a fonte em uso)
-  FontDialog1.Font.Name := fp.Name;
-  FontDialog1.Font.Size := fp.Size;
-  FontDialog1.Font.Style := fp.Style;
-  FontDialog1.Font.Color := fp.Color;
-
-  // Abre o diálogo
-  if FontDialog1.Execute then
+  // verifica se o usuário selecionou um time
+  if cbTime.ItemIndex < 0 then
   begin
-    // Atualiza os atributos
-    fp.Name := FontDialog1.Font.Name;
-    fp.Size := FontDialog1.Font.Size;
-    fp.Style := FontDialog1.Font.Style;
-    fp.Color := FontDialog1.Font.Color;
-
-    // Aplica na seleção
-    RichMemo1.SetTextAttributes(RichMemo1.SelStart, RichMemo1.SelLength, fp);
+    ShowMessage('Selecione um time antes de salvar o projeto!');
+    Exit;
   end;
+
+  // define o id do time selecionado
+  qryProjeto.FieldByName('time_idtime').AsInteger :=
+    PtrInt(cbTime.Items.Objects[cbTime.ItemIndex]);
+
+  qryProjeto.Post;
+  qryProjeto.ApplyUpdates; // opcional, mas recomendável
+  ShowMessage('Projeto salvo com sucesso!');
 end;
 
-procedure TfrmProjeto.SpeedButton1Click(Sender: TObject);
+procedure TfrmProjeto.FormShow(Sender: TObject);
+var i: Integer;
 begin
-  ToggleBold(RichMemo1);
-end;
+ // 🟦 Preenche ComboBox com os times
+  cbTime.Clear;
+  with qryTime do
+  begin
+    Close;
+    SQL.Text := 'SELECT idtime, nome FROM time ORDER BY nome';
+    Open;
+    while not Eof do
+    begin
+      cbTime.Items.AddObject(
+        FieldByName('nome').AsString,
+        TObject(PtrInt(FieldByName('idtime').AsInteger))
+      );
+      Next;
+    end;
+  end;
 
-procedure TfrmProjeto.sBtCorFonteClick(Sender: TObject);
-begin
- SetFontColor(RichMemo1,ColorButton1.ButtonColor)
-end;
+  // 🟨 Ação: editar projeto existente
+  if _action_ = 'edit' then
+  begin
+    with qryProjeto do
+    begin
+      Close;
+      SQL.Text := 'SELECT * FROM projeto WHERE idprojeto = :id';
+      ParamByName('id').AsInteger := idprojeto;
+      Open;
+      Edit;
 
-procedure TfrmProjeto.sBtTamanhoFonteClick(Sender: TObject);
-begin
+      // seleciona o time correspondente na combo
+      if not FieldByName('time_idtime').IsNull then
+      begin
+        for i := 0 to cbTime.Items.Count - 1 do
+          if PtrInt(cbTime.Items.Objects[i]) = FieldByName('time_idtime').AsInteger then
+          begin
+            cbTime.ItemIndex := i;
+            Break;
+          end;
+      end;
+    end;
+  end
 
+  // 🟩 Ação: inserir novo projeto
+  else if _action_ = 'insert' then
+  begin
+    with qryProjeto do
+    begin
+      Close;
+      SQL.Text := 'SELECT * FROM projeto';
+      Open;
+      Insert;
+      FieldByName('data_cadastro').AsDateTime := Date;
+      FieldByName('op_publico').AsString := 'N';
+    end;
+  end;
 end;
 
 end.

@@ -60,6 +60,8 @@ var
 
 implementation
 
+uses
+  uProjeto;
 {$R *.lfm}
 
 { TFrmListaProjetos }
@@ -103,6 +105,7 @@ begin
    if frmProjeto = nil then
   frmProjeto:= TfrmProjeto.Create(self);
   frmProjeto._action_ := 'edit';
+  frmProjeto.idprojeto := qryListaProjetos.FieldByName('idprojeto').AsInteger;
   frmProjeto.ShowModal;
   frmProjeto.Free;
   frmProjeto:= nil;

@@ -1,13 +1,16 @@
 object frmProjeto: TfrmProjeto
   Left = 457
-  Height = 670
+  Height = 645
   Top = 250
   Width = 1085
-  BorderStyle = bsNone
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
   Caption = 'frmProjeto'
-  ClientHeight = 670
+  ClientHeight = 645
   ClientWidth = 1085
   Color = clWhite
+  Position = poDesktopCenter
+  OnShow = FormShow
   object Label1: TLabel
     Left = 11
     Height = 17
@@ -63,7 +66,7 @@ object frmProjeto: TfrmProjeto
   object Panel1: TPanel
     Left = 0
     Height = 46
-    Top = 624
+    Top = 599
     Width = 1085
     Align = alBottom
     BevelOuter = bvNone
@@ -78,6 +81,7 @@ object frmProjeto: TfrmProjeto
       Width = 75
       Caption = 'Gravar'
       TabOrder = 0
+      OnClick = BitBtn1Click
     end
     object BitBtn2: TBitBtn
       Left = 8
@@ -88,14 +92,6 @@ object frmProjeto: TfrmProjeto
       TabOrder = 1
       OnClick = BitBtn2Click
     end
-  end
-  object Edit1: TEdit
-    Left = 11
-    Height = 23
-    Top = 120
-    Width = 437
-    TabOrder = 1
-    Text = 'Edit1'
   end
   object Label5: TLabel
     Left = 11
@@ -111,14 +107,6 @@ object frmProjeto: TfrmProjeto
     Width = 109
     Caption = 'Descrição do projeto'
   end
-  object Edit2: TEdit
-    Left = 11
-    Height = 23
-    Top = 164
-    Width = 437
-    TabOrder = 2
-    Text = 'Edit2'
-  end
   object Label7: TLabel
     Left = 11
     Height = 15
@@ -126,132 +114,190 @@ object frmProjeto: TfrmProjeto
     Width = 97
     Caption = 'Codigo do projeto'
   end
-  object Edit3: TEdit
-    Left = 11
-    Height = 23
-    Top = 208
-    Width = 101
-    CharCase = ecUppercase
-    Font.CharSet = ANSI_CHARSET
-    Font.Pitch = fpVariable
-    Font.Quality = fqDraft
-    Font.Style = [fsBold]
-    ParentFont = False
-    TabOrder = 3
-    Text = 'EDIT3'
-  end
   object Label8: TLabel
     Left = 11
     Height = 15
-    Top = 248
-    Width = 97
-    Caption = 'Codigo do projeto'
+    Top = 282
+    Width = 98
+    Caption = 'Detalhe do projeto'
   end
-  object RichMemo1: TRichMemo
+  object DBEdit1: TDBEdit
+    Left = 11
+    Height = 23
+    Top = 121
+    Width = 437
+    DataField = 'nome'
+    DataSource = dsProjeto
+    MaxLength = 0
+    TabOrder = 1
+  end
+  object DBEdit2: TDBEdit
+    Left = 11
+    Height = 23
+    Top = 167
+    Width = 437
+    DataField = 'descricao'
+    DataSource = dsProjeto
+    MaxLength = 0
+    TabOrder = 2
+  end
+  object DBEdit3: TDBEdit
+    Left = 11
+    Height = 23
+    Top = 209
+    Width = 101
+    DataField = 'codigo'
+    DataSource = dsProjeto
+    MaxLength = 0
+    TabOrder = 3
+  end
+  object Label9: TLabel
+    Left = 11
+    Height = 15
+    Top = 237
+    Width = 26
+    Caption = 'Time'
+  end
+  object cbTime: TComboBox
+    Left = 11
+    Height = 23
+    Top = 257
+    Width = 192
+    ItemHeight = 15
+    TabOrder = 4
+  end
+  object DBMemo1: TDBMemo
     Left = 11
     Height = 266
-    Top = 264
+    Top = 304
     Width = 900
-    HideSelection = False
-    TabOrder = 4
-    ZoomFactor = 1
+    DataField = 'detalhe'
+    DataSource = dsProjeto
+    TabOrder = 5
   end
-  object sBtNegrito: TSpeedButton
-    Left = 800
-    Height = 22
-    Hint = 'Negrito'
-    Top = 240
-    Width = 23
-    Caption = 'B'
-    Font.CharSet = ANSI_CHARSET
-    Font.Pitch = fpVariable
-    Font.Quality = fqDraft
-    Font.Style = [fsBold]
-    ShowHint = True
-    ParentFont = False
-    ParentShowHint = False
+  object qryProjeto: TZQuery
+    Connection = DM.ZConnection
+    SQL.Strings = (
+      'SELECT * FROM projeto'
+    )
+    Params = <>
+    Left = 1014
+    Top = 38
+    object qryProjetoidprojeto: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'idprojeto'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryProjetonome: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'nome'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 45
+    end
+    object qryProjetodescricao: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'descricao'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+    object qryProjetotime_idtime: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'time_idtime'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryProjetodata_cadastro: TZDateField
+      FieldKind = fkData
+      FieldName = 'data_cadastro'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryProjetoop_publico: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'op_publico'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qryProjetocodigo: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'codigo'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 3
+    end
+    object qryProjetodetalhe: TZRawCLobField
+      FieldKind = fkData
+      FieldName = 'detalhe'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftMemo
+      Transliterate = False
+    end
   end
-  object sBtCorFonte: TSpeedButton
-    Left = 756
-    Height = 22
-    Hint = 'Alterar cor'
-    Top = 240
-    Width = 23
-    Caption = 'C'
-    ShowHint = True
-    ParentShowHint = False
-    OnClick = sBtCorFonteClick
+  object dsProjeto: TDataSource
+    DataSet = qryProjeto
+    Left = 1014
+    Top = 96
   end
-  object ColorButton1: TColorButton
-    Left = 778
-    Height = 22
-    Hint = 'Selecionar cor'
-    Top = 240
-    Width = 23
-    BorderWidth = 2
-    ButtonColorSize = 16
-    ButtonColor = clBlack
-    ShowHint = True
-    ParentShowHint = False
+  object qryTime: TZQuery
+    Connection = DM.ZConnection
+    SQL.Strings = (
+      'SELECT * FROM time'
+    )
+    Params = <>
+    Left = 960
+    Top = 38
+    object qryTimeidtime: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'idtime'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryTimenome: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'nome'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 45
+    end
   end
-  object SpeedButton3: TSpeedButton
-    Left = 844
-    Height = 22
-    Hint = 'Itálico'
-    Top = 240
-    Width = 23
-    Caption = 'I'
-    Font.CharSet = ANSI_CHARSET
-    Font.Name = 'Arial'
-    Font.Pitch = fpVariable
-    Font.Quality = fqDraft
-    Font.Style = [fsItalic]
-    ShowHint = True
-    ParentFont = False
-    ParentShowHint = False
-  end
-  object SpeedButton4: TSpeedButton
-    Left = 822
-    Height = 22
-    Hint = 'Sublinhado'
-    Top = 240
-    Width = 23
-    Caption = 'S'
-    Font.CharSet = ANSI_CHARSET
-    Font.Name = '@Malgun Gothic'
-    Font.Pitch = fpVariable
-    Font.Quality = fqDraft
-    Font.Style = [fsUnderline]
-    ShowHint = True
-    ParentFont = False
-    ParentShowHint = False
-  end
-  object sBtTamanhoFonte: TSpeedButton
-    Left = 866
-    Height = 22
-    Hint = 'Alterar tamanho'
-    Top = 240
-    Width = 23
-    Caption = 'Aa'
-    ShowHint = True
-    ParentShowHint = False
-    OnClick = sBtTamanhoFonteClick
-  end
-  object sBtFonte: TSpeedButton
-    Left = 888
-    Height = 22
-    Hint = 'Alterar fonte'
-    Top = 240
-    Width = 23
-    Caption = 'A'
-    ShowHint = True
-    ParentShowHint = False
-    OnClick = sBtFonteClick
-  end
-  object FontDialog1: TFontDialog
-    MinFontSize = 0
-    MaxFontSize = 0
-    Left = 936
-    Top = 208
+  object dsTime: TDataSource
+    DataSet = qryTime
+    Left = 960
+    Top = 96
   end
 end
