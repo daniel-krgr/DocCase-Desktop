@@ -35,6 +35,9 @@ type
     qryListaProjetosnome: TZRawStringField;
     qryListaProjetosop_publico: TZRawStringField;
     qryListaProjetostime_idtime: TZIntegerField;
+    sbtAdicionar: TSpeedButton;
+    sbtAtualizar2: TSpeedButton;
+    sbtEditar: TSpeedButton;
     sbtNovo: TSpeedButton;
     qryListaProjetos: TZQuery;
     sbtPesquisar: TSpeedButton;
@@ -42,11 +45,14 @@ type
     procedure actNovoCasoUsoExecute(Sender: TObject);
     procedure actPesquisaExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure sbtAdicionarClick(Sender: TObject);
     procedure sbtAtualizarClick(Sender: TObject);
+    procedure sbtEditarClick(Sender: TObject);
   private
 
   public
-
+    var
+    _action_:String;
   end;
 
 var
@@ -71,6 +77,16 @@ begin
   lblNumerVersao.Caption :=IntToStr(qryListaProjetos.RecordCount);
 end;
 
+procedure TFrmListaProjetos.sbtAdicionarClick(Sender: TObject);
+begin
+  if frmProjeto = nil then
+  frmProjeto:= TfrmProjeto.Create(self);
+  frmProjeto._action_ := 'insert';
+  frmProjeto.ShowModal;
+  frmProjeto.Free;
+  frmProjeto:= nil;
+end;
+
 procedure TFrmListaProjetos.sbtAtualizarClick(Sender: TObject);
 begin
  With qryListaProjetos do
@@ -80,6 +96,16 @@ begin
     SQL.Text:='SELECT * FROM projeto';
     Open;
   end;
+end;
+
+procedure TFrmListaProjetos.sbtEditarClick(Sender: TObject);
+begin
+   if frmProjeto = nil then
+  frmProjeto:= TfrmProjeto.Create(self);
+  frmProjeto._action_ := 'edit';
+  frmProjeto.ShowModal;
+  frmProjeto.Free;
+  frmProjeto:= nil;
 end;
 
 procedure TFrmListaProjetos.actNovoCasoUsoExecute(Sender: TObject);
