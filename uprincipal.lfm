@@ -852,7 +852,7 @@ object frmPrincipal: TfrmPrincipal
     object sbtProjetos: TSpeedButton
       Left = 0
       Height = 48
-      Top = 176
+      Top = 104
       Width = 200
       Action = act_projetos
       Caption = 'Projetos'
@@ -980,7 +980,7 @@ object frmPrincipal: TfrmPrincipal
     object sbtUsuarios: TSpeedButton
       Left = 1
       Height = 48
-      Top = 232
+      Top = 160
       Width = 200
       Action = act_usuarios
       Caption = 'Usuários'
@@ -1108,7 +1108,7 @@ object frmPrincipal: TfrmPrincipal
     object sbtDashboard: TSpeedButton
       Left = 1
       Height = 48
-      Top = 288
+      Top = 216
       Width = 200
       Action = act_dashboard
       Caption = 'Dashboard'
@@ -1288,7 +1288,7 @@ object frmPrincipal: TfrmPrincipal
     object sbtDashboard1: TSpeedButton
       Left = -1
       Height = 48
-      Top = 344
+      Top = 272
       Width = 200
       Action = act_adicionarTime
       Caption = 'Times'
@@ -1448,6 +1448,7 @@ object frmPrincipal: TfrmPrincipal
     end
     object act_adicionarTime: TAction
       Caption = 'act_adicionarTime'
+      OnExecute = act_adicionarTimeExecute
     end
   end
   object qryNumProjeto: TZQuery

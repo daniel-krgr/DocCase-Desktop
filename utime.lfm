@@ -1,0 +1,157 @@
+object FrmTime: TFrmTime
+  Left = 348
+  Height = 390
+  Top = 250
+  Width = 445
+  Caption = 'Cadastrar time'
+  ClientHeight = 390
+  ClientWidth = 445
+  Position = poDesktopCenter
+  OnShow = FormShow
+  object Panel1: TPanel
+    Left = 0
+    Height = 45
+    Top = 0
+    Width = 445
+    Align = alTop
+    ClientHeight = 45
+    ClientWidth = 445
+    Color = 8537640
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 0
+    object Label4: TLabel
+      Left = 42
+      Height = 32
+      Top = 9
+      Width = 113
+      Caption = 'DocCase'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -27
+      Font.Name = 'Arial'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+    end
+    object Image1: TImage
+      Left = 6
+      Height = 35
+      Top = 6
+      Width = 34
+      Picture.Data = {
+        1754506F727461626C654E6574776F726B477261706869631202000089504E47
+        0D0A1A0A0000000D49484452000000230000002308060000001ED9B359000000
+        097048597300000B1300000B1301009A9C18000001C449444154789CEDD84B4B
+        02511407F061AE032204456D8A1E10448B5E5FA155AB2082967D81CA4D411B3F
+        41CBDA08DE6BBE88C8C256411016B4D28A6813D422B474EEF8A2174A488A2746
+        E8A18E3233CE689407FEBBEBE1C79D731657866995DA72868D8CF5A143766CD4
+        C4685E766180C5F404613E8F0805256109BD4298CE686661090D2A459404F305
+        16F3ABF54B6CF7DD6A002687006DCE58E92DD50BE2706C4429C440286CDC66C1
+        15CEC1A82F5906A29686624C0E01BC917C319E700EC67D296D405C9D984FD058
+        0548C527E334C04882305F40383AD7148C57FA86EE9A86F146F2E00EE5A0D3FD
+        BD650C8EF6EABE4DEB3759498C33F40E5D9EF8D759B1BFAE184428183705E8D9
+        8A5744BCB59FE71A824132D3C220BD30EDAE184C1F3DC3ACFF4576C4F3E2EF34
+        C7AC5C64AAAE6EAD2C9F67B4C79883695598A5605A7B8CC921C0E4C1234C1D3E
+        C98E78BE7CADFFDE00A3DF84E9DB4EC062205D1CE45A319F65607027A12FC672
+        F9267B68D7AEB3FA62E64F5F65631602697D3106426168370113FBA99A19DE4B
+        0267FF4F038C9A856154BE9BE446ECDFD81725910E4B684011A45836DACF127A
+        ACE6AD2D19CCE7594CFD625FA661FF4258AB44ECD32A465D7D000301348C51F2
+        30E30000000049454E44AE426082
+      }
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Height = 38
+    Top = 352
+    Width = 445
+    Align = alBottom
+    ClientHeight = 38
+    ClientWidth = 445
+    TabOrder = 1
+    object BitBtn1: TBitBtn
+      Left = 368
+      Height = 30
+      Top = 5
+      Width = 75
+      Anchors = [akTop, akLeft, akRight]
+      Caption = 'Salvar'
+      TabOrder = 0
+      OnClick = BitBtn1Click
+    end
+    object BitBtn2: TBitBtn
+      Left = 292
+      Height = 30
+      Top = 5
+      Width = 75
+      Anchors = [akTop, akLeft, akRight]
+      Caption = 'Cancelar'
+      TabOrder = 1
+      OnClick = BitBtn2Click
+    end
+  end
+  object Panel3: TPanel
+    Left = 0
+    Height = 307
+    Top = 45
+    Width = 445
+    Align = alClient
+    ClientHeight = 307
+    ClientWidth = 445
+    Color = clWhite
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 2
+    object Label1: TLabel
+      Left = 7
+      Height = 15
+      Top = 40
+      Width = 80
+      Caption = 'Nome do time:'
+    end
+    object DBEdit1: TDBEdit
+      Left = 8
+      Height = 23
+      Top = 56
+      Width = 193
+      DataField = 'nome'
+      DataSource = dsTime
+      MaxLength = 0
+      TabOrder = 0
+    end
+  end
+  object dsTime: TDataSource
+    DataSet = qryTime
+    Left = 400
+    Top = 144
+  end
+  object qryTime: TZQuery
+    Connection = DM.ZConnection
+    SQL.Strings = (
+      'SELECT * FROM time'
+    )
+    Params = <>
+    Left = 400
+    Top = 96
+    object qryTimeidtime: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'idtime'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryTimenome: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'nome'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 45
+    end
+  end
+end

@@ -76,6 +76,7 @@ type
     sbtUsuarios: TSpeedButton;
     sbtDashboard: TSpeedButton;
     qryNumProjeto: TZQuery;
+    procedure act_adicionarTimeExecute(Sender: TObject);
     procedure act_dashboardExecute(Sender: TObject);
     procedure act_projetosExecute(Sender: TObject);
     procedure act_usuariosExecute(Sender: TObject);
@@ -91,7 +92,7 @@ var
 
 implementation
 uses
-  uCadastroUsuario, uProjeto, ulistaprojetos;
+  uCadastroUsuario, uProjeto, ulistaprojetos, ulistatime;
 
 {$R *.lfm}
 
@@ -171,6 +172,15 @@ begin
   FrmCadastroUsuario.Free;
   FrmCadastroUsuario:= nil;
 }
+end;
+
+procedure TfrmPrincipal.act_adicionarTimeExecute(Sender: TObject);
+begin
+ if FrmListaTime = nil then
+  FrmListaTime:= TFrmListaTime.Create(self);
+  FrmListaTime.ShowModal;
+  FrmListaTime.Free;
+  FrmListaTime:= nil;
 end;
 
 procedure TfrmPrincipal.act_projetosExecute(Sender: TObject);
