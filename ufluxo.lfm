@@ -1,0 +1,247 @@
+object FrmFluxo: TFrmFluxo
+  Left = 348
+  Height = 700
+  Top = 250
+  Width = 793
+  Caption = 'Cadastrar fluxo'
+  ClientHeight = 700
+  ClientWidth = 793
+  Position = poDesktopCenter
+  OnShow = FormShow
+  object Panel1: TPanel
+    Left = 0
+    Height = 700
+    Top = 0
+    Width = 793
+    Align = alClient
+    ClientHeight = 700
+    ClientWidth = 793
+    Color = clWhite
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 0
+    object Label4: TLabel
+      Left = 0
+      Height = 15
+      Top = 88
+      Width = 900
+      Caption = '____________________________________________________________________________________________________________________________________________________________________________________'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clSilver
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 8
+      Height = 15
+      Top = 85
+      Width = 81
+      Caption = 'Dados do fluxo'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = 12615680
+      Font.Name = 'Segoe UI Semibold'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 8
+      Height = 17
+      Top = 40
+      Width = 104
+      Caption = 'Cadastro de fluxo'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clGray
+      Font.Height = -13
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+    end
+    object Label1: TLabel
+      Left = 8
+      Height = 21
+      Top = 8
+      Width = 128
+      Caption = 'Detalhe do fluxo'
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -16
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label5: TLabel
+      Left = 8
+      Height = 15
+      Top = 140
+      Width = 33
+      Caption = 'Nome'
+    end
+    object DBEdit1: TDBEdit
+      Left = 8
+      Height = 23
+      Top = 160
+      Width = 208
+      DataField = 'nome'
+      DataSource = dsFluxo
+      MaxLength = 0
+      TabOrder = 0
+    end
+    object Label6: TLabel
+      Left = 8
+      Height = 15
+      Top = 192
+      Width = 69
+      Caption = 'Tipo de fluxo'
+    end
+    object Label7: TLabel
+      Left = 8
+      Height = 15
+      Top = 240
+      Width = 51
+      Caption = 'Descrição'
+    end
+    object DBComboBox1: TDBComboBox
+      Left = 8
+      Height = 23
+      Top = 210
+      Width = 208
+      DataField = 'tipo_fluxo'
+      DataSource = dsFluxo
+      ItemHeight = 15
+      Items.Strings = (
+        'Principal'
+        'Alternativo'
+        'Excecao'
+        'Reentrada'
+        'Sistema'
+      )
+      MaxLength = 0
+      TabOrder = 1
+    end
+    object DBMemo1: TDBMemo
+      Left = 8
+      Height = 258
+      Top = 264
+      Width = 774
+      DataField = 'pre_requisito'
+      DataSource = dsFluxo
+      TabOrder = 2
+    end
+    object Panel2: TPanel
+      Left = 1
+      Height = 35
+      Top = 664
+      Width = 791
+      Align = alBottom
+      ClientHeight = 35
+      ClientWidth = 791
+      ParentBackground = False
+      TabOrder = 3
+      object BitBtn1: TBitBtn
+        Left = 712
+        Height = 30
+        Top = 2
+        Width = 75
+        Anchors = [akTop, akLeft, akRight]
+        Caption = 'Salvar'
+        TabOrder = 0
+        OnClick = BitBtn1Click
+      end
+      object BitBtn2: TBitBtn
+        Left = 636
+        Height = 30
+        Top = 2
+        Width = 75
+        Anchors = [akTop, akLeft, akRight]
+        Caption = 'Cancelar'
+        TabOrder = 1
+        OnClick = BitBtn2Click
+      end
+    end
+  end
+  object qryFluxo: TZQuery
+    Connection = DM.ZConnection
+    SQL.Strings = (
+      'select * from fluxo'
+      ''
+    )
+    Params = <>
+    Left = 728
+    object qryFluxoidfluxo: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'idfluxo'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryFluxoversao: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'versao'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 45
+    end
+    object qryFluxotipo_fluxo: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'tipo_fluxo'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 45
+    end
+    object qryFluxoprojeto_idprojeto: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'projeto_idprojeto'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryFluxonome: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'nome'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qryFluxopre_requisito: TMemoField
+      FieldKind = fkData
+      FieldName = 'pre_requisito'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftMemo
+      Transliterate = False
+    end
+    object qryFluxocaso_uso_idcaso_uso: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'caso_uso_idcaso_uso'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+  end
+  object dsFluxo: TDataSource
+    DataSet = qryFluxo
+    Left = 728
+    Top = 51
+  end
+end
