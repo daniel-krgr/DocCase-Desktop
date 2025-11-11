@@ -47,6 +47,7 @@ type
     procedure sbtAtualizarClick(Sender: TObject);
     procedure sbtEditarClick(Sender: TObject);
     procedure sbtNovo1Click(Sender: TObject);
+    procedure sbtNovoClick(Sender: TObject);
     procedure sbtPesquisarClick(Sender: TObject);
   private
 
@@ -60,7 +61,7 @@ var
 
 implementation
  uses
-   uProjeto, ucasodeuso, uator, ulistaator;
+   uProjeto, ucasodeuso, uator, ulistaator, ulistafluxo;
 
 {$R *.lfm}
 
@@ -104,13 +105,13 @@ end;
 
 procedure TFrmListaCasoUso.sbtAtualizarClick(Sender: TObject);
 begin
-   With qryListaCasoUso do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Text:='SELECT * FROM caso_uso';
-    Open;
-  end;
+   qryListaCasoUso.Close;
+   qryListaCasoUso.SQL.Text :=
+  'SELECT idcaso_uso, nome, descricao, versao, projeto_idprojeto, ' +
+  'data_criacao, hora_criacao, etiqueta_idetiqueta, precondicao ' +
+  'FROM caso_uso WHERE projeto_idprojeto = :idProjeto ORDER BY nome';
+   qryListaCasoUso.ParamByName('idProjeto').AsInteger := ProjetoID;
+   qryListaCasoUso.Open;
 end;
 
 procedure TFrmListaCasoUso.sbtEditarClick(Sender: TObject);
@@ -140,6 +141,21 @@ begin
   FrmListaAtor.ShowModal;
   FrmListaAtor.Free;
   FrmListaAtor := nil;
+end;
+
+procedure TFrmListaCasoUso.sbtNovoClick(Sender: TObject);
+begin
+   if FrmListaFluxo = nil then
+    FrmListaFluxo := TFrmListaFluxo.Create(Self);
+
+  // passa os dois identificadores
+  FrmListaFluxo.ProjetoID := ProjetoID;
+  FrmListaFluxo.CasoUsoID := qryListaCasoUso.FieldByName('idcaso_uso').AsInteger;
+  FrmListaFluxo.NomeProjeto := lblNomeCasoPai.Caption;
+  FrmListaFluxo.ShowModal;
+
+  FrmListaFluxo.Free;
+  FrmListaFluxo := nil;
 end;
 
 procedure TFrmListaCasoUso.sbtPesquisarClick(Sender: TObject);
