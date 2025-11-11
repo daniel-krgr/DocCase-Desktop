@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
-  Buttons, DBCtrls, ZDataset, ZAbstractRODataset, RichMemo, SynHighlighterTeX, ZConnection;
+  Buttons, DBCtrls, ZDataset, ZAbstractRODataset, ZConnection;
 
 type
 

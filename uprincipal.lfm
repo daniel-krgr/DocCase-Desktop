@@ -1,42 +1,43 @@
 object frmPrincipal: TfrmPrincipal
   Left = 457
-  Height = 601
+  Height = 664
   Top = 250
-  Width = 966
+  Width = 1067
   BorderIcons = [biSystemMenu]
   Caption = 'Doccase'
-  ClientHeight = 601
-  ClientWidth = 966
+  ClientHeight = 664
+  ClientWidth = 1067
   Color = 16118000
+  DesignTimePPI = 106
   Position = poDesktopCenter
   OnShow = FormShow
   object projeto1: TPanel
     Cursor = crHandPoint
-    Left = 208
-    Height = 90
-    Top = 104
-    Width = 300
+    Left = 230
+    Height = 99
+    Top = 120
+    Width = 331
     Anchors = [akLeft, akRight]
     BevelColor = 16635558
     BevelWidth = 2
     BorderWidth = 8
-    ClientHeight = 90
-    ClientWidth = 300
+    ClientHeight = 99
+    ClientWidth = 331
     Color = clWhite
     ParentBackground = False
     ParentColor = False
     TabOrder = 0
     object Proj1: TLabel
-      Left = 88
-      Height = 18
-      Top = 0
-      Width = 37
+      Left = 97
+      Height = 19
+      Top = 1
+      Width = 41
       Anchors = [akLeft]
       Caption = 'Proj1'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
-      Font.Height = -15
+      Font.Height = -17
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -46,9 +47,9 @@ object frmPrincipal: TfrmPrincipal
     end
     object Image3: TImage
       Left = 1
-      Height = 90
-      Top = 0
-      Width = 90
+      Height = 99
+      Top = 5
+      Width = 99
       Anchors = [akLeft]
       Picture.Data = {
         1754506F727461626C654E6574776F726B47726170686963EC01000089504E47
@@ -71,16 +72,16 @@ object frmPrincipal: TfrmPrincipal
       }
     end
     object Data1: TLabel
-      Left = 89
+      Left = 98
       Height = 16
-      Top = 72
-      Width = 34
+      Top = 80
+      Width = 38
       Anchors = [akLeft]
       Caption = 'Data1'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
       Font.Color = clGray
-      Font.Height = -13
+      Font.Height = -14
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -88,16 +89,16 @@ object frmPrincipal: TfrmPrincipal
       ParentFont = False
     end
     object Autor1: TLabel
-      Left = 91
+      Left = 100
       Height = 16
-      Top = 32
-      Width = 38
+      Top = 36
+      Width = 42
       Anchors = [akLeft]
       Caption = 'Autor1'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
-      Font.Height = -13
+      Font.Height = -14
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -107,31 +108,31 @@ object frmPrincipal: TfrmPrincipal
   end
   object projeto5: TPanel
     Cursor = crHandPoint
-    Left = 579
-    Height = 90
-    Top = 104
-    Width = 300
+    Left = 639
+    Height = 99
+    Top = 120
+    Width = 332
     Anchors = [akLeft, akRight]
     BevelColor = 16635558
     BevelWidth = 2
     BorderWidth = 8
-    ClientHeight = 90
-    ClientWidth = 300
+    ClientHeight = 99
+    ClientWidth = 332
     Color = clWhite
     ParentBackground = False
     ParentColor = False
     TabOrder = 1
     object Proj5: TLabel
-      Left = 88
-      Height = 18
-      Top = 0
-      Width = 37
+      Left = 97
+      Height = 19
+      Top = 1
+      Width = 41
       Anchors = [akLeft]
       Caption = 'Proj5'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
-      Font.Height = -15
+      Font.Height = -17
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -141,9 +142,9 @@ object frmPrincipal: TfrmPrincipal
     end
     object Image4: TImage
       Left = 1
-      Height = 90
-      Top = 0
-      Width = 90
+      Height = 99
+      Top = 5
+      Width = 99
       Anchors = [akLeft]
       Picture.Data = {
         1754506F727461626C654E6574776F726B47726170686963EC01000089504E47
@@ -166,16 +167,16 @@ object frmPrincipal: TfrmPrincipal
       }
     end
     object Data5: TLabel
-      Left = 89
+      Left = 98
       Height = 16
-      Top = 72
-      Width = 34
+      Top = 80
+      Width = 38
       Anchors = [akLeft]
       Caption = 'Data5'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
       Font.Color = clGray
-      Font.Height = -13
+      Font.Height = -14
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -183,16 +184,16 @@ object frmPrincipal: TfrmPrincipal
       ParentFont = False
     end
     object Autor5: TLabel
-      Left = 91
+      Left = 100
       Height = 16
-      Top = 32
-      Width = 38
+      Top = 36
+      Width = 42
       Anchors = [akLeft]
       Caption = 'Autor5'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
-      Font.Height = -13
+      Font.Height = -14
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -202,20 +203,20 @@ object frmPrincipal: TfrmPrincipal
   end
   object projeto2: TPanel
     Cursor = crHandPoint
-    Left = 208
-    Height = 90
-    Top = 232
-    Width = 300
+    Left = 230
+    Height = 99
+    Top = 261
+    Width = 331
     Anchors = [akLeft, akRight]
     BevelColor = 16635558
     BevelWidth = 2
     BorderWidth = 8
-    ClientHeight = 90
-    ClientWidth = 300
+    ClientHeight = 99
+    ClientWidth = 331
     Color = clWhite
     Font.CharSet = ANSI_CHARSET
     Font.Color = clSilver
-    Font.Height = -13
+    Font.Height = -14
     Font.Name = 'Arial'
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
@@ -224,16 +225,16 @@ object frmPrincipal: TfrmPrincipal
     ParentFont = False
     TabOrder = 2
     object Proj2: TLabel
-      Left = 88
-      Height = 18
-      Top = 0
-      Width = 37
+      Left = 97
+      Height = 19
+      Top = 1
+      Width = 41
       Anchors = [akLeft]
       Caption = 'Proj2'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
-      Font.Height = -15
+      Font.Height = -17
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -243,9 +244,9 @@ object frmPrincipal: TfrmPrincipal
     end
     object Image5: TImage
       Left = 1
-      Height = 90
-      Top = 0
-      Width = 90
+      Height = 99
+      Top = 5
+      Width = 99
       Anchors = [akLeft]
       Picture.Data = {
         1754506F727461626C654E6574776F726B47726170686963EC01000089504E47
@@ -268,16 +269,16 @@ object frmPrincipal: TfrmPrincipal
       }
     end
     object Autor2: TLabel
-      Left = 91
+      Left = 100
       Height = 16
-      Top = 32
-      Width = 38
+      Top = 36
+      Width = 42
       Anchors = [akLeft]
       Caption = 'Autor2'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
-      Font.Height = -13
+      Font.Height = -14
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -285,16 +286,16 @@ object frmPrincipal: TfrmPrincipal
       ParentFont = False
     end
     object Data2: TLabel
-      Left = 89
+      Left = 98
       Height = 16
-      Top = 72
-      Width = 34
+      Top = 80
+      Width = 38
       Anchors = [akLeft]
       Caption = 'Data2'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
       Font.Color = clGray
-      Font.Height = -13
+      Font.Height = -14
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -304,31 +305,31 @@ object frmPrincipal: TfrmPrincipal
   end
   object projeto6: TPanel
     Cursor = crHandPoint
-    Left = 579
-    Height = 90
-    Top = 232
-    Width = 300
+    Left = 639
+    Height = 99
+    Top = 261
+    Width = 332
     Anchors = [akLeft, akRight]
     BevelColor = 16635558
     BevelWidth = 2
     BorderWidth = 8
-    ClientHeight = 90
-    ClientWidth = 300
+    ClientHeight = 99
+    ClientWidth = 332
     Color = clWhite
     ParentBackground = False
     ParentColor = False
     TabOrder = 3
     object Proj6: TLabel
-      Left = 88
-      Height = 18
-      Top = 0
-      Width = 37
+      Left = 97
+      Height = 19
+      Top = 1
+      Width = 41
       Anchors = [akLeft]
       Caption = 'Proj6'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
-      Font.Height = -15
+      Font.Height = -17
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -338,9 +339,9 @@ object frmPrincipal: TfrmPrincipal
     end
     object Image6: TImage
       Left = 1
-      Height = 90
-      Top = 0
-      Width = 90
+      Height = 99
+      Top = 5
+      Width = 99
       Anchors = [akLeft]
       Picture.Data = {
         1754506F727461626C654E6574776F726B47726170686963EC01000089504E47
@@ -363,16 +364,16 @@ object frmPrincipal: TfrmPrincipal
       }
     end
     object Data6: TLabel
-      Left = 89
+      Left = 98
       Height = 16
-      Top = 72
-      Width = 34
+      Top = 80
+      Width = 38
       Anchors = [akLeft]
       Caption = 'Data6'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
       Font.Color = clGray
-      Font.Height = -13
+      Font.Height = -14
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -380,16 +381,16 @@ object frmPrincipal: TfrmPrincipal
       ParentFont = False
     end
     object Autor6: TLabel
-      Left = 91
+      Left = 100
       Height = 16
-      Top = 32
-      Width = 38
+      Top = 36
+      Width = 42
       Anchors = [akLeft]
       Caption = 'Autor6'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
-      Font.Height = -13
+      Font.Height = -14
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -399,31 +400,31 @@ object frmPrincipal: TfrmPrincipal
   end
   object projeto4: TPanel
     Cursor = crHandPoint
-    Left = 208
-    Height = 90
-    Top = 488
-    Width = 300
+    Left = 230
+    Height = 99
+    Top = 544
+    Width = 331
     Anchors = [akLeft, akRight]
     BevelColor = 16635558
     BevelWidth = 2
     BorderWidth = 8
-    ClientHeight = 90
-    ClientWidth = 300
+    ClientHeight = 99
+    ClientWidth = 331
     Color = clWhite
     ParentBackground = False
     ParentColor = False
     TabOrder = 4
     object Proj4: TLabel
-      Left = 88
-      Height = 18
-      Top = 0
-      Width = 37
+      Left = 97
+      Height = 19
+      Top = 1
+      Width = 41
       Anchors = [akLeft]
       Caption = 'Proj4'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
-      Font.Height = -15
+      Font.Height = -17
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -433,9 +434,9 @@ object frmPrincipal: TfrmPrincipal
     end
     object Image7: TImage
       Left = 1
-      Height = 90
-      Top = 0
-      Width = 90
+      Height = 99
+      Top = 5
+      Width = 99
       Anchors = [akLeft]
       Picture.Data = {
         1754506F727461626C654E6574776F726B47726170686963EC01000089504E47
@@ -458,16 +459,16 @@ object frmPrincipal: TfrmPrincipal
       }
     end
     object Data4: TLabel
-      Left = 89
+      Left = 98
       Height = 16
-      Top = 72
-      Width = 34
+      Top = 80
+      Width = 38
       Anchors = [akLeft]
       Caption = 'Data4'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
       Font.Color = clGray
-      Font.Height = -13
+      Font.Height = -14
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -475,16 +476,16 @@ object frmPrincipal: TfrmPrincipal
       ParentFont = False
     end
     object Autor4: TLabel
-      Left = 91
+      Left = 100
       Height = 16
-      Top = 32
-      Width = 38
+      Top = 36
+      Width = 42
       Anchors = [akLeft]
       Caption = 'Autor4'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
-      Font.Height = -13
+      Font.Height = -14
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -494,31 +495,31 @@ object frmPrincipal: TfrmPrincipal
   end
   object projeto3: TPanel
     Cursor = crHandPoint
-    Left = 208
-    Height = 90
-    Top = 360
-    Width = 300
+    Left = 230
+    Height = 99
+    Top = 403
+    Width = 331
     Anchors = [akLeft, akRight]
     BevelColor = 16635558
     BevelWidth = 2
     BorderWidth = 8
-    ClientHeight = 90
-    ClientWidth = 300
+    ClientHeight = 99
+    ClientWidth = 331
     Color = clWhite
     ParentBackground = False
     ParentColor = False
     TabOrder = 5
     object Proj3: TLabel
-      Left = 88
-      Height = 18
-      Top = 0
-      Width = 37
+      Left = 97
+      Height = 19
+      Top = 1
+      Width = 41
       Anchors = [akLeft]
       Caption = 'Proj3'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
-      Font.Height = -15
+      Font.Height = -17
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -528,9 +529,9 @@ object frmPrincipal: TfrmPrincipal
     end
     object Image8: TImage
       Left = 1
-      Height = 90
-      Top = 0
-      Width = 90
+      Height = 99
+      Top = 5
+      Width = 99
       Anchors = [akLeft]
       Picture.Data = {
         1754506F727461626C654E6574776F726B47726170686963EC01000089504E47
@@ -553,16 +554,16 @@ object frmPrincipal: TfrmPrincipal
       }
     end
     object Data3: TLabel
-      Left = 89
+      Left = 98
       Height = 16
-      Top = 72
-      Width = 34
+      Top = 80
+      Width = 38
       Anchors = [akLeft]
       Caption = 'Data3'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
       Font.Color = clGray
-      Font.Height = -13
+      Font.Height = -14
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -570,16 +571,16 @@ object frmPrincipal: TfrmPrincipal
       ParentFont = False
     end
     object Autor3: TLabel
-      Left = 91
+      Left = 100
       Height = 16
-      Top = 32
-      Width = 38
+      Top = 36
+      Width = 42
       Anchors = [akLeft]
       Caption = 'Autor3'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
-      Font.Height = -13
+      Font.Height = -14
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -589,31 +590,31 @@ object frmPrincipal: TfrmPrincipal
   end
   object projeto7: TPanel
     Cursor = crHandPoint
-    Left = 579
-    Height = 90
-    Top = 360
-    Width = 300
+    Left = 639
+    Height = 99
+    Top = 403
+    Width = 332
     Anchors = [akLeft, akRight]
     BevelColor = 16635558
     BevelWidth = 2
     BorderWidth = 8
-    ClientHeight = 90
-    ClientWidth = 300
+    ClientHeight = 99
+    ClientWidth = 332
     Color = clWhite
     ParentBackground = False
     ParentColor = False
     TabOrder = 6
     object Proj7: TLabel
-      Left = 88
-      Height = 18
-      Top = 0
-      Width = 37
+      Left = 97
+      Height = 19
+      Top = 1
+      Width = 41
       Anchors = [akLeft]
       Caption = 'Proj7'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
-      Font.Height = -15
+      Font.Height = -17
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -623,9 +624,9 @@ object frmPrincipal: TfrmPrincipal
     end
     object Image9: TImage
       Left = 1
-      Height = 90
-      Top = 0
-      Width = 90
+      Height = 99
+      Top = 5
+      Width = 99
       Anchors = [akLeft]
       Picture.Data = {
         1754506F727461626C654E6574776F726B47726170686963EC01000089504E47
@@ -648,16 +649,16 @@ object frmPrincipal: TfrmPrincipal
       }
     end
     object Data7: TLabel
-      Left = 89
+      Left = 98
       Height = 16
-      Top = 72
-      Width = 34
+      Top = 80
+      Width = 38
       Anchors = [akLeft]
       Caption = 'Data7'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
       Font.Color = clGray
-      Font.Height = -13
+      Font.Height = -14
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -665,16 +666,16 @@ object frmPrincipal: TfrmPrincipal
       ParentFont = False
     end
     object Autor7: TLabel
-      Left = 91
+      Left = 100
       Height = 16
-      Top = 32
-      Width = 38
+      Top = 36
+      Width = 42
       Anchors = [akLeft]
       Caption = 'Autor7'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
-      Font.Height = -13
+      Font.Height = -14
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -684,31 +685,31 @@ object frmPrincipal: TfrmPrincipal
   end
   object projeto8: TPanel
     Cursor = crHandPoint
-    Left = 579
-    Height = 90
-    Top = 488
-    Width = 300
+    Left = 639
+    Height = 99
+    Top = 544
+    Width = 332
     Anchors = [akLeft, akRight]
     BevelColor = 16635558
     BevelWidth = 2
     BorderWidth = 8
-    ClientHeight = 90
-    ClientWidth = 300
+    ClientHeight = 99
+    ClientWidth = 332
     Color = clWhite
     ParentBackground = False
     ParentColor = False
     TabOrder = 7
     object Proj8: TLabel
-      Left = 88
-      Height = 18
-      Top = 0
-      Width = 37
+      Left = 97
+      Height = 19
+      Top = 1
+      Width = 41
       Anchors = [akLeft]
       Caption = 'Proj8'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
-      Font.Height = -15
+      Font.Height = -17
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -718,9 +719,9 @@ object frmPrincipal: TfrmPrincipal
     end
     object Image10: TImage
       Left = 1
-      Height = 90
-      Top = 0
-      Width = 90
+      Height = 99
+      Top = 5
+      Width = 99
       Anchors = [akLeft]
       Picture.Data = {
         1754506F727461626C654E6574776F726B47726170686963EC01000089504E47
@@ -743,16 +744,16 @@ object frmPrincipal: TfrmPrincipal
       }
     end
     object Data8: TLabel
-      Left = 89
+      Left = 98
       Height = 16
-      Top = 72
-      Width = 34
+      Top = 80
+      Width = 38
       Anchors = [akLeft]
       Caption = 'Data8'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
       Font.Color = clGray
-      Font.Height = -13
+      Font.Height = -14
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -760,16 +761,16 @@ object frmPrincipal: TfrmPrincipal
       ParentFont = False
     end
     object Autor8: TLabel
-      Left = 91
+      Left = 100
       Height = 16
-      Top = 32
-      Width = 38
+      Top = 36
+      Width = 42
       Anchors = [akLeft]
       Caption = 'Autor8'
       Color = clBlack
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
-      Font.Height = -13
+      Font.Height = -14
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -778,14 +779,14 @@ object frmPrincipal: TfrmPrincipal
     end
   end
   object Label5: TLabel
-    Left = 216
-    Height = 32
-    Top = 32
-    Width = 297
+    Left = 239
+    Height = 35
+    Top = 35
+    Width = 324
     Caption = 'Documentos Recentes'
     Font.CharSet = ANSI_CHARSET
     Font.Color = clBlack
-    Font.Height = -27
+    Font.Height = -30
     Font.Name = 'Arial'
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
@@ -794,12 +795,12 @@ object frmPrincipal: TfrmPrincipal
   end
   object Panel1: TPanel
     Left = 0
-    Height = 601
+    Height = 664
     Top = 0
-    Width = 200
+    Width = 221
     Align = alLeft
-    ClientHeight = 601
-    ClientWidth = 200
+    ClientHeight = 664
+    ClientWidth = 221
     Color = 8537640
     Font.CharSet = ANSI_CHARSET
     Font.Color = clWhite
@@ -810,24 +811,24 @@ object frmPrincipal: TfrmPrincipal
     ParentFont = False
     TabOrder = 8
     object Label4: TLabel
-      Left = 60
-      Height = 32
-      Top = 32
-      Width = 113
+      Left = 66
+      Height = 35
+      Top = 35
+      Width = 122
       Caption = 'DocCase'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -27
+      Font.Height = -30
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
     end
     object Image1: TImage
-      Left = 24
-      Height = 35
-      Top = 29
-      Width = 34
+      Left = 26
+      Height = 39
+      Top = 32
+      Width = 38
       Picture.Data = {
         1754506F727461626C654E6574776F726B477261706869631202000089504E47
         0D0A1A0A0000000D49484452000000230000002308060000001ED9B359000000
@@ -851,9 +852,9 @@ object frmPrincipal: TfrmPrincipal
     end
     object sbtProjetos: TSpeedButton
       Left = 0
-      Height = 48
-      Top = 104
-      Width = 200
+      Height = 53
+      Top = 115
+      Width = 221
       Action = act_projetos
       Caption = 'Projetos'
       Color = 7879710
@@ -979,9 +980,9 @@ object frmPrincipal: TfrmPrincipal
     end
     object sbtUsuarios: TSpeedButton
       Left = 1
-      Height = 48
-      Top = 160
-      Width = 200
+      Height = 53
+      Top = 177
+      Width = 221
       Action = act_usuarios
       Caption = 'Usuários'
       Color = 7879710
@@ -1107,9 +1108,9 @@ object frmPrincipal: TfrmPrincipal
     end
     object sbtDashboard: TSpeedButton
       Left = 1
-      Height = 48
-      Top = 216
-      Width = 200
+      Height = 53
+      Top = 239
+      Width = 221
       Action = act_dashboard
       Caption = 'Dashboard'
       Color = 7879710
@@ -1235,36 +1236,36 @@ object frmPrincipal: TfrmPrincipal
     end
     object Panel2: TPanel
       Left = 1
-      Height = 64
-      Top = 536
-      Width = 198
+      Height = 71
+      Top = 592
+      Width = 219
       Align = alBottom
       BevelOuter = bvNone
-      ClientHeight = 64
-      ClientWidth = 198
+      ClientHeight = 71
+      ClientWidth = 219
       Color = 10704434
       ParentBackground = False
       ParentColor = False
       TabOrder = 0
       object lblNumerVersao: TLabel
-        Left = 131
-        Height = 15
-        Top = 8
-        Width = 7
+        Left = 145
+        Height = 17
+        Top = 9
+        Width = 8
         Caption = 'X'
       end
       object Label6: TLabel
-        Left = 8
-        Height = 15
-        Top = 8
-        Width = 114
+        Left = 9
+        Height = 17
+        Top = 9
+        Width = 126
         Caption = 'Total de documentos:'
       end
       object Label7: TLabel
-        Left = 8
-        Height = 15
-        Top = 40
-        Width = 37
+        Left = 9
+        Height = 17
+        Top = 44
+        Width = 43
         Caption = 'Versão:'
         Font.CharSet = ANSI_CHARSET
         Font.Color = clGray
@@ -1273,10 +1274,10 @@ object frmPrincipal: TfrmPrincipal
         ParentFont = False
       end
       object Label8: TLabel
-        Left = 56
-        Height = 15
-        Top = 40
-        Width = 24
+        Left = 62
+        Height = 17
+        Top = 44
+        Width = 27
         Caption = '1.0.1'
         Font.CharSet = ANSI_CHARSET
         Font.Color = clGray
@@ -1287,9 +1288,9 @@ object frmPrincipal: TfrmPrincipal
     end
     object sbtDashboard1: TSpeedButton
       Left = -1
-      Height = 48
-      Top = 272
-      Width = 200
+      Height = 53
+      Top = 300
+      Width = 221
       Action = act_adicionarTime
       Caption = 'Times'
       Color = 7879710
@@ -1420,17 +1421,17 @@ object frmPrincipal: TfrmPrincipal
       'SELECT * FROM projeto'
     )
     Params = <>
-    Left = 880
-    Top = 104
+    Left = 972
+    Top = 115
   end
   object ds_projeto_list: TDataSource
     DataSet = qry_projeto_list
-    Left = 880
-    Top = 152
+    Left = 972
+    Top = 168
   end
   object ActionList1: TActionList
-    Left = 880
-    Top = 200
+    Left = 972
+    Top = 221
     object act_novo: TAction
       Caption = 'act_novo'
     end
@@ -1454,12 +1455,12 @@ object frmPrincipal: TfrmPrincipal
   object qryNumProjeto: TZQuery
     Connection = DM.ZConnection
     Params = <>
-    Left = 896
-    Top = 21
+    Left = 989
+    Top = 23
   end
   object dsNumProjeto: TDataSource
     DataSet = qryNumProjeto
-    Left = 816
-    Top = 21
+    Left = 901
+    Top = 23
   end
 end

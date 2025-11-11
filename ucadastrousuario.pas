@@ -15,7 +15,6 @@ type
   TFrmCadastroUsuario = class(TForm)
     btCancelar: TBitBtn;
     btSalvar: TBitBtn;
-    cbNivelAcesso: TComboBox;
     edtSobrenome: TDBEdit;
     edtEmail: TDBEdit;
     edtSenha: TDBEdit;
@@ -26,7 +25,7 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
-    Label5: TLabel;
+    Label6: TLabel;
     Panel1: TPanel;
     Panel3: TPanel;
     qry_usuarios: TZQuery;
@@ -54,6 +53,8 @@ var
   FrmCadastroUsuario: TFrmCadastroUsuario;
 
 implementation
+uses
+  ulistausuarios;
 
 {$R *.lfm}
 
@@ -66,33 +67,90 @@ end;
 
 procedure TFrmCadastroUsuario.btSalvarClick(Sender: TObject);
 begin
+//>>>>>>>>>>>>>>>>>>>>  Validação do Nome  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+  edtNome.Text := Trim(edtNome.Text);
+
+  if edtNome.Text = '' then
+  begin
+    ShowMessage('O campo "Nome" é obrigatório.');
+    edtNome.SetFocus;
+    Exit;
+  end;
+
+  if Length(edtNome.Text) < 3 then
+  begin
+    ShowMessage('O nome deve conter pelo menos 3 caracteres. ');
+    Exit;
+    edtNome.SetFocus;
+  end;
+
+  if Length(edtNome.Text) > 45 then
+  begin
+    ShowMessage('O nome deve conter até 45 caracteres.');
+    edtNome.SetFocus;
+    Exit;
+  end;
+
+//>>>>>>>>>>>>>>>>>>>>  Validação do sobrenome  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+  edtSobrenome.Text := Trim(edtSobrenome.Text);
+
+  if edtSobrenome.Text = '' then
+  begin
+    ShowMessage('O campo "Sobrenome" é obrigatório.');
+    edtSobrenome.SetFocus;
+    Exit;
+  end;
+
+  if Length(edtSobrenome.Text) < 3 then
+  begin
+    ShowMessage('O sobrenome deve conter pelo menos 3 caracteres.');
+    Exit;
+    edtSobrenome.SetFocus;
+  end;
+
+  if Length(edtSobrenome.Text) > 120 then
+  begin
+    ShowMessage('O sobrenome deve conter até 120 caracteres');
+    edtSobrenome.SetFocus;
+    Exit;
+  end;
+
+//>>>>>>>>>>>>>>>>>>>>  Validação do email  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+  if Length(edtEmail);
+
   qry_usuarios.Post;
   ShowMessage('Dados salvos com sucesso!');
+  FrmListaUsuarios.qryUsuarios.Refresh;
 end;
 
 procedure TFrmCadastroUsuario.FormShow(Sender: TObject);
 begin
-  if _action_ = 'edit'then
+   // 🟨 Ação: editar projeto existente
+  if _action_ = 'edit' then
   begin
-    with qry_usuarios do begin
-      close;
-      sql.Clear;
-      sql.Add('select * from usuarios where idusuarios = :id');
-      ParamByName('id').AsInteger:=idusuarios;
-      open;
+    with qry_usuarios do
+    begin
+      Close;
+      SQL.Text := 'SELECT * FROM usuarios WHERE idusuarios = :id';
+      ParamByName('id').AsInteger := idusuarios;
+      Open;
+      Edit;
     end;
-    qry_usuarios.Edit;
-  end;
-  if _action_ = 'insert'then
+  end
+
+  // 🟩 Ação: inserir novo projeto
+  else if _action_ = 'insert' then
   begin
-    with qry_usuarios do begin
-      close;
-      sql.Clear;
-      sql.Add('select * from usuarios where idusuarios = :id');
-      ParamByName('id').AsInteger:=-1;
-      open;
+    with qry_usuarios do
+    begin
+      Close;
+      SQL.Text := 'SELECT * FROM usuarios';
+      Open;
+      Insert;
     end;
-    qry_usuarios.Insert;
   end;
 
 end;
