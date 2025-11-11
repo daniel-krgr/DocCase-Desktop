@@ -1,129 +1,69 @@
 object FrmCadastroUsuario: TFrmCadastroUsuario
   Left = 350
-  Height = 413
+  Height = 456
   Top = 250
-  Width = 494
+  Width = 440
   BorderIcons = [biSystemMenu]
   Caption = 'Cadastro de Usuário'
-  ClientHeight = 413
-  ClientWidth = 494
+  ClientHeight = 456
+  ClientWidth = 440
+  DesignTimePPI = 106
   Position = poScreenCenter
   OnShow = FormShow
-  object Panel1: TPanel
-    Left = 0
-    Height = 63
-    Top = 0
-    Width = 494
-    Align = alTop
-    ClientHeight = 63
-    ClientWidth = 494
-    TabOrder = 0
-    object Image1: TImage
-      Left = 7
-      Height = 50
-      Top = 7
-      Width = 43
-      Picture.Data = {
-        1754506F727461626C654E6574776F726B477261706869632F03000089504E47
-        0D0A1A0A0000000D49484452000000300000003008060000005702F987000000
-        097048597300000B1300000B1301009A9C18000002E149444154789CEDD7496F
-        D3401806E0E901F81390A54993D689E338E18884E0046710FC1D9633880A04E2
-        DA2C2DE996668FEDB4371012375AB5706CE238763C93D0E4022AFAD024807A68
-        AB26F576F02BCDD1D2F359339ED708B971E3C6CDC92445C2F2526F312E905D4E
-        2043AE8A876C45DF8D56BAAF62451C454E4DB002D778A9F79697C8EFB8488013
-        0870350CB12A06B6A243B4AC0353D28E17B6B4374C0EAE22C7E11B649B977A70
-        163E52EA0253E8C2C29606F39B6A83C9ED3A678844A3F7EEC2F8BC06E14D1542
-        EB9DD7C8397BFEEC6D733A5E85D09A721C58552276FBD1E8C04E8CEFC0DC6A07
-        0239E5A5DD7EC409646F1A7C30A740E043FBABDD7EC4D5C9603ABC02FEAC7C64
-        B71F71357C340D7E76B90DBEACFCC36E3F62AB786F1ABC3FDB066FA665FF16A2
-        37EC34785F46064F5A7E61B71FD17A406FD849F1DE54EBD8936A33C809A1F560
-        227C5A861BA9D622724A68B709E735E9A2784FAA2926DF7FB9829C14DA6D683D
-        A037EC79DB86BE79C7E14F86D6037AC3D24BCA9F9507BE8C3CA05F1B7A601DB3
-        E7DDB83123003389ED7E9217F0B3781DEF700239E06A78C856F13056C1FB6C45
-        DF61CBDDA76C414B20C7C185FE235E22DF7891409C3653BAEA1862FF4A5E55FF
-        DF95A2251D98A276C014D587F4595BEDC9463FC08BE4332F11B8289E568E4871
-        5C3B9882F629B4A5F8EDC18BE4564222EA25F0A3EA11CE6B7A685DB96B2D5EEA
-        DDE145F2EBB2F8F9FCE8071F429BEACFF90DEDB625F858BDE74F4844330A1FA6
-        6B4385B935550FE4D4A0B97A80994BEEF953F121DA9FD63B30B7A67C34F560F3
-        62FFB179F8CEB800AEB41F98F7F627F8544E85CF8D0AE0BE297E5EE8DF341B1F
-        FCDB6083D9166FF80071013FB7021F5851C0BF2C3F317E80713D301D3F4BFF1F
-        96E586E103C4EAF8BB15F8D9F10FD081E10370353CB0080FDE746B60F80056E1
-        7D1979B48C1FC042BC376DC20056E2BDA996F10344CBDDA65578CF52F3D0F001
-        D832BE1F29769B56E0AF2F1DDE337C00376EDC2047E60F54324B42B5A8408600
-        00000049454E44AE426082
-      }
-    end
-  end
   object Label1: TLabel
-    Left = 38
-    Height = 15
-    Top = 94
-    Width = 36
+    Left = 40
+    Height = 17
+    Top = 104
+    Width = 39
     Caption = 'Nome:'
   end
   object Label2: TLabel
-    Left = 38
-    Height = 15
-    Top = 152
-    Width = 64
+    Left = 40
+    Height = 17
+    Top = 168
+    Width = 71
     Caption = 'Sobrenome:'
   end
   object Label3: TLabel
-    Left = 38
-    Height = 15
-    Top = 210
-    Width = 32
+    Left = 40
+    Height = 17
+    Top = 232
+    Width = 34
     Caption = 'Email:'
   end
   object Label4: TLabel
-    Left = 38
-    Height = 15
-    Top = 268
-    Width = 35
+    Left = 40
+    Height = 17
+    Top = 296
+    Width = 38
     Caption = 'Senha:'
-  end
-  object Label5: TLabel
-    Left = 290
-    Height = 15
-    Top = 94
-    Width = 84
-    Caption = 'Nível de acesso:'
-  end
-  object cbNivelAcesso: TComboBox
-    Left = 290
-    Height = 23
-    Top = 116
-    Width = 100
-    ItemHeight = 15
-    TabOrder = 1
-    Text = 'Selecione'
   end
   object Panel3: TPanel
     Left = 0
     Height = 36
-    Top = 377
-    Width = 494
+    Top = 420
+    Width = 440
     Align = alBottom
     BevelOuter = bvNone
     BorderWidth = 5
     ClientHeight = 36
-    ClientWidth = 494
-    TabOrder = 2
+    ClientWidth = 440
+    TabOrder = 0
     object btCancelar: TBitBtn
-      Left = 339
+      Left = 269
       Height = 26
       Top = 5
-      Width = 75
+      Width = 83
       Align = alRight
       Caption = 'Cancelar'
       TabOrder = 0
       OnClick = btCancelarClick
     end
     object btSalvar: TBitBtn
-      Left = 414
+      Left = 352
       Height = 26
       Top = 5
-      Width = 75
+      Width = 83
       Align = alRight
       Caption = 'Salvar'
       TabOrder = 1
@@ -131,44 +71,97 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
     end
   end
   object edtNome: TDBEdit
-    Left = 36
-    Height = 23
-    Top = 116
-    Width = 212
+    Left = 40
+    Height = 25
+    Top = 128
+    Width = 360
     DataField = 'nome'
+    DataSource = ds_usuarios
+    MaxLength = 0
+    TabOrder = 1
+  end
+  object edtSobrenome: TDBEdit
+    Left = 40
+    Height = 25
+    Top = 192
+    Width = 360
+    DataField = 'sobrenome'
+    DataSource = ds_usuarios
+    MaxLength = 0
+    TabOrder = 2
+  end
+  object edtEmail: TDBEdit
+    Left = 40
+    Height = 25
+    Top = 256
+    Width = 360
+    DataField = 'email'
     DataSource = ds_usuarios
     MaxLength = 0
     TabOrder = 3
   end
-  object edtSobrenome: TDBEdit
-    Left = 38
-    Height = 23
-    Top = 174
-    Width = 210
-    DataField = 'sobrenome'
+  object edtSenha: TDBEdit
+    Left = 40
+    Height = 25
+    Top = 320
+    Width = 360
+    DataField = 'senha'
     DataSource = ds_usuarios
     MaxLength = 0
     TabOrder = 4
   end
-  object edtEmail: TDBEdit
-    Left = 38
-    Height = 23
-    Top = 232
-    Width = 208
-    DataField = 'email'
-    DataSource = ds_usuarios
-    MaxLength = 0
+  object Panel1: TPanel
+    Left = 0
+    Height = 50
+    Top = 0
+    Width = 440
+    Align = alTop
+    ClientHeight = 50
+    ClientWidth = 440
+    Color = 8537640
+    ParentBackground = False
+    ParentColor = False
     TabOrder = 5
-  end
-  object edtSenha: TDBEdit
-    Left = 36
-    Height = 23
-    Top = 290
-    Width = 210
-    DataField = 'senha'
-    DataSource = ds_usuarios
-    MaxLength = 0
-    TabOrder = 6
+    object Label6: TLabel
+      Left = 46
+      Height = 35
+      Top = 10
+      Width = 122
+      Caption = 'DocCase'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -30
+      Font.Name = 'Arial'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+    end
+    object Image1: TImage
+      Left = 7
+      Height = 39
+      Top = 7
+      Width = 38
+      Picture.Data = {
+        1754506F727461626C654E6574776F726B477261706869631202000089504E47
+        0D0A1A0A0000000D49484452000000230000002308060000001ED9B359000000
+        097048597300000B1300000B1301009A9C18000001C449444154789CEDD84B4B
+        02511407F061AE032204456D8A1E10448B5E5FA155AB2082967D81CA4D411B3F
+        41CBDA08DE6BBE88C8C256411016B4D28A6813D422B474EEF8A2174A488A2746
+        E8A18E3233CE689407FEBBEBE1C79D731657866995DA72868D8CF5A143766CD4
+        C4685E766180C5F404613E8F0805256109BD4298CE686661090D2A459404F305
+        16F3ABF54B6CF7DD6A002687006DCE58E92DD50BE2706C4429C440286CDC66C1
+        15CEC1A82F5906A29686624C0E01BC917C319E700EC67D296D405C9D984FD058
+        0548C527E334C04882305F40383AD7148C57FA86EE9A86F146F2E00EE5A0D3FD
+        BD650C8EF6EABE4DEB3759498C33F40E5D9EF8D759B1BFAE184428183705E8D9
+        8A5744BCB59FE71A824132D3C220BD30EDAE184C1F3DC3ACFF4576C4F3E2EF34
+        C7AC5C64AAAE6EAD2C9F67B4C79883695598A5605A7B8CC921C0E4C1234C1D3E
+        C98E78BE7CADFFDE00A3DF84E9DB4EC062205D1CE45A319F65607027A12FC672
+        F9267B68D7AEB3FA62E64F5F65631602697D3106426168370113FBA99A19DE4B
+        0267FF4F038C9A856154BE9BE446ECDFD81725910E4B684011A45836DACF127A
+        ACE6AD2D19CCE7594CFD625FA661FF4258AB44ECD32A465D7D000301348C51F2
+        30E30000000049454E44AE426082
+      }
+    end
   end
   object qry_usuarios: TZQuery
     Connection = DM.ZConnection
@@ -176,8 +169,8 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
       'select * from usuarios'
     )
     Params = <>
-    Left = 398
-    Top = 189
+    Left = 48
+    Top = 392
     object qry_usuariosidusuarios: TZIntegerField
       FieldKind = fkData
       FieldName = 'idusuarios'
@@ -269,7 +262,7 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
   end
   object ds_usuarios: TDataSource
     DataSet = qry_usuarios
-    Left = 402
-    Top = 281
+    Left = 112
+    Top = 392
   end
 end
