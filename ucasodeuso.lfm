@@ -1,0 +1,270 @@
+object FrmCasoUso: TFrmCasoUso
+  Left = 348
+  Height = 706
+  Top = 250
+  Width = 1194
+  Caption = 'Cadastro de caso de uso'
+  ClientHeight = 706
+  ClientWidth = 1194
+  Position = poDesktopCenter
+  OnShow = FormShow
+  object Panel1: TPanel
+    Left = 0
+    Height = 706
+    Top = 0
+    Width = 1194
+    Align = alClient
+    ClientHeight = 706
+    ClientWidth = 1194
+    Color = clWhite
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 8
+      Height = 21
+      Top = 8
+      Width = 152
+      Caption = 'Detalhe caso de uso'
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -16
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 8
+      Height = 17
+      Top = 40
+      Width = 147
+      Caption = 'Cadastro de caso de uso'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clGray
+      Font.Height = -13
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+    end
+    object Label4: TLabel
+      Left = 8
+      Height = 15
+      Top = 88
+      Width = 900
+      Caption = '____________________________________________________________________________________________________________________________________________________________________________________'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clSilver
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 8
+      Height = 15
+      Top = 85
+      Width = 116
+      Caption = 'Dados do caso de uso'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = 12615680
+      Font.Name = 'Segoe UI Semibold'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object edtNome: TDBEdit
+      Left = 8
+      Height = 23
+      Top = 144
+      Width = 350
+      DataField = 'nome'
+      DataSource = dsCasoUso
+      MaxLength = 0
+      TabOrder = 0
+    end
+    object Label5: TLabel
+      Left = 8
+      Height = 15
+      Top = 128
+      Width = 33
+      Caption = 'Nome'
+    end
+    object edtVersao: TDBEdit
+      Left = 8
+      Height = 23
+      Top = 192
+      Width = 350
+      DataField = 'versao'
+      DataSource = dsCasoUso
+      MaxLength = 0
+      TabOrder = 1
+    end
+    object Label6: TLabel
+      Left = 8
+      Height = 15
+      Top = 176
+      Width = 34
+      Caption = 'versão'
+    end
+    object edtPrecondicao: TDBEdit
+      Left = 8
+      Height = 23
+      Top = 240
+      Width = 350
+      DataField = 'precondicao'
+      DataSource = dsCasoUso
+      MaxLength = 0
+      TabOrder = 2
+    end
+    object Label7: TLabel
+      Left = 8
+      Height = 15
+      Top = 224
+      Width = 69
+      Caption = 'Pré condição'
+    end
+    object Label8: TLabel
+      Left = 8
+      Height = 15
+      Top = 272
+      Width = 51
+      Caption = 'Descrição'
+    end
+    object dbmDescricao: TDBMemo
+      Left = 8
+      Height = 298
+      Top = 296
+      Width = 912
+      DataField = 'descricao'
+      DataSource = dsCasoUso
+      TabOrder = 3
+    end
+    object Panel2: TPanel
+      Left = 1
+      Height = 35
+      Top = 670
+      Width = 1192
+      Align = alBottom
+      ClientHeight = 35
+      ClientWidth = 1192
+      ParentBackground = False
+      TabOrder = 4
+      object BitBtn1: TBitBtn
+        Left = 1108
+        Height = 30
+        Top = 2
+        Width = 75
+        Caption = 'Salvar'
+        TabOrder = 0
+        OnClick = BitBtn1Click
+      end
+      object BitBtn2: TBitBtn
+        Left = 1032
+        Height = 30
+        Top = 2
+        Width = 75
+        Caption = 'Cancelar'
+        TabOrder = 1
+      end
+    end
+  end
+  object qryCasoUso: TZQuery
+    Connection = DM.ZConnection
+    SQL.Strings = (
+      'SELECT * FROM caso_uso'
+    )
+    Params = <>
+    Left = 1128
+    Top = 8
+    object qryCasoUsoidcaso_uso: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'idcaso_uso'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryCasoUsodescricao: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'descricao'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+    object qryCasoUsoversao: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'versao'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 45
+    end
+    object qryCasoUsoprojeto_idprojeto: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'projeto_idprojeto'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryCasoUsodata_criacao: TZDateField
+      FieldKind = fkData
+      FieldName = 'data_criacao'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryCasoUsohora_criacao: TZTimeField
+      FieldKind = fkData
+      FieldName = 'hora_criacao'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qryCasoUsoetiqueta_idetiqueta: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'etiqueta_idetiqueta'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryCasoUsonome: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'nome'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 120
+    end
+    object qryCasoUsoprecondicao: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'precondicao'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+  end
+  object dsCasoUso: TDataSource
+    DataSet = qryCasoUso
+    Left = 1128
+    Top = 64
+  end
+end
