@@ -44,6 +44,7 @@ type
     sbtAtualizar: TSpeedButton;
     procedure actNovoCasoUsoExecute(Sender: TObject);
     procedure actPesquisaExecute(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure sbtAdicionarClick(Sender: TObject);
     procedure sbtAtualizarClick(Sender: TObject);
@@ -53,6 +54,7 @@ type
   public
     var
     _action_:String;
+    idprojeto: Integer;
   end;
 
 var
@@ -61,7 +63,7 @@ var
 implementation
 
 uses
-  uProjeto;
+  uProjeto, ulistacasouso, uPrincipal;
 {$R *.lfm}
 
 { TFrmListaProjetos }
@@ -113,7 +115,12 @@ end;
 
 procedure TFrmListaProjetos.actNovoCasoUsoExecute(Sender: TObject);
 begin
-
+  if FrmListaCasoUso = nil then
+  FrmListaCasoUso:= TFrmListaCasoUso.Create(self);
+  FrmListaCasoUso.ProjetoID := qryListaProjetos.FieldByName('idprojeto').AsInteger;
+  FrmListaCasoUso.ShowModal;
+  FrmListaCasoUso.Free;
+  FrmListaCasoUso:= nil;
 end;
 
 procedure TFrmListaProjetos.actPesquisaExecute(Sender: TObject);
@@ -133,6 +140,12 @@ begin
   qryListaProjetos.Open;
 
   edtPesquisar.Text:='';
+end;
+
+procedure TFrmListaProjetos.FormClose(Sender: TObject;
+  var CloseAction: TCloseAction);
+begin
+  frmPrincipal.qry_projeto_list.Refresh;
 end;
 
 end.
