@@ -63,22 +63,37 @@ var
 implementation
 
 uses
-  uProjeto, ulistacasouso, uPrincipal;
+  uProjeto, ulistacasouso, uPrincipal, ulogin;
 {$R *.lfm}
 
 { TFrmListaProjetos }
 
 procedure TFrmListaProjetos.FormShow(Sender: TObject);
 begin
-  With qryListaProjetos do
+ with qryListaProjetos do
   begin
     Close;
     SQL.Clear;
-    SQL.Text:='SELECT * FROM projeto';
+    SQL.Text := 'SELECT * FROM projeto';
     Open;
   end;
 
-  lblNumerVersao.Caption :=IntToStr(qryListaProjetos.RecordCount);
+  lblNumerVersao.Caption := IntToStr(qryListaProjetos.RecordCount);
+
+  // Debug temporário
+  ShowMessage('Função do usuário: ' + frmLogin.UsuarioFuncao);
+
+  // 🔹 Controle de acesso
+  if SameText(Trim(frmLogin.UsuarioFuncao), 'Analista') then
+  begin
+    sbtAdicionar.Enabled  := True;
+    sbtEditar.Enabled := True;
+  end
+  else
+  begin
+    sbtAdicionar.Enabled  := False;
+    sbtEditar.Enabled := False;
+  end;
 end;
 
 procedure TFrmListaProjetos.sbtAdicionarClick(Sender: TObject);

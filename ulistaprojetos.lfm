@@ -169,7 +169,7 @@ object FrmListaProjetos: TFrmListaProjetos
       ParentColor = False
       TabOrder = 0
       object lblNumerVersao: TLabel
-        Left = 130
+        Left = 104
         Height = 15
         Top = 26
         Width = 7

@@ -80,6 +80,7 @@ type
     procedure act_dashboardExecute(Sender: TObject);
     procedure act_projetosExecute(Sender: TObject);
     procedure act_usuariosExecute(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormShow(Sender: TObject);
   private
 
@@ -199,6 +200,12 @@ begin
   FrmListaUsuarios.Free;
   FrmListaUsuarios:= nil;
 
+end;
+
+procedure TfrmPrincipal.FormClose(Sender: TObject; var CloseAction: TCloseAction
+  );
+begin
+  Application.Terminate;
 end;
 
 

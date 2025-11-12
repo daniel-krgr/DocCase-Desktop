@@ -9,6 +9,7 @@ object frmPrincipal: TfrmPrincipal
   ClientWidth = 966
   Color = 16118000
   Position = poDesktopCenter
+  OnClose = FormClose
   OnShow = FormShow
   object projeto1: TPanel
     Cursor = crHandPoint

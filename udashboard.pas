@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  NiceChart, ZDataset, TAGraph, TASeries, TALegend, TATools, TASources, TAChartUtils;
+  ZDataset, TAGraph, TASeries, TALegend, TATools, TASources, TAChartUtils;
 
 type
 

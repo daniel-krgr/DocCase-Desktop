@@ -10,7 +10,10 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, uPrincipal, rxnew, uConex, zcomponent, uCadastroUsuario;
+  Forms, tachartlazaruspkg, uPrincipal, rxnew, uConex, zcomponent,
+  uCadastroUsuario, ucasodeuso, udashboard, ufluxo, ulistaator, ulistacasouso,
+  ulistafluxo, ulistaprojetos, ulistatime, ulistausuarios, uProjeto, utime,
+  useguranca, ulogin;
 
 {$R *.res}
 
@@ -21,7 +24,7 @@ begin
   Application.MainFormOnTaskbar:=True;
   {$POP}
   Application.Initialize;
-  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TFrmLogin, FrmLogin);
   Application.CreateForm(TDM, DM);
   Application.Run;
 end.
