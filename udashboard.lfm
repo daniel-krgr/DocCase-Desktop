@@ -1,0 +1,309 @@
+object FrmDashboard: TFrmDashboard
+  Left = 348
+  Height = 707
+  Top = 250
+  Width = 987
+  Caption = 'Dashboard'
+  ClientHeight = 707
+  ClientWidth = 987
+  OnShow = FormShow
+  object Panel1: TPanel
+    Left = 0
+    Height = 707
+    Top = 0
+    Width = 987
+    Align = alClient
+    ClientHeight = 707
+    ClientWidth = 987
+    Color = 15461355
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 50
+      Height = 50
+      Top = 56
+      Width = 189
+      Caption = 'Dashboard'
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -37
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Panel2: TPanel
+      Left = 50
+      Height = 237
+      Top = 131
+      Width = 374
+      BevelColor = 14737632
+      BevelWidth = 2
+      ClientHeight = 237
+      ClientWidth = 374
+      Color = clWhite
+      ParentBackground = False
+      ParentColor = False
+      TabOrder = 0
+      object Label2: TLabel
+        Left = 20
+        Height = 25
+        Top = 16
+        Width = 94
+        Caption = 'Visão geral'
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -19
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
+      end
+      object lblProjetos: TLabel
+        Left = 20
+        Height = 21
+        Top = 72
+        Width = 74
+        Caption = 'lblProjetos'
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -16
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
+      end
+      object Label4: TLabel
+        Left = 20
+        Height = 17
+        Top = 96
+        Width = 48
+        Caption = 'Projetos'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clGray
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
+      end
+      object lblCasouso: TLabel
+        Left = 152
+        Height = 21
+        Top = 72
+        Width = 58
+        Caption = 'lblCasos'
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -16
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
+      end
+      object Label6: TLabel
+        Left = 152
+        Height = 17
+        Top = 96
+        Width = 79
+        Caption = 'Casos de uso'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clGray
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
+      end
+      object Label7: TLabel
+        Left = 272
+        Height = 17
+        Top = 96
+        Width = 36
+        Caption = 'Fluxos'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clGray
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
+      end
+      object lblFluxos: TLabel
+        Left = 272
+        Height = 21
+        Top = 72
+        Width = 61
+        Caption = 'lblFluxos'
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -16
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
+      end
+      object Label9: TLabel
+        Left = 152
+        Height = 17
+        Top = 192
+        Width = 38
+        Caption = 'Atores'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clGray
+        Font.Height = -13
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
+      end
+      object lblAtores: TLabel
+        Left = 152
+        Height = 21
+        Top = 168
+        Width = 62
+        Caption = 'lblAtores'
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -16
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
+      end
+    end
+    object Panel3: TPanel
+      Left = 512
+      Height = 237
+      Top = 131
+      Width = 374
+      BevelColor = 14737632
+      BevelWidth = 2
+      ClientHeight = 237
+      ClientWidth = 374
+      Color = clWhite
+      ParentBackground = False
+      ParentColor = False
+      TabOrder = 1
+      object Label3: TLabel
+        Left = 20
+        Height = 25
+        Top = 16
+        Width = 265
+        Caption = ' Top 5 Casos de uso por projeto'
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -19
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
+      end
+      object ChartCasosPorProjeto: TChart
+        Left = 8
+        Height = 168
+        Top = 64
+        Width = 356
+        AxisList = <        
+          item
+            Marks.LabelBrush.Style = bsClear
+            Minors = <>
+            Title.LabelFont.Orientation = 900
+            Title.LabelBrush.Style = bsClear
+          end        
+          item
+            Alignment = calBottom
+            Marks.LabelBrush.Style = bsClear
+            Minors = <>
+            Title.LabelBrush.Style = bsClear
+          end>
+        BackColor = 15132390
+        Title.Font.CharSet = ANSI_CHARSET
+        Title.Font.Height = -12
+        Title.Font.Name = 'Arial'
+        Title.Font.Pitch = fpVariable
+        Title.Font.Quality = fqDraft
+        Title.Font.Style = [fsBold]
+        Title.Text.Strings = (
+          'TAChart'
+        )
+        Color = clWhite
+      end
+    end
+    object Panel4: TPanel
+      Left = 288
+      Height = 237
+      Top = 400
+      Width = 374
+      BevelColor = 14737632
+      BevelWidth = 2
+      ClientHeight = 237
+      ClientWidth = 374
+      Color = clWhite
+      ParentBackground = False
+      ParentColor = False
+      TabOrder = 2
+      object Label5: TLabel
+        Left = 20
+        Height = 25
+        Top = 16
+        Width = 241
+        Caption = 'Top 5 Fluxos por caso de uso'
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -19
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
+      end
+      object ChartFluxosPorCaso: TChart
+        Left = 8
+        Height = 168
+        Top = 64
+        Width = 356
+        AxisList = <        
+          item
+            Marks.LabelBrush.Style = bsClear
+            Minors = <>
+            Title.LabelFont.Orientation = 900
+            Title.LabelBrush.Style = bsClear
+          end        
+          item
+            Alignment = calBottom
+            Marks.LabelBrush.Style = bsClear
+            Minors = <>
+            Title.LabelBrush.Style = bsClear
+          end>
+        BackColor = 15132390
+        Title.Font.CharSet = ANSI_CHARSET
+        Title.Font.Name = 'Arial'
+        Title.Font.Pitch = fpVariable
+        Title.Font.Quality = fqDraft
+        Title.Font.Style = [fsBold]
+        Title.Text.Strings = (
+          'TAChart'
+        )
+        Color = clWhite
+      end
+    end
+  end
+  object qryTotalProjetos: TZQuery
+    Connection = DM.ZConnection
+    Params = <>
+    Left = 850
+    Top = 405
+  end
+  object qryTotalCasos: TZQuery
+    Connection = DM.ZConnection
+    Params = <>
+    Left = 758
+    Top = 405
+  end
+  object qryTotalAtores: TZQuery
+    Connection = DM.ZConnection
+    Params = <>
+    Left = 758
+    Top = 456
+  end
+  object qryTotalFluxos: TZQuery
+    Connection = DM.ZConnection
+    Params = <>
+    Left = 848
+    Top = 456
+  end
+  object qryFluxoPorCaso: TZQuery
+    Connection = DM.ZConnection
+    Params = <>
+    Left = 758
+    Top = 509
+  end
+  object qryCasosPorProjeto: TZQuery
+    Connection = DM.ZConnection
+    Params = <>
+    Left = 850
+    Top = 509
+  end
+end

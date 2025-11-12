@@ -92,7 +92,7 @@ var
 
 implementation
 uses
-  uCadastroUsuario, uProjeto, ulistaprojetos, ulistatime, ulistausuarios;
+  uCadastroUsuario, uProjeto, ulistaprojetos, ulistatime, ulistausuarios, udashboard;
 
 {$R *.lfm}
 
@@ -165,13 +165,11 @@ end;
 
 procedure TfrmPrincipal.act_dashboardExecute(Sender: TObject);
 begin
- { if FrmCadastroUsuario = nil then
-  FrmCadastroUsuario:= TFrmCadastroUsuario.Create(self);
-  FrmCadastroUsuario._action_ := 'insert';
-  FrmCadastroUsuario.ShowModal;
-  FrmCadastroUsuario.Free;
-  FrmCadastroUsuario:= nil;
-}
+ if FrmDashboard = nil then
+  FrmDashboard:= TFrmDashboard.Create(self);
+  FrmDashboard.ShowModal;
+  FrmDashboard.Free;
+  FrmDashboard:= nil;
 end;
 
 procedure TfrmPrincipal.act_adicionarTimeExecute(Sender: TObject);
