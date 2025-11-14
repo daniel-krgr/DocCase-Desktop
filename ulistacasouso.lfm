@@ -3,10 +3,12 @@ object FrmListaCasoUso: TFrmListaCasoUso
   Height = 696
   Top = 250
   Width = 1197
+  BorderIcons = [biSystemMenu]
   Caption = 'Lista de casos de uso'
   ClientHeight = 696
   ClientWidth = 1197
   Position = poDesktopCenter
+  LCLVersion = '4.2.0.0'
   OnShow = FormShow
   object Panel1: TPanel
     Left = 0

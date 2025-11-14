@@ -7,6 +7,7 @@ object FrmAtor: TFrmAtor
   ClientHeight = 415
   ClientWidth = 518
   Position = poDesktopCenter
+  LCLVersion = '4.2.0.0'
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow

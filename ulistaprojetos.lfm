@@ -3,6 +3,7 @@ object FrmListaProjetos: TFrmListaProjetos
   Height = 696
   Top = -8
   Width = 1197
+  BorderIcons = [biSystemMenu]
   Caption = 'Lista de projetos'
   ClientHeight = 696
   ClientWidth = 1197
@@ -636,6 +637,7 @@ object FrmListaProjetos: TFrmListaProjetos
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     TabOrder = 2
     TitleStyle = tsNative
+    OnCellClick = DBGrid1CellClick
   end
   object sbtAtualizar2: TSpeedButton
     Left = 199
@@ -824,5 +826,355 @@ object FrmListaProjetos: TFrmListaProjetos
       Caption = 'actPesquisa'
       OnExecute = actPesquisaExecute
     end
+  end
+  object frProjeto: TfrReport
+    Dataset = frdsProjeto
+    InitialZoom = pzDefault
+    Options = []
+    PreviewButtons = [pbZoom, pbLoad, pbSave, pbPrint, pbFind, pbHelp, pbExit, pbSettings, pbPageSetup]
+    DataType = dtDataSet
+    Left = 1106
+    Top = 240
+  end
+  object frdsProjeto: TfrDBDataSet
+    DataSet = qryProjetoReport
+    Left = 1104
+    Top = 296
+  end
+  object qryProjetoReport: TZQuery
+    Connection = DM.ZConnection
+    SQL.Strings = (
+      'SELECT'
+      '    p.idprojeto,'
+      '    p.nome AS projeto_nome,'
+      '    p.descricao AS projeto_descricao,'
+      '    p.detalhe AS projeto_detalhe'
+      'FROM projeto p'
+      'WHERE p.idprojeto = :idprojeto;'
+    )
+    Params = <    
+      item
+        Name = 'idprojeto'
+      end>
+    Left = 1008
+    Top = 80
+    ParamData = <    
+      item
+        Name = 'idprojeto'
+      end>
+    object qryProjetoReportidprojeto: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'idprojeto'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryProjetoReportprojeto_nome: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'projeto_nome'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 45
+    end
+    object qryProjetoReportprojeto_descricao: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'projeto_descricao'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+    object qryProjetoReportprojeto_detalhe: TZRawCLobField
+      FieldKind = fkData
+      FieldName = 'projeto_detalhe'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftMemo
+      Transliterate = False
+    end
+  end
+  object dsProjetoReport: TDataSource
+    DataSet = qryProjetoReport
+    Left = 1008
+    Top = 128
+  end
+  object qryCasoReport: TZQuery
+    Connection = DM.ZConnection
+    SQL.Strings = (
+      'SELECT'
+      '    c.idcaso_uso,'
+      '    c.nome AS caso_nome,'
+      '    c.descricao AS caso_descricao,'
+      '    c.precondicao AS caso_precondicao'
+      'FROM caso_uso c'
+      'WHERE c.projeto_idprojeto = :idprojeto'
+      'ORDER BY c.nome;'
+    )
+    Params = <    
+      item
+        Name = 'idprojeto'
+      end>
+    Left = 904
+    Top = 80
+    ParamData = <    
+      item
+        Name = 'idprojeto'
+      end>
+    object qryCasoReportidcaso_uso: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'idcaso_uso'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryCasoReportcaso_nome: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'caso_nome'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 120
+    end
+    object qryCasoReportcaso_descricao: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'caso_descricao'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+    object qryCasoReportcaso_precondicao: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'caso_precondicao'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+  end
+  object dsCasoReport: TDataSource
+    DataSet = qryCasoReport
+    Left = 904
+    Top = 128
+  end
+  object qryFluxoReport: TZQuery
+    Connection = DM.ZConnection
+    SQL.Strings = (
+      'SELECT'
+      '    f.idfluxo,'
+      '    f.nome AS fluxo_nome,'
+      '    f.tipo_fluxo AS fluxo_tipo,'
+      '    f.pre_requisito AS fluxo_pre,'
+      ''
+      '    c.idcaso_uso,'
+      '    c.nome AS caso_nome'
+      ''
+      'FROM fluxo f'
+      'JOIN caso_uso c ON c.idcaso_uso = f.caso_uso_idcaso_uso'
+      'WHERE c.projeto_idprojeto = :idprojeto'
+      'ORDER BY c.nome, f.nome;'
+    )
+    Params = <    
+      item
+        Name = 'idprojeto'
+      end>
+    Left = 808
+    Top = 80
+    ParamData = <    
+      item
+        Name = 'idprojeto'
+      end>
+    object qryFluxoReportidfluxo: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'idfluxo'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryFluxoReportfluxo_nome: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'fluxo_nome'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object qryFluxoReportfluxo_tipo: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'fluxo_tipo'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 45
+    end
+    object qryFluxoReportfluxo_pre: TZRawCLobField
+      FieldKind = fkData
+      FieldName = 'fluxo_pre'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftMemo
+      Transliterate = False
+    end
+    object qryFluxoReportidcaso_uso: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'idcaso_uso'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryFluxoReportcaso_nome: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'caso_nome'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 120
+    end
+  end
+  object dsFluxoReport: TDataSource
+    DataSet = qryFluxoReport
+    Left = 808
+    Top = 128
+  end
+  object frCaso: TfrReport
+    Dataset = frdsCaso
+    InitialZoom = pzDefault
+    Options = []
+    PreviewButtons = [pbZoom, pbLoad, pbSave, pbPrint, pbFind, pbHelp, pbExit, pbSettings, pbPageSetup]
+    DataType = dtDataSet
+    Left = 1042
+    Top = 240
+  end
+  object frdsCaso: TfrDBDataSet
+    DataSet = qryCasoReport
+    Left = 1040
+    Top = 296
+  end
+  object frFluxo: TfrReport
+    Dataset = frdsFluxo
+    InitialZoom = pzDefault
+    Options = []
+    PreviewButtons = [pbZoom, pbLoad, pbSave, pbPrint, pbFind, pbHelp, pbExit, pbSettings, pbPageSetup]
+    DataType = dtDataSet
+    Left = 962
+    Top = 240
+  end
+  object frdsFluxo: TfrDBDataSet
+    DataSet = qryFluxoReport
+    Left = 960
+    Top = 296
+  end
+  object qryAtores: TZQuery
+    Connection = DM.ZConnection
+    SQL.Strings = (
+      'SELECT'
+      '    a.idatores,'
+      '    a.nome AS ator_nome,'
+      '    a.funcao AS ator_funcao'
+      'FROM atores a'
+      'WHERE a.projeto_idprojeto = :idprojeto'
+      'ORDER BY a.nome;'
+    )
+    Params = <    
+      item
+        Name = 'idprojeto'
+      end>
+    Left = 720
+    Top = 80
+    ParamData = <    
+      item
+        Name = 'idprojeto'
+      end>
+    object qryAtoresidatores: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'idatores'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryAtoresator_nome: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ator_nome'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 45
+    end
+    object qryAtoresator_funcao: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ator_funcao'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 45
+    end
+  end
+  object dsAtores: TDataSource
+    DataSet = qryAtores
+    Left = 720
+    Top = 128
+  end
+  object frAtores: TfrReport
+    Dataset = frdsAtores
+    InitialZoom = pzDefault
+    Options = []
+    PreviewButtons = [pbZoom, pbLoad, pbSave, pbPrint, pbFind, pbHelp, pbExit, pbSettings, pbPageSetup]
+    DataType = dtDataSet
+    Left = 890
+    Top = 240
+  end
+  object frdsAtores: TfrDBDataSet
+    DataSet = qryAtores
+    Left = 888
+    Top = 296
+  end
+  object frReport1: TfrReport
+    InitialZoom = pzDefault
+    Options = []
+    PreviewButtons = [pbZoom, pbLoad, pbSave, pbPrint, pbFind, pbHelp, pbExit, pbSettings, pbPageSetup]
+    DataType = dtDataSet
+    Left = 1085
+    Top = 397
+  end
+  object frDBDataSet1: TfrDBDataSet
+    Left = 1000
+    Top = 397
   end
 end

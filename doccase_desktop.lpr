@@ -13,7 +13,7 @@ uses
   Forms, tachartlazaruspkg, uPrincipal, rxnew, uConex, zcomponent,
   uCadastroUsuario, ucasodeuso, udashboard, ufluxo, ulistaator, ulistacasouso,
   ulistafluxo, ulistaprojetos, ulistatime, ulistausuarios, uProjeto, utime,
-  useguranca, ulogin;
+  useguranca, ulogin, uator;
 
 {$R *.res}
 
@@ -24,8 +24,20 @@ begin
   Application.MainFormOnTaskbar:=True;
   {$POP}
   Application.Initialize;
-  Application.CreateForm(TFrmLogin, FrmLogin);
   Application.CreateForm(TDM, DM);
+  Application.CreateForm(TfrmPrincipal, frmPrincipal); // <- vira MainForm
+  frmPrincipal.Hide; // só pra garantir que não pisque antes do login
+
+  with TFrmLogin.Create(nil) do
+  try
+    if ShowModal = 1 then
+      frmPrincipal.Show
+    else
+      Halt(0);
+  finally
+    Free;
+
+  end;
   Application.Run;
 end.
 

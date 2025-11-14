@@ -54,8 +54,7 @@ procedure TFrmLogin.btEntrarClick(Sender: TObject);
 var
   SenhaHash: string;
 begin
-  // Validação básica
-  if Trim(edtUsuario.Text) = '' then
+   if Trim(edtUsuario.Text) = '' then
   begin
     ShowMessage('Informe o nome de usuário.');
     edtUsuario.SetFocus;
@@ -69,29 +68,27 @@ begin
     Exit;
   end;
 
-  // Criptografa a senha digitada
   SenhaHash := GeraMD5(edtSenha.Text);
 
-  // Busca no banco (login por nome + senha hash)
-  qryLogin.Close;
-  qryLogin.SQL.Text :=
-    'SELECT nome, funcao FROM usuarios ' +
-    'WHERE nome = :nome AND senha = :senha';
-  qryLogin.ParamByName('nome').AsString := edtUsuario.Text;
-  qryLogin.ParamByName('senha').AsString := SenhaHash;
-  qryLogin.Open;
+  // usando Query do DataModule (DM.qryLogin)
+  with qryLogin do
+  begin
+    Close;
+    SQL.Text :=
+      'SELECT nome, funcao FROM usuarios '+
+      'WHERE nome = :nome AND senha = :senha';
+    ParamByName('nome').AsString  := edtUsuario.Text;
+    ParamByName('senha').AsString := SenhaHash;
+    Open;
+  end;
 
   if not qryLogin.IsEmpty then
   begin
     UsuarioLogado := qryLogin.FieldByName('nome').AsString;
     UsuarioFuncao := qryLogin.FieldByName('funcao').AsString;
 
-    // 🔹 Abre o formulário principal
-    if frmPrincipal = nil then
-      frmPrincipal := TfrmPrincipal.Create(Self);
-
-    frmPrincipal.Show; //  abre normal (não modal)
-    FrmLogin.Visible:= False;             //  fecha o login
+    // fecha o ShowModal e entrega o controle ao .lpr
+    ModalResult := mrOk;
   end
   else
     ShowMessage('Nome ou senha incorretos!');

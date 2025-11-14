@@ -114,7 +114,7 @@ object FrmFluxo: TFrmFluxo
       Items.Strings = (
         'Principal'
         'Alternativo'
-        'Excecao'
+        'Exceção'
         'Reentrada'
         'Sistema'
       )

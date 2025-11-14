@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  DBGrids, Buttons, ActnList, ZDataset, ZAbstractRODataset;
+  DBGrids, Buttons, ActnList, LR_Class, LR_DBSet, ZDataset, ZAbstractRODataset;
 
 type
 
@@ -16,9 +16,23 @@ type
     actNovoCasoUso: TAction;
     actPesquisa: TAction;
     ActionList1: TActionList;
+    dsAtores: TDataSource;
+    dsProjetoReport: TDataSource;
     dsListaProjetos: TDataSource;
     DBGrid1: TDBGrid;
+    dsCasoReport: TDataSource;
+    dsFluxoReport: TDataSource;
     edtPesquisar: TEdit;
+    frDBDataSet1: TfrDBDataSet;
+    frdsAtores: TfrDBDataSet;
+    frdsProjeto: TfrDBDataSet;
+    frdsCaso: TfrDBDataSet;
+    frdsFluxo: TfrDBDataSet;
+    frAtores: TfrReport;
+    frProjeto: TfrReport;
+    frCaso: TfrReport;
+    frFluxo: TfrReport;
+    frReport1: TfrReport;
     Image1: TImage;
     Label1: TLabel;
     Label4: TLabel;
@@ -27,6 +41,20 @@ type
     Panel1: TPanel;
     Panel2: TPanel;
     Panel3: TPanel;
+    qryAtoresator_funcao: TZRawStringField;
+    qryAtoresator_nome: TZRawStringField;
+    qryAtoresidatores: TZIntegerField;
+    qryCasoReportcaso_descricao: TZRawStringField;
+    qryCasoReportcaso_nome: TZRawStringField;
+    qryCasoReportcaso_precondicao: TZRawStringField;
+    qryCasoReportidcaso_uso: TZIntegerField;
+    qryAtores: TZQuery;
+    qryFluxoReportcaso_nome: TZRawStringField;
+    qryFluxoReportfluxo_nome: TZRawStringField;
+    qryFluxoReportfluxo_pre: TZRawCLobField;
+    qryFluxoReportfluxo_tipo: TZRawStringField;
+    qryFluxoReportidcaso_uso: TZIntegerField;
+    qryFluxoReportidfluxo: TZIntegerField;
     qryListaProjetoscodigo: TZRawStringField;
     qryListaProjetosdata_cadastro: TZDateField;
     qryListaProjetosdescricao: TZRawStringField;
@@ -35,6 +63,12 @@ type
     qryListaProjetosnome: TZRawStringField;
     qryListaProjetosop_publico: TZRawStringField;
     qryListaProjetostime_idtime: TZIntegerField;
+    qryCasoReport: TZQuery;
+    qryFluxoReport: TZQuery;
+    qryProjetoReportidprojeto: TZIntegerField;
+    qryProjetoReportprojeto_descricao: TZRawStringField;
+    qryProjetoReportprojeto_detalhe: TZRawCLobField;
+    qryProjetoReportprojeto_nome: TZRawStringField;
     sbtAdicionar: TSpeedButton;
     sbtAtualizar2: TSpeedButton;
     sbtEditar: TSpeedButton;
@@ -42,8 +76,10 @@ type
     qryListaProjetos: TZQuery;
     sbtPesquisar: TSpeedButton;
     sbtAtualizar: TSpeedButton;
+    qryProjetoReport: TZQuery;
     procedure actNovoCasoUsoExecute(Sender: TObject);
     procedure actPesquisaExecute(Sender: TObject);
+    procedure DBGrid1CellClick(Column: TColumn);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure sbtAdicionarClick(Sender: TObject);
@@ -63,7 +99,7 @@ var
 implementation
 
 uses
-  uProjeto, ulistacasouso, uPrincipal, ulogin;
+  uProjeto, ulistacasouso, uPrincipal, ulogin, udisplayprojeto;
 {$R *.lfm}
 
 { TFrmListaProjetos }
@@ -80,10 +116,6 @@ begin
 
   lblNumerVersao.Caption := IntToStr(qryListaProjetos.RecordCount);
 
-  // Debug temporário
-  ShowMessage('Função do usuário: ' + frmLogin.UsuarioFuncao);
-
-  // 🔹 Controle de acesso
   if SameText(Trim(frmLogin.UsuarioFuncao), 'Analista') then
   begin
     sbtAdicionar.Enabled  := True;
@@ -93,6 +125,8 @@ begin
   begin
     sbtAdicionar.Enabled  := False;
     sbtEditar.Enabled := False;
+    sbtAdicionar.Visible  := False;
+    sbtEditar.Visible := False;
   end;
 end;
 
@@ -155,6 +189,40 @@ begin
   qryListaProjetos.Open;
 
   edtPesquisar.Text:='';
+end;
+
+procedure TFrmListaProjetos.DBGrid1CellClick(Column: TColumn);
+var
+  Caminho: String;
+  MemoData: TfrMemoView;
+begin
+   if qryListaProjetos.IsEmpty then Exit;
+
+  idprojeto := qryListaProjetos.FieldByName('idprojeto').AsInteger;
+
+  qryProjetoReport.Close;
+  qryProjetoReport.ParamByName('idprojeto').AsInteger := idprojeto;
+  qryProjetoReport.Open;
+
+  qryCasoReport.Close;
+  qryCasoReport.ParamByName('idprojeto').AsInteger := idprojeto;
+  qryCasoReport.Open;
+
+  qryFluxoReport.Close;
+  qryFluxoReport.ParamByName('idprojeto').AsInteger := idprojeto;
+  qryFluxoReport.Open;
+
+  qryAtores.Close;
+  qryAtores.ParamByName('idprojeto').AsInteger := idprojeto;
+  qryAtores.Open;
+
+  Caminho := ExtractFilePath(Application.ExeName) + 'reportProjeto.lrf';
+  frProjeto.LoadFromFile(Caminho);
+
+  MemoData := frProjeto.FindObject('Data') as TfrMemoView;
+  MemoData.Memo.Text := FormatDateTime('dd/mm/yyyy', Date);
+
+  frProjeto.ShowReport;
 end;
 
 procedure TFrmListaProjetos.FormClose(Sender: TObject;

@@ -92,7 +92,7 @@ end;
 
 procedure TFrmAtor.FormCreate(Sender: TObject);
 begin
-   dbcNivel.Items.Clear;
+  dbcNivel.Items.Clear;
   dbcNivel.Items.Add('Primario');
   dbcNivel.Items.Add('Secundario');
   dbcNivel.Items.Add('Externo');

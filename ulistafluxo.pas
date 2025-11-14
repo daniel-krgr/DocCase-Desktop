@@ -54,7 +54,7 @@ var
 implementation
 
 uses
-  ufluxo, ucasodeuso;
+  ufluxo, ucasodeuso, ulogin;
 {$R *.lfm}
 
 { TFrmListaFluxo }
@@ -104,22 +104,31 @@ begin
   qryFluxo.ParamByName('projId').AsInteger := ProjetoID;
   qryFluxo.ParamByName('casoId').AsInteger := CasoUsoID;
   qryFluxo.Open;
+
+ if SameText(Trim(frmLogin.UsuarioFuncao), 'Analista') then
+  begin
+    sbtAdicionar.Enabled  := True;
+    sbtEditar.Enabled := True;
+  end
+  else
+  begin
+    sbtAdicionar.Enabled  := False;
+    sbtEditar.Enabled := False;
+  end;
 end;
 
 procedure TFrmListaFluxo.sbtAdicionarClick(Sender: TObject);
 begin
    if FrmFluxo = nil then
     FrmFluxo := TFrmFluxo.Create(Self);
+   FrmFluxo._action_ := 'insert';
+   FrmFluxo.ProjetoID := ProjetoID;
+   FrmFluxo.CasoUsoID := CasoUsoID;
+   FrmFluxo.ShowModal;
+   FrmFluxo.Free;
+   FrmFluxo := nil;
 
-  FrmFluxo._action_ := 'insert';
-  FrmFluxo.ProjetoID := ProjetoID;
-  FrmFluxo.CasoUsoID := CasoUsoID;
-  FrmFluxo.ShowModal;
-
-  FrmFluxo.Free;
-  FrmFluxo := nil;
-
-  qryFluxo.Refresh;
+   qryFluxo.Refresh;
 end;
 
 end.

@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  Buttons, ActnList, ZDataset, RxDBGrid;
+  Buttons, ActnList, LR_Class, LR_DBSet, ZDataset, ZAbstractRODataset, RxDBGrid;
 
 type
 
