@@ -24,6 +24,8 @@ type
     label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
     Panel3: TPanel;
@@ -81,8 +83,22 @@ end;
 
 procedure TFrmAtor.btSalvarClick(Sender: TObject);
 begin
+  if Length(edtNome.Text) > 5 then
+  begin
+    ShowMessage('Nome do ator muito curto. ');
+    Exit;
+  end;
+
+  if edtFuncao.Text = '' then
+  begin
+    ShowMessage('Descreva a função do ator. ');
+    Exit;
+  end;
+
   qryAtor.Post;
   ShowMessage('Ator cadastrado com sucesso. ');
+  Close;
+  FrmListaAtor.qryAtor.Refresh;
 end;
 
 procedure TFrmAtor.FormClose(Sender: TObject; var CloseAction: TCloseAction);

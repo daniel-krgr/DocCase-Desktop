@@ -16,6 +16,7 @@ type
     actNovoCasoUso: TAction;
     actPesquisa: TAction;
     ActionList1: TActionList;
+    dsImagens: TDataSource;
     dsAtores: TDataSource;
     dsProjetoReport: TDataSource;
     dsListaProjetos: TDataSource;
@@ -23,8 +24,10 @@ type
     dsCasoReport: TDataSource;
     dsFluxoReport: TDataSource;
     edtPesquisar: TEdit;
+    frImagens: TfrReport;
     frDBDataSet1: TfrDBDataSet;
     frdsAtores: TfrDBDataSet;
+    frdsImagens: TfrDBDataSet;
     frdsProjeto: TfrDBDataSet;
     frdsCaso: TfrDBDataSet;
     frdsFluxo: TfrDBDataSet;
@@ -55,6 +58,9 @@ type
     qryFluxoReportfluxo_tipo: TZRawStringField;
     qryFluxoReportidcaso_uso: TZIntegerField;
     qryFluxoReportidfluxo: TZIntegerField;
+    qryImagensidimagem: TZIntegerField;
+    qryImagensimagem: TZBlobField;
+    qryImagensnome_arquivo: TZRawStringField;
     qryListaProjetoscodigo: TZRawStringField;
     qryListaProjetosdata_cadastro: TZDateField;
     qryListaProjetosdescricao: TZRawStringField;
@@ -77,11 +83,14 @@ type
     sbtPesquisar: TSpeedButton;
     sbtAtualizar: TSpeedButton;
     qryProjetoReport: TZQuery;
+    qryImagens: TZQuery;
     procedure actNovoCasoUsoExecute(Sender: TObject);
     procedure actPesquisaExecute(Sender: TObject);
     procedure DBGrid1CellClick(Column: TColumn);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormShow(Sender: TObject);
+    procedure qryListaProjetosdetalheGetText(Sender: TField; var aText: string;
+      DisplayText: Boolean);
     procedure sbtAdicionarClick(Sender: TObject);
     procedure sbtAtualizarClick(Sender: TObject);
     procedure sbtEditarClick(Sender: TObject);
@@ -99,7 +108,7 @@ var
 implementation
 
 uses
-  uProjeto, ulistacasouso, uPrincipal, ulogin, udisplayprojeto;
+  uProjeto, ulistacasouso, uPrincipal, uSeguranca;
 {$R *.lfm}
 
 { TFrmListaProjetos }
@@ -116,7 +125,7 @@ begin
 
   lblNumerVersao.Caption := IntToStr(qryListaProjetos.RecordCount);
 
-  if SameText(Trim(frmLogin.UsuarioFuncao), 'Analista') then
+  {if SameText(Trim(frmLogin.UsuarioFuncao), 'Analista') then
   begin
     sbtAdicionar.Enabled  := True;
     sbtEditar.Enabled := True;
@@ -127,7 +136,13 @@ begin
     sbtEditar.Enabled := False;
     sbtAdicionar.Visible  := False;
     sbtEditar.Visible := False;
-  end;
+  end;  }
+end;
+
+procedure TFrmListaProjetos.qryListaProjetosdetalheGetText(Sender: TField;
+  var aText: string; DisplayText: Boolean);
+begin
+   aText := ResumirCampoMemo(Sender, 300);
 end;
 
 procedure TFrmListaProjetos.sbtAdicionarClick(Sender: TObject);
@@ -215,6 +230,10 @@ begin
   qryAtores.Close;
   qryAtores.ParamByName('idprojeto').AsInteger := idprojeto;
   qryAtores.Open;
+
+  qryImagens.Close;
+  qryImagens.ParamByName('idprojeto').AsInteger := idprojeto;
+  qryImagens.Open;
 
   Caminho := ExtractFilePath(Application.ExeName) + 'reportProjeto.lrf';
   frProjeto.LoadFromFile(Caminho);

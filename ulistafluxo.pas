@@ -36,6 +36,8 @@ type
     sbtPesquisar: TSpeedButton;
     qryFluxo: TZQuery;
     procedure FormShow(Sender: TObject);
+    procedure qryFluxopre_requisitoGetText(Sender: TField; var aText: string;
+      DisplayText: Boolean);
     procedure sbtAdicionarClick(Sender: TObject);
     procedure sbtAtualizarClick(Sender: TObject);
     procedure sbtEditarClick(Sender: TObject);
@@ -54,7 +56,7 @@ var
 implementation
 
 uses
-  ufluxo, ucasodeuso, ulogin;
+  ufluxo, ucasodeuso, uSeguranca;
 {$R *.lfm}
 
 { TFrmListaFluxo }
@@ -105,7 +107,7 @@ begin
   qryFluxo.ParamByName('casoId').AsInteger := CasoUsoID;
   qryFluxo.Open;
 
- if SameText(Trim(frmLogin.UsuarioFuncao), 'Analista') then
+ {if SameText(Trim(frmLogin.UsuarioFuncao), 'Analista') then
   begin
     sbtAdicionar.Enabled  := True;
     sbtEditar.Enabled := True;
@@ -114,7 +116,13 @@ begin
   begin
     sbtAdicionar.Enabled  := False;
     sbtEditar.Enabled := False;
-  end;
+  end; }
+end;
+
+procedure TFrmListaFluxo.qryFluxopre_requisitoGetText(Sender: TField;
+  var aText: string; DisplayText: Boolean);
+begin
+   aText := ResumirCampoMemo(Sender, 300);
 end;
 
 procedure TFrmListaFluxo.sbtAdicionarClick(Sender: TObject);

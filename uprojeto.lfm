@@ -1,25 +1,25 @@
 object frmProjeto: TfrmProjeto
   Left = 457
-  Height = 844
+  Height = 1000
   Top = 250
   Width = 1085
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Cadastro de projeto'
-  ClientHeight = 844
+  ClientHeight = 1000
   ClientWidth = 1085
   Color = clWhite
   Position = poDesktopCenter
   OnShow = FormShow
   object ScrollBox1: TScrollBox
     Left = 0
-    Height = 844
+    Height = 1000
     Top = 0
     Width = 1085
-    HorzScrollBar.Page = 911
-    VertScrollBar.Page = 760
+    HorzScrollBar.Page = 912
+    VertScrollBar.Page = 901
     Align = alClient
-    ClientHeight = 840
+    ClientHeight = 996
     ClientWidth = 1081
     ParentBackground = False
     TabOrder = 0
@@ -78,7 +78,7 @@ object frmProjeto: TfrmProjeto
     object Panel1: TPanel
       Left = 0
       Height = 46
-      Top = 794
+      Top = 950
       Width = 1081
       Align = alBottom
       BevelOuter = bvNone
@@ -91,6 +91,7 @@ object frmProjeto: TfrmProjeto
         Height = 30
         Top = 8
         Width = 75
+        Anchors = [akTop, akLeft, akRight, akBottom]
         Caption = 'Gravar'
         TabOrder = 0
         OnClick = BitBtn1Click
@@ -100,6 +101,7 @@ object frmProjeto: TfrmProjeto
         Height = 30
         Top = 8
         Width = 75
+        Anchors = [akTop, akLeft, akRight, akBottom]
         Caption = 'Cancelar'
         TabOrder = 1
         OnClick = BitBtn2Click
@@ -190,50 +192,58 @@ object frmProjeto: TfrmProjeto
     object Label10: TLabel
       Left = 11
       Height = 15
-      Top = 576
+      Top = 581
       Width = 55
       Caption = 'Protótipos'
-    end
-    object pnlImagem: TFlowPanel
-      Left = 11
-      Height = 160
-      Top = 600
-      Width = 229
-      ControlList = <      
-        item
-          Control = Thumb
-          WrapAfter = waAuto
-          Index = 0
-        end>
-      FlowLayout = tlTop
-      FlowStyle = fsLeftRightTopBottom
-      TabOrder = 6
-      object Thumb: TImage
-        Left = 1
-        Height = 338
-        Top = 1
-        Width = 231
-        Anchors = []
-        OnClick = ThumbClick
-      end
     end
     object btnAnexar: TBitBtn
       Left = 69
       Height = 23
-      Top = 574
+      Top = 579
       Width = 123
       Caption = 'Adicionar imagem'
-      TabOrder = 7
+      TabOrder = 6
       OnClick = btnAnexarClick
     end
     object btnRemoverImagem: TBitBtn
       Left = 192
       Height = 23
-      Top = 574
+      Top = 579
       Width = 123
       Caption = 'Remover imagem'
-      TabOrder = 8
+      TabOrder = 7
       OnClick = btnRemoverImagemClick
+    end
+    object ScrollBoxImagens: TScrollBox
+      Left = 11
+      Height = 296
+      Top = 605
+      Width = 901
+      HorzScrollBar.Page = 92
+      VertScrollBar.Page = 92
+      ClientHeight = 292
+      ClientWidth = 897
+      ParentBackground = False
+      TabOrder = 8
+      object pnlImagem: TPanel
+        Left = 0
+        Height = 292
+        Top = 0
+        Width = 897
+        Align = alClient
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ClientHeight = 292
+        ClientWidth = 897
+        ParentBackground = False
+        TabOrder = 0
+        object Thumb: TImage
+          Left = 1
+          Height = 290
+          Top = 1
+          Width = 895
+          Align = alClient
+        end
+      end
     end
   end
   object qryProjeto: TZQuery
@@ -366,6 +376,7 @@ object frmProjeto: TfrmProjeto
     Top = 160
   end
   object qryOne: TZQuery
+    Connection = DM.ZConnection
     Params = <>
     Left = 858
     Top = 616
@@ -381,6 +392,7 @@ object frmProjeto: TfrmProjeto
     Top = 672
   end
   object qryImgs: TZQuery
+    Connection = DM.ZConnection
     Params = <>
     Left = 936
     Top = 616
@@ -391,6 +403,7 @@ object frmProjeto: TfrmProjeto
     Top = 672
   end
   object qryUpImg: TZQuery
+    Connection = DM.ZConnection
     Params = <>
     Left = 1008
     Top = 616
@@ -401,6 +414,7 @@ object frmProjeto: TfrmProjeto
     Top = 672
   end
   object qryExec: TZQuery
+    Connection = DM.ZConnection
     Params = <>
     Left = 800
     Top = 616

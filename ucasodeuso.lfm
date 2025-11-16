@@ -81,6 +81,7 @@ object FrmCasoUso: TFrmCasoUso
       DataSource = dsCasoUso
       MaxLength = 0
       TabOrder = 0
+      OnKeyPress = edtNomeKeyPress
     end
     object Label5: TLabel
       Left = 8

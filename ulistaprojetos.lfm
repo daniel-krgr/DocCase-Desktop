@@ -806,6 +806,7 @@ object FrmListaProjetos: TFrmListaProjetos
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
+      OnGetText = qryListaProjetosdetalheGetText
       BlobType = ftMemo
       Transliterate = False
     end
@@ -833,7 +834,7 @@ object FrmListaProjetos: TFrmListaProjetos
     Options = []
     PreviewButtons = [pbZoom, pbLoad, pbSave, pbPrint, pbFind, pbHelp, pbExit, pbSettings, pbPageSetup]
     DataType = dtDataSet
-    Left = 1106
+    Left = 1104
     Top = 240
   end
   object frdsProjeto: TfrDBDataSet
@@ -1176,5 +1177,71 @@ object FrmListaProjetos: TFrmListaProjetos
   object frDBDataSet1: TfrDBDataSet
     Left = 1000
     Top = 397
+  end
+  object qryImagens: TZQuery
+    Connection = DM.ZConnection
+    SQL.Strings = (
+      'SELECT idimagem, nome_arquivo, imagem'
+      'FROM projeto_imagem'
+      'WHERE projeto_idprojeto = :idprojeto'
+      'ORDER BY idimagem ASC'
+    )
+    Params = <    
+      item
+        Name = 'idprojeto'
+      end>
+    Left = 640
+    Top = 80
+    ParamData = <    
+      item
+        Name = 'idprojeto'
+      end>
+    object qryImagensidimagem: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'idimagem'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryImagensnome_arquivo: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'nome_arquivo'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 255
+    end
+    object qryImagensimagem: TZBlobField
+      FieldKind = fkData
+      FieldName = 'imagem'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dsImagens: TDataSource
+    DataSet = qryImagens
+    Left = 640
+    Top = 128
+  end
+  object frImagens: TfrReport
+    Dataset = frdsImagens
+    InitialZoom = pzDefault
+    Options = []
+    PreviewButtons = [pbZoom, pbLoad, pbSave, pbPrint, pbFind, pbHelp, pbExit, pbSettings, pbPageSetup]
+    DataType = dtDataSet
+    Left = 818
+    Top = 240
+  end
+  object frdsImagens: TfrDBDataSet
+    DataSet = qryImagens
+    Left = 816
+    Top = 296
   end
 end

@@ -7,7 +7,6 @@ object FrmAtor: TFrmAtor
   ClientHeight = 415
   ClientWidth = 518
   Position = poDesktopCenter
-  LCLVersion = '4.2.0.0'
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
@@ -169,6 +168,30 @@ object FrmAtor: TFrmAtor
       )
       MaxLength = 0
       TabOrder = 3
+    end
+    object Label5: TLabel
+      Left = 42
+      Height = 15
+      Top = 32
+      Width = 5
+      Caption = '*'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clRed
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+    end
+    object Label6: TLabel
+      Left = 48
+      Height = 15
+      Top = 80
+      Width = 5
+      Caption = '*'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clRed
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
     end
   end
   object qryAtor: TZQuery

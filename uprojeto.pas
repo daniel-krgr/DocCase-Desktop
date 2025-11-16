@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
-  Buttons, DBCtrls, SynEdit, ZDataset, ZAbstractRODataset, ZConnection;
+  Buttons, DBCtrls, SynEdit, ZDataset, ZAbstractRODataset, ZConnection, ShellApi, windows;
 
 type
 
@@ -28,7 +28,6 @@ type
     DBMemo1: TDBMemo;
     dsProjeto: TDataSource;
     dsTime: TDataSource;
-    pnlImagem: TFlowPanel;
     Thumb: TImage;
     Label1: TLabel;
     Label10: TLabel;
@@ -42,6 +41,7 @@ type
     Label9: TLabel;
     OpenDialog1: TOpenDialog;
     Panel1: TPanel;
+    pnlImagem: TPanel;
     qryProjeto: TZQuery;
     qryProjetocodigo: TZRawStringField;
     qryProjetocodigo1: TZRawStringField;
@@ -69,16 +69,18 @@ type
     qryImgs: TZQuery;
     qryUpImg: TZQuery;
     qryExec: TZQuery;
+    ScrollBoxImagens: TScrollBox;
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
     procedure btnAnexarClick(Sender: TObject);
     procedure btnRemoverImagemClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure ThumbClick(Sender: TObject);
   private
     FImagemSelecionadaID: Integer;
     procedure CarregarMiniaturas(const PID: Integer);
-    //procedure AbrirImagemGrande(const AnexoID: Integer);
+    procedure ThumbSelect(Sender: TObject);
+    procedure ThumbOpen(Sender: TObject);
+
   public
    _action_:String;//edit,insert
    idprojeto:Integer;
@@ -139,6 +141,13 @@ begin
     end;
   end;
 
+  pnlImagem.Width := ScrollBoxImagens.ClientWidth;
+  pnlImagem.Height := 0;
+
+  for i := 0 to pnlImagem.ControlCount - 1 do
+    if pnlImagem.Controls[i].Top + pnlImagem.Controls[i].Height > pnlImagem.Height then
+      pnlImagem.Height := pnlImagem.Controls[i].Top + pnlImagem.Controls[i].Height + 10;
+
   CarregarMiniaturas(PID);
 end;
 
@@ -158,7 +167,6 @@ begin
 
   PID := qryProjeto.FieldByName('idprojeto').AsInteger;
   CarregarMiniaturas(PID);
-  Thumb.Picture.Assign(nil);
   FImagemSelecionadaID := 0;
 end;
 
@@ -175,6 +183,7 @@ begin
   qryImgs.ParamByName('pid').AsInteger := PID;
   qryImgs.Open;
 
+  // limpar miniaturas
   while pnlImagem.ControlCount > 0 do
     pnlImagem.Controls[0].Free;
 
@@ -183,36 +192,27 @@ begin
   begin
     Img := TImage.Create(pnlImagem);
     Img.Parent        := pnlImagem;
-    Img.Width         := 120;
-    Img.Height        := 90;
+    Img.Width         := 500;
+    Img.Height        := 300;
     Img.Stretch       := True;
     Img.Proportional  := True;
     Img.Center        := True;
     Img.Cursor        := crHandPoint;
-    Img.Hint          := qryImgs.FieldByName('nome_arquivo').AsString;
-    Img.ShowHint      := True;
     Img.Tag           := qryImgs.FieldByName('idimagem').AsInteger;
-    Img.OnClick       := @ThumbClick;  // <-- corrige aqui
 
-    Ext := LowerCase(ExtractFileExt(qryImgs.FieldByName('nome_arquivo').AsString));
-    if Ext = '' then
-    begin
-      if Pos('png',  LowerCase(qryImgs.FieldByName('mime').AsString)) > 0 then Ext := '.png' else
-      if Pos('jpeg', LowerCase(qryImgs.FieldByName('mime').AsString)) > 0 then Ext := '.jpg' else
-      if Pos('jpg',  LowerCase(qryImgs.FieldByName('mime').AsString)) > 0 then Ext := '.jpg' else
-      if Pos('bmp',  LowerCase(qryImgs.FieldByName('mime').AsString)) > 0 then Ext := '.bmp' else
-      if Pos('gif',  LowerCase(qryImgs.FieldByName('mime').AsString)) > 0 then Ext := '.gif';
-    end;
+    Img.OnClick       := @ThumbSelect;
+    Img.OnDblClick    := @ThumbOpen;
 
+    // extensão
+    Ext := ExtractFileExt(qryImgs.FieldByName('nome_arquivo').AsString);
+    if Ext = '' then Ext := '.jpg';
+
+    // carregar imagem
     MS := TMemoryStream.Create;
     try
       TBlobField(qryImgs.FieldByName('imagem')).SaveToStream(MS);
       MS.Position := 0;
-
-      if Ext <> '' then
-        Img.Picture.LoadFromStreamWithFileExt(MS, Ext)
-      else
-        Img.Picture.LoadFromStream(MS);
+      Img.Picture.LoadFromStreamWithFileExt(MS, Ext);
     finally
       MS.Free;
     end;
@@ -223,120 +223,100 @@ end;
 
 procedure TfrmProjeto.BitBtn1Click(Sender: TObject);
 begin
-  // verifica se o usuário selecionou um time
-  if cbTime.ItemIndex < 0 then
-  begin
-    ShowMessage('Selecione um time antes de salvar o projeto!');
-    Exit;
-  end;
+   begin
+    if cbTime.ItemIndex < 0 then
+    begin
+      ShowMessage('Selecione um time.');
+      Exit;
+    end;
 
-  // define o id do time selecionado
-  qryProjeto.FieldByName('time_idtime').AsInteger :=
-    PtrInt(cbTime.Items.Objects[cbTime.ItemIndex]);
+    qryProjeto.FieldByName('time_idtime').AsInteger :=
+      PtrInt(cbTime.Items.Objects[cbTime.ItemIndex]);
+    qryProjeto.FieldByName('detalhe').AsString := DBMemo1.Lines.Text;
 
-  qryProjeto.FieldByName('detalhe').AsString:= DBMemo1.Lines.Text;
+    qryProjeto.Post;
+    qryProjeto.ApplyUpdates;
 
-  qryProjeto.Post;
-  qryProjeto.ApplyUpdates; // opcional, mas recomendável
-  ShowMessage('Projeto salvo com sucesso!');
+    ShowMessage('Projeto salvo com sucesso.');
+   end;
 end;
 
 procedure TfrmProjeto.FormShow(Sender: TObject);
-var i: Integer;
 begin
- // 🟦 Preenche ComboBox com os times
-  cbTime.Clear;
-  with qryTime do
-  begin
-    Close;
-    SQL.Text := 'SELECT idtime, nome FROM time ORDER BY nome';
-    Open;
-    while not Eof do
-    begin
-      cbTime.Items.AddObject(
-        FieldByName('nome').AsString,
-        TObject(PtrInt(FieldByName('idtime').AsInteger))
-      );
-      Next;
-    end;
-  end;
+ cbTime.Clear;
+ qryTime.Close;
+ qryTime.SQL.Text := 'SELECT idtime, nome FROM time ORDER BY nome';
+ qryTime.Open;
 
-  // 🟨 Ação: editar projeto existente
-  if _action_ = 'edit' then
-  begin
-    with qryProjeto do
-    begin
-      Close;
-      SQL.Text := 'SELECT * FROM projeto WHERE idprojeto = :id';
-      ParamByName('id').AsInteger := idprojeto;
-      Open;
-      Edit;
+ while not qryTime.EOF do
+ begin
+   cbTime.Items.AddObject(qryTime.FieldByName('nome').AsString,
+     TObject(PtrInt(qryTime.FieldByName('idtime').AsInteger)));
+   qryTime.Next;
+ end;
 
-      // seleciona o time correspondente na combo
-      if not FieldByName('time_idtime').IsNull then
-      begin
-        for i := 0 to cbTime.Items.Count - 1 do
-          if PtrInt(cbTime.Items.Objects[i]) = FieldByName('time_idtime').AsInteger then
-          begin
-            cbTime.ItemIndex := i;
-            Break;
-          end;
-      end;
-    end;
-  end
+ // EDITAR
+ if _action_ = 'edit' then
+ begin
+   qryProjeto.Close;
+   qryProjeto.SQL.Text := 'SELECT * FROM projeto WHERE idprojeto = :id';
+   qryProjeto.ParamByName('id').AsInteger := idprojeto;
+   qryProjeto.Open;
+   qryProjeto.Edit;
 
-  // 🟩 Ação: inserir novo projeto
-  else if _action_ = 'insert' then
-  begin
-    with qryProjeto do
-    begin
-      Close;
-      SQL.Text := 'SELECT * FROM projeto';
-      Open;
-      Insert;
-      FieldByName('data_cadastro').AsDateTime := Date;
-      FieldByName('op_publico').AsString := 'N';
-    end;
-  end;
+   CarregarMiniaturas(idprojeto);
+ end
+
+ // NOVO
+ else if _action_ = 'insert' then
+ begin
+   qryProjeto.Close;
+   qryProjeto.SQL.Text := 'SELECT * FROM projeto';
+   qryProjeto.Open;
+   qryProjeto.Insert;
+
+   qryProjeto.FieldByName('data_cadastro').AsDateTime := Date;
+   qryProjeto.FieldByName('op_publico').AsString := 'N';
+ end;
 end;
 
-procedure TfrmProjeto.ThumbClick(Sender: TObject);
+procedure TfrmProjeto.ThumbSelect(Sender: TObject);
 var
-  AnexoID: Integer;
-  MS: TMemoryStream;
-  Ext: String;
+  Img: TImage;
+  i: Integer;
 begin
-  AnexoID := (Sender as TImage).Tag;
-  FImagemSelecionadaID := AnexoID;
+  Img := Sender as TImage;
+
+  // salva ID selecionado
+  FImagemSelecionadaID := Img.Tag;
+end;
+
+procedure TfrmProjeto.ThumbOpen(Sender: TObject);
+var
+  ID: Integer;
+  MS: TMemoryStream;
+  Ext, Temp: String;
+begin
+  ID := (Sender as TImage).Tag;
 
   qryOne.Close;
-  qryOne.SQL.Text := 'SELECT nome_arquivo, mime, imagem FROM projeto_imagem WHERE idimagem = :id';
-  qryOne.ParamByName('id').AsInteger := AnexoID;
+  qryOne.SQL.Text := 'SELECT nome_arquivo, imagem FROM projeto_imagem WHERE idimagem = :id';
+  qryOne.ParamByName('id').AsInteger := ID;
   qryOne.Open;
-  if qryOne.IsEmpty then Exit;
 
-  Ext := LowerCase(ExtractFileExt(qryOne.FieldByName('nome_arquivo').AsString));
-  if Ext = '' then
-  begin
-    if Pos('png',  LowerCase(qryOne.FieldByName('mime').AsString)) > 0 then Ext := '.png' else
-    if Pos('jpeg', LowerCase(qryOne.FieldByName('mime').AsString)) > 0 then Ext := '.jpg' else
-    if Pos('jpg',  LowerCase(qryOne.FieldByName('mime').AsString)) > 0 then Ext := '.jpg' else
-    if Pos('bmp',  LowerCase(qryOne.FieldByName('mime').AsString)) > 0 then Ext := '.bmp' else
-    if Pos('gif',  LowerCase(qryOne.FieldByName('mime').AsString)) > 0 then Ext := '.gif';
-  end;
+  Ext := ExtractFileExt(qryOne.FieldByName('nome_arquivo').AsString);
+
+  Temp := GetTempDir + 'proj_img_preview' + Ext;
 
   MS := TMemoryStream.Create;
   try
     TBlobField(qryOne.FieldByName('imagem')).SaveToStream(MS);
-    MS.Position := 0;
-
-    if Ext <> '' then
-      Thumb.Picture.LoadFromStreamWithFileExt(MS, Ext) // <-- usa Thumb
-    else
-      Thumb.Picture.LoadFromStream(MS);
+    MS.SaveToFile(Temp);
   finally
     MS.Free;
   end;
+
+  ShellExecute(0, 'open', PChar(Temp), nil, nil, SW_SHOWNORMAL);
 end;
 
 end.
