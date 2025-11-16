@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
-  Buttons, DBCtrls, ZDataset, ZAbstractRODataset, ZConnection;
+  Buttons, DBCtrls, SynEdit, ZDataset, ZAbstractRODataset, ZConnection, ShellApi, windows;
 
 type
 
@@ -15,14 +15,27 @@ type
   TfrmProjeto = class(TForm)
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
+    btnAnexar: TBitBtn;
+    btnRemoverImagem: TBitBtn;
     cbTime: TComboBox;
+    dsOne: TDataSource;
+    dsImgs: TDataSource;
+    dsUpImg: TDataSource;
+    dsExec: TDataSource;
     DBEdit1: TDBEdit;
     DBEdit2: TDBEdit;
     DBEdit3: TDBEdit;
     DBMemo1: TDBMemo;
     dsProjeto: TDataSource;
     dsTime: TDataSource;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Thumb: TImage;
     Label1: TLabel;
+    Label10: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -31,26 +44,52 @@ type
     Label7: TLabel;
     Label8: TLabel;
     Label9: TLabel;
+    OpenDialog1: TOpenDialog;
     Panel1: TPanel;
-    qryProjetocodigo: TZRawStringField;
-    qryProjetodata_cadastro: TZDateField;
-    qryProjetodescricao: TZRawStringField;
-    qryProjetodetalhe: TZRawCLobField;
-    qryProjetoidprojeto: TZIntegerField;
-    qryProjetonome: TZRawStringField;
-    qryProjetoop_publico: TZRawStringField;
-    qryProjetotime_idtime: TZIntegerField;
-    qryTimeidtime: TZIntegerField;
-    qryTimenome: TZRawStringField;
+    pnlImagem: TPanel;
     qryProjeto: TZQuery;
+    qryProjetocodigo: TZRawStringField;
+    qryProjetocodigo1: TZRawStringField;
+    qryProjetodata_cadastro: TZDateField;
+    qryProjetodata_cadastro1: TZDateField;
+    qryProjetodescricao: TZRawStringField;
+    qryProjetodescricao1: TZRawStringField;
+    qryProjetodetalhe: TZRawCLobField;
+    qryProjetodetalhe1: TZRawCLobField;
+    qryProjetoidprojeto: TZIntegerField;
+    qryProjetoidprojeto1: TZIntegerField;
+    qryProjetonome: TZRawStringField;
+    qryProjetonome1: TZRawStringField;
+    qryProjetoop_publico: TZRawStringField;
+    qryProjetoop_publico1: TZRawStringField;
+    qryProjetotime_idtime: TZIntegerField;
+    qryProjetotime_idtime1: TZIntegerField;
     qryTime: TZQuery;
+    qryTimeidtime: TZIntegerField;
+    qryTimeidtime1: TZIntegerField;
+    qryTimenome: TZRawStringField;
+    qryTimenome1: TZRawStringField;
+    ScrollBox1: TScrollBox;
+    qryOne: TZQuery;
+    qryImgs: TZQuery;
+    qryUpImg: TZQuery;
+    qryExec: TZQuery;
+    ScrollBoxImagens: TScrollBox;
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
+    procedure btnAnexarClick(Sender: TObject);
+    procedure btnRemoverImagemClick(Sender: TObject);
+    procedure DBEdit1KeyPress(Sender: TObject; var Key: char);
+    procedure DBEdit2KeyPress(Sender: TObject; var Key: char);
+    procedure DBEdit3KeyPress(Sender: TObject; var Key: char);
     procedure FormShow(Sender: TObject);
   private
+    FImagemSelecionadaID: Integer;
+    procedure CarregarMiniaturas(const PID: Integer);
+    procedure ThumbSelect(Sender: TObject);
+    procedure ThumbOpen(Sender: TObject);
 
   public
-   var
    _action_:String;//edit,insert
    idprojeto:Integer;
   end;
@@ -59,7 +98,8 @@ var
   frmProjeto: TfrmProjeto;
 
 implementation
-
+ uses
+   uSeguranca;
 {$R *.lfm}
 
 { TfrmProjeto }
@@ -69,81 +109,269 @@ begin
   Close;
 end;
 
+procedure TfrmProjeto.btnAnexarClick(Sender: TObject);
+var
+  i, PID: Integer;
+  FS: TFileStream;
+  Ext, Mime: String;
+begin
+  PID := qryProjeto.FieldByName('idprojeto').AsInteger;
+  if PID = 0 then begin
+    ShowMessage('Salve o projeto antes de anexar imagens.'); Exit;
+  end;
+
+  OpenDialog1.Options := OpenDialog1.Options + [ofAllowMultiSelect];
+  OpenDialog1.Filter := 'Imagens|*.png;*.jpg;*.jpeg;*.bmp;*.gif';
+  if not OpenDialog1.Execute then Exit;
+
+  for i := 0 to OpenDialog1.Files.Count - 1 do
+  begin
+    Ext := LowerCase(ExtractFileExt(OpenDialog1.Files[i]));
+    if (Ext='.png') then Mime:='image/png' else
+    if (Ext='.jpg') or (Ext='.jpeg') then Mime:='image/jpeg' else
+    if (Ext='.bmp') then Mime:='image/bmp' else
+    if (Ext='.gif') then Mime:='image/gif' else
+      Mime:='application/octet-stream';
+
+    qryUpImg.Close;
+    qryUpImg.SQL.Text :=
+      'INSERT INTO projeto_imagem(projeto_idprojeto, nome_arquivo, mime, imagem) '+
+      'VALUES (:pid,:nome,:mime,:img)';
+    qryUpImg.ParamByName('pid').AsInteger := PID;
+    qryUpImg.ParamByName('nome').AsString := ExtractFileName(OpenDialog1.Files[i]);
+    qryUpImg.ParamByName('mime').AsString := Mime;
+
+    FS := TFileStream.Create(OpenDialog1.Files[i], fmOpenRead or fmShareDenyWrite);
+    try
+      qryUpImg.ParamByName('img').LoadFromStream(FS, ftBlob);
+      qryUpImg.ExecSQL;
+    finally
+      FS.Free;
+    end;
+  end;
+
+  pnlImagem.Width := ScrollBoxImagens.ClientWidth;
+  pnlImagem.Height := 0;
+
+  for i := 0 to pnlImagem.ControlCount - 1 do
+    if pnlImagem.Controls[i].Top + pnlImagem.Controls[i].Height > pnlImagem.Height then
+      pnlImagem.Height := pnlImagem.Controls[i].Top + pnlImagem.Controls[i].Height + 10;
+
+  CarregarMiniaturas(PID);
+end;
+
+procedure TfrmProjeto.btnRemoverImagemClick(Sender: TObject);
+var
+  PID: Integer;
+begin
+  if FImagemSelecionadaID = 0 then
+  begin
+    ShowMessage('Selecione uma miniatura primeiro.'); Exit;
+  end;
+
+  qryExec.Close;
+  qryExec.SQL.Text := 'DELETE FROM projeto_imagem WHERE idimagem=:id';
+  qryExec.ParamByName('id').AsInteger := FImagemSelecionadaID;
+  qryExec.ExecSQL;
+
+  PID := qryProjeto.FieldByName('idprojeto').AsInteger;
+  CarregarMiniaturas(PID);
+  FImagemSelecionadaID := 0;
+end;
+
+procedure TfrmProjeto.DBEdit1KeyPress(Sender: TObject; var Key: char);
+begin
+  FiltraSomenteLetras(Key, True);
+end;
+
+procedure TfrmProjeto.DBEdit2KeyPress(Sender: TObject; var Key: char);
+begin
+  FiltraSomenteLetras(Key, True);
+end;
+
+procedure TfrmProjeto.DBEdit3KeyPress(Sender: TObject; var Key: char);
+begin
+  FiltraSomenteLetras(Key, True);
+end;
+
+procedure TFrmProjeto.CarregarMiniaturas(const PID: Integer);
+var
+  Img: TImage;
+  MS: TMemoryStream;
+  Ext: String;
+begin
+  qryImgs.Close;
+  qryImgs.SQL.Text :=
+    'SELECT idimagem, nome_arquivo, mime, imagem '+
+    'FROM projeto_imagem WHERE projeto_idprojeto = :pid ORDER BY idimagem DESC';
+  qryImgs.ParamByName('pid').AsInteger := PID;
+  qryImgs.Open;
+
+  // limpar miniaturas
+  while pnlImagem.ControlCount > 0 do
+    pnlImagem.Controls[0].Free;
+
+  qryImgs.First;
+  while not qryImgs.EOF do
+  begin
+    Img := TImage.Create(pnlImagem);
+    Img.Parent        := pnlImagem;
+    Img.Width         := 500;
+    Img.Height        := 300;
+    Img.Stretch       := True;
+    Img.Proportional  := True;
+    Img.Center        := True;
+    Img.Cursor        := crHandPoint;
+    Img.Tag           := qryImgs.FieldByName('idimagem').AsInteger;
+
+    Img.OnClick       := @ThumbSelect;
+    Img.OnDblClick    := @ThumbOpen;
+
+    // extensão
+    Ext := ExtractFileExt(qryImgs.FieldByName('nome_arquivo').AsString);
+    if Ext = '' then Ext := '.jpg';
+
+    // carregar imagem
+    MS := TMemoryStream.Create;
+    try
+      TBlobField(qryImgs.FieldByName('imagem')).SaveToStream(MS);
+      MS.Position := 0;
+      Img.Picture.LoadFromStreamWithFileExt(MS, Ext);
+    finally
+      MS.Free;
+    end;
+
+    qryImgs.Next;
+  end;
+end;
+
 procedure TfrmProjeto.BitBtn1Click(Sender: TObject);
 begin
-  // verifica se o usuário selecionou um time
-  if cbTime.ItemIndex < 0 then
+ if cbTime.ItemIndex < 0 then
+ begin
+  ShowMessage('Selecione um time.');
+  Exit;
+ end;
+
+ if not TamanhoEntre(DBEdit3.Text, 0, 3) then
   begin
-    ShowMessage('Selecione um time antes de salvar o projeto!');
+    ShowMessage('O codigo deve conter no máximo. ');
+    DBEdit3.SetFocus;
     Exit;
   end;
 
-  // define o id do time selecionado
+ if DBEdit1.Text = '' then
+  begin
+   ShowMessage('Descreva o nome do projeto. ');
+   DBEdit1.SetFocus;
+   Exit;
+  end;
+
+  if DBEdit2.Text = '' then
+  begin
+   ShowMessage('Descreva a descrição do projeto. ');
+   DBEdit2.SetFocus;
+   Exit;
+  end;
+
+  if DBEdit3.Text = '' then
+  begin
+   ShowMessage('Descreva o código do projeto. ');
+   DBEdit3.SetFocus;
+   Exit;
+  end;
+
+  if DBMemo1.Lines.Text = '' then
+  begin
+   ShowMessage('Digite o detalhe do projeto. ');
+   DBMemo1.SetFocus;
+   Exit;
+  end;
+
   qryProjeto.FieldByName('time_idtime').AsInteger :=
-    PtrInt(cbTime.Items.Objects[cbTime.ItemIndex]);
+  PtrInt(cbTime.Items.Objects[cbTime.ItemIndex]);
+  qryProjeto.FieldByName('detalhe').AsString := DBMemo1.Lines.Text;
 
   qryProjeto.Post;
-  qryProjeto.ApplyUpdates; // opcional, mas recomendável
-  ShowMessage('Projeto salvo com sucesso!');
+  qryProjeto.ApplyUpdates;
+
+  ShowMessage('Projeto salvo com sucesso.');
 end;
 
 procedure TfrmProjeto.FormShow(Sender: TObject);
-var i: Integer;
 begin
- // 🟦 Preenche ComboBox com os times
-  cbTime.Clear;
-  with qryTime do
-  begin
-    Close;
-    SQL.Text := 'SELECT idtime, nome FROM time ORDER BY nome';
-    Open;
-    while not Eof do
-    begin
-      cbTime.Items.AddObject(
-        FieldByName('nome').AsString,
-        TObject(PtrInt(FieldByName('idtime').AsInteger))
-      );
-      Next;
-    end;
+ cbTime.Clear;
+ qryTime.Close;
+ qryTime.SQL.Text := 'SELECT idtime, nome FROM time ORDER BY nome';
+ qryTime.Open;
+
+ while not qryTime.EOF do
+ begin
+   cbTime.Items.AddObject(qryTime.FieldByName('nome').AsString,
+     TObject(PtrInt(qryTime.FieldByName('idtime').AsInteger)));
+   qryTime.Next;
+ end;
+
+ // EDITAR
+ if _action_ = 'edit' then
+ begin
+   qryProjeto.Close;
+   qryProjeto.SQL.Text := 'SELECT * FROM projeto WHERE idprojeto = :id';
+   qryProjeto.ParamByName('id').AsInteger := idprojeto;
+   qryProjeto.Open;
+   qryProjeto.Edit;
+
+   CarregarMiniaturas(idprojeto);
+ end
+
+ // NOVO
+ else if _action_ = 'insert' then
+ begin
+   qryProjeto.Close;
+   qryProjeto.SQL.Text := 'SELECT * FROM projeto';
+   qryProjeto.Open;
+   qryProjeto.Insert;
+
+   qryProjeto.FieldByName('data_cadastro').AsDateTime := Date;
+   qryProjeto.FieldByName('op_publico').AsString := 'N';
+ end;
+end;
+
+procedure TfrmProjeto.ThumbSelect(Sender: TObject);
+var
+  Img: TImage;
+  i: Integer;
+begin
+  Img := Sender as TImage;
+  FImagemSelecionadaID := Img.Tag;
+end;
+
+procedure TfrmProjeto.ThumbOpen(Sender: TObject);
+var
+  ID: Integer;
+  MS: TMemoryStream;
+  Ext, Temp: String;
+begin
+  ID := (Sender as TImage).Tag;
+
+  qryOne.Close;
+  qryOne.SQL.Text := 'SELECT nome_arquivo, imagem FROM projeto_imagem WHERE idimagem = :id';
+  qryOne.ParamByName('id').AsInteger := ID;
+  qryOne.Open;
+
+  Ext := ExtractFileExt(qryOne.FieldByName('nome_arquivo').AsString);
+
+  Temp := GetTempDir + 'proj_img_preview' + Ext;
+
+  MS := TMemoryStream.Create;
+  try
+    TBlobField(qryOne.FieldByName('imagem')).SaveToStream(MS);
+    MS.SaveToFile(Temp);
+  finally
+    MS.Free;
   end;
 
-  // 🟨 Ação: editar projeto existente
-  if _action_ = 'edit' then
-  begin
-    with qryProjeto do
-    begin
-      Close;
-      SQL.Text := 'SELECT * FROM projeto WHERE idprojeto = :id';
-      ParamByName('id').AsInteger := idprojeto;
-      Open;
-      Edit;
-
-      // seleciona o time correspondente na combo
-      if not FieldByName('time_idtime').IsNull then
-      begin
-        for i := 0 to cbTime.Items.Count - 1 do
-          if PtrInt(cbTime.Items.Objects[i]) = FieldByName('time_idtime').AsInteger then
-          begin
-            cbTime.ItemIndex := i;
-            Break;
-          end;
-      end;
-    end;
-  end
-
-  // 🟩 Ação: inserir novo projeto
-  else if _action_ = 'insert' then
-  begin
-    with qryProjeto do
-    begin
-      Close;
-      SQL.Text := 'SELECT * FROM projeto';
-      Open;
-      Insert;
-      FieldByName('data_cadastro').AsDateTime := Date;
-      FieldByName('op_publico').AsString := 'N';
-    end;
-  end;
+  ShellExecute(0, 'open', PChar(Temp), nil, nil, SW_SHOWNORMAL);
 end;
 
 end.

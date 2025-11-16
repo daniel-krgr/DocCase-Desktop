@@ -9,6 +9,7 @@ object frmPrincipal: TfrmPrincipal
   ClientWidth = 966
   Color = 16118000
   Position = poDesktopCenter
+  OnClose = FormClose
   OnShow = FormShow
   object projeto1: TPanel
     Cursor = crHandPoint
@@ -1420,13 +1421,13 @@ object frmPrincipal: TfrmPrincipal
       'SELECT * FROM projeto'
     )
     Params = <>
-    Left = 880
-    Top = 104
+    Left = 896
+    Top = 72
   end
   object ds_projeto_list: TDataSource
     DataSet = qry_projeto_list
-    Left = 880
-    Top = 152
+    Left = 896
+    Top = 120
   end
   object ActionList1: TActionList
     Left = 880

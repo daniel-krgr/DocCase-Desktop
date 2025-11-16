@@ -36,9 +36,12 @@ type
     sbtPesquisar: TSpeedButton;
     qryFluxo: TZQuery;
     procedure FormShow(Sender: TObject);
+    procedure qryFluxopre_requisitoGetText(Sender: TField; var aText: string;
+      DisplayText: Boolean);
     procedure sbtAdicionarClick(Sender: TObject);
     procedure sbtAtualizarClick(Sender: TObject);
     procedure sbtEditarClick(Sender: TObject);
+    procedure sbtPesquisarClick(Sender: TObject);
   private
 
   public
@@ -54,7 +57,7 @@ var
 implementation
 
 uses
-  ufluxo, ucasodeuso;
+  ufluxo, ucasodeuso, uSeguranca;
 {$R *.lfm}
 
 { TFrmListaFluxo }
@@ -90,6 +93,28 @@ begin
   end;
 end;
 
+procedure TFrmListaFluxo.sbtPesquisarClick(Sender: TObject);
+begin
+   if Trim(edtPesquisar.Text) = '' then
+   begin
+     ShowMessage('Para pesquisar um fluxo, digite parte do nome no campo de texto.');
+     Exit;
+   end;
+
+   qryFluxo.Close;
+   qryFluxo.SQL.Text :=
+     'SELECT * FROM fluxo ' +
+     'WHERE caso_uso_idcaso_uso = :id ' +   // filtra pelo caso de uso atual
+     '  AND nome LIKE :nome';
+
+   qryFluxo.ParamByName('id').AsInteger   := CasoUsoID;  // propriedade do form
+   qryFluxo.ParamByName('nome').AsString := '%' + edtPesquisar.Text + '%';
+
+   qryFluxo.Open;
+
+   edtPesquisar.Text := '';
+end;
+
 procedure TFrmListaFluxo.FormShow(Sender: TObject);
 begin
    lblProjeto.Caption := 'Fluxos do Projeto: ' + NomeProjeto;
@@ -104,22 +129,27 @@ begin
   qryFluxo.ParamByName('projId').AsInteger := ProjetoID;
   qryFluxo.ParamByName('casoId').AsInteger := CasoUsoID;
   qryFluxo.Open;
+
+end;
+
+procedure TFrmListaFluxo.qryFluxopre_requisitoGetText(Sender: TField;
+  var aText: string; DisplayText: Boolean);
+begin
+   aText := ResumirCampoMemo(Sender, 300);
 end;
 
 procedure TFrmListaFluxo.sbtAdicionarClick(Sender: TObject);
 begin
    if FrmFluxo = nil then
     FrmFluxo := TFrmFluxo.Create(Self);
+   FrmFluxo._action_ := 'insert';
+   FrmFluxo.ProjetoID := ProjetoID;
+   FrmFluxo.CasoUsoID := CasoUsoID;
+   FrmFluxo.ShowModal;
+   FrmFluxo.Free;
+   FrmFluxo := nil;
 
-  FrmFluxo._action_ := 'insert';
-  FrmFluxo.ProjetoID := ProjetoID;
-  FrmFluxo.CasoUsoID := CasoUsoID;
-  FrmFluxo.ShowModal;
-
-  FrmFluxo.Free;
-  FrmFluxo := nil;
-
-  qryFluxo.Refresh;
+   qryFluxo.Refresh;
 end;
 
 end.

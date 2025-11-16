@@ -20,6 +20,8 @@ type
     DBMemo1: TDBMemo;
     dsFluxo: TDataSource;
     Label1: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -38,6 +40,7 @@ type
     qryFluxoversao: TZRawStringField;
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
+    procedure DBEdit1KeyPress(Sender: TObject; var Key: char);
     procedure FormShow(Sender: TObject);
   private
 
@@ -54,7 +57,8 @@ var
   FrmFluxo: TFrmFluxo;
 
 implementation
-
+ uses
+   ulistafluxo, uSeguranca;
 {$R *.lfm}
 
 { TFrmFluxo }
@@ -83,14 +87,34 @@ end;
 
 procedure TFrmFluxo.BitBtn1Click(Sender: TObject);
 begin
+  if DBEdit1.Text = '' then
+  begin
+   ShowMessage('Descreva o nome do fluxo. ');
+   DBEdit1.SetFocus;
+   Exit;
+  end;
+
+  if DBMemo1.Lines.Text = '' then
+  begin
+   ShowMessage('Digite a descrição do fluxo. ');
+   DBMemo1.SetFocus;
+   Exit;
+  end;
+
   qryFluxo.Post;
   ShowMessage('Fluxo salvo com sucesso!');
+  FrmListaFluxo.qryFluxo.Refresh;
   Close;
 end;
 
 procedure TFrmFluxo.BitBtn2Click(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TFrmFluxo.DBEdit1KeyPress(Sender: TObject; var Key: char);
+begin
+   FiltraSomenteLetras(Key, True);
 end;
 
 end.

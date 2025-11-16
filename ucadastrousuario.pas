@@ -15,9 +15,10 @@ type
   TFrmCadastroUsuario = class(TForm)
     btCancelar: TBitBtn;
     btSalvar: TBitBtn;
+    DBComboBox1: TDBComboBox;
+    edtSenha: TEdit;
     edtSobrenome: TDBEdit;
     edtEmail: TDBEdit;
-    edtSenha: TDBEdit;
     ds_usuarios: TDataSource;
     edtNome: TDBEdit;
     Image1: TImage;
@@ -25,12 +26,14 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
+    Label5: TLabel;
     Label6: TLabel;
     Panel1: TPanel;
     Panel3: TPanel;
     qry_usuarios: TZQuery;
     qry_usuariosdata_cadastro: TZDateField;
     qry_usuariosemail: TZRawStringField;
+    qry_usuariosfuncao: TZRawStringField;
     qry_usuariosidusuarios: TZIntegerField;
     qry_usuariosimg_user: TZRawStringField;
     qry_usuariosnivel_acesso: TZRawStringField;
@@ -54,7 +57,7 @@ var
 
 implementation
 uses
-  ulistausuarios;
+  ulistausuarios, useguranca;
 
 {$R *.lfm}
 
@@ -66,6 +69,8 @@ begin
 end;
 
 procedure TFrmCadastroUsuario.btSalvarClick(Sender: TObject);
+var
+  SenhaHash: String;
 begin
 //>>>>>>>>>>>>>>>>>>>>  Validação do Nome  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -119,7 +124,12 @@ begin
 
 //>>>>>>>>>>>>>>>>>>>>  Validação do email  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-  if Length(edtEmail);
+  //if Length(edtEmail);
+
+
+  SenhaHash := GeraMD5(edtSenha.Text);
+  qry_usuarios.FieldByName('senha').AsString     := SenhaHash;
+
 
   qry_usuarios.Post;
   ShowMessage('Dados salvos com sucesso!');

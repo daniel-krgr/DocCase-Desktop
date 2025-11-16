@@ -126,6 +126,7 @@ object FrmAtor: TFrmAtor
       DataSource = dsAtor
       MaxLength = 0
       TabOrder = 1
+      OnKeyPress = edtNomeKeyPress
     end
     object edtFuncao: TDBEdit
       Left = 8
@@ -168,6 +169,30 @@ object FrmAtor: TFrmAtor
       )
       MaxLength = 0
       TabOrder = 3
+    end
+    object Label5: TLabel
+      Left = 42
+      Height = 15
+      Top = 32
+      Width = 5
+      Caption = '*'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clRed
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+    end
+    object Label6: TLabel
+      Left = 48
+      Height = 15
+      Top = 80
+      Width = 5
+      Caption = '*'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clRed
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
     end
   end
   object qryAtor: TZQuery

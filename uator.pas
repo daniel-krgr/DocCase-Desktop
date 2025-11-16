@@ -24,6 +24,8 @@ type
     label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
     Panel3: TPanel;
@@ -35,6 +37,7 @@ type
     qryAtorprojeto_idprojeto: TZIntegerField;
     procedure btCancelarClick(Sender: TObject);
     procedure btSalvarClick(Sender: TObject);
+    procedure edtNomeKeyPress(Sender: TObject; var Key: char);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -50,7 +53,7 @@ var
 
 implementation
 uses
-  ulistaator;
+  ulistaator, uSeguranca;
 
 {$R *.lfm}
 
@@ -65,8 +68,6 @@ begin
   if _action_ = 'insert' then
   begin
     qryAtor.Insert;
-
-    // aqui tu pega o ID do projeto direto do form pai
     qryAtor.FieldByName('projeto_idprojeto').AsInteger := FrmListaAtor.ProjetoID;
   end
   else if _action_ = 'edit' then
@@ -81,8 +82,27 @@ end;
 
 procedure TFrmAtor.btSalvarClick(Sender: TObject);
 begin
+  if Length(edtNome.Text) > 5 then
+  begin
+    ShowMessage('Nome do ator muito curto. ');
+    Exit;
+  end;
+
+  if edtFuncao.Text = '' then
+  begin
+    ShowMessage('Descreva a função do ator. ');
+    Exit;
+  end;
+
   qryAtor.Post;
   ShowMessage('Ator cadastrado com sucesso. ');
+  Close;
+  FrmListaAtor.qryAtor.Refresh;
+end;
+
+procedure TFrmAtor.edtNomeKeyPress(Sender: TObject; var Key: char);
+begin
+  FiltraSomenteLetras(Key, True);
 end;
 
 procedure TFrmAtor.FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -92,7 +112,7 @@ end;
 
 procedure TFrmAtor.FormCreate(Sender: TObject);
 begin
-   dbcNivel.Items.Clear;
+  dbcNivel.Items.Clear;
   dbcNivel.Items.Add('Primario');
   dbcNivel.Items.Add('Secundario');
   dbcNivel.Items.Add('Externo');
