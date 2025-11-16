@@ -41,6 +41,7 @@ type
     procedure sbtAdicionarClick(Sender: TObject);
     procedure sbtAtualizarClick(Sender: TObject);
     procedure sbtEditarClick(Sender: TObject);
+    procedure sbtPesquisarClick(Sender: TObject);
   private
 
   public
@@ -92,6 +93,28 @@ begin
   end;
 end;
 
+procedure TFrmListaFluxo.sbtPesquisarClick(Sender: TObject);
+begin
+   if Trim(edtPesquisar.Text) = '' then
+   begin
+     ShowMessage('Para pesquisar um fluxo, digite parte do nome no campo de texto.');
+     Exit;
+   end;
+
+   qryFluxo.Close;
+   qryFluxo.SQL.Text :=
+     'SELECT * FROM fluxo ' +
+     'WHERE caso_uso_idcaso_uso = :id ' +   // filtra pelo caso de uso atual
+     '  AND nome LIKE :nome';
+
+   qryFluxo.ParamByName('id').AsInteger   := CasoUsoID;  // propriedade do form
+   qryFluxo.ParamByName('nome').AsString := '%' + edtPesquisar.Text + '%';
+
+   qryFluxo.Open;
+
+   edtPesquisar.Text := '';
+end;
+
 procedure TFrmListaFluxo.FormShow(Sender: TObject);
 begin
    lblProjeto.Caption := 'Fluxos do Projeto: ' + NomeProjeto;
@@ -107,16 +130,6 @@ begin
   qryFluxo.ParamByName('casoId').AsInteger := CasoUsoID;
   qryFluxo.Open;
 
- {if SameText(Trim(frmLogin.UsuarioFuncao), 'Analista') then
-  begin
-    sbtAdicionar.Enabled  := True;
-    sbtEditar.Enabled := True;
-  end
-  else
-  begin
-    sbtAdicionar.Enabled  := False;
-    sbtEditar.Enabled := False;
-  end; }
 end;
 
 procedure TFrmListaFluxo.qryFluxopre_requisitoGetText(Sender: TField;

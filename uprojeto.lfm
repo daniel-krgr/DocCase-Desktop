@@ -136,14 +136,15 @@ object frmProjeto: TfrmProjeto
       Caption = 'Detalhe do projeto'
     end
     object DBEdit1: TDBEdit
-      Left = 11
+      Left = -152
       Height = 23
-      Top = 121
+      Top = 360
       Width = 437
       DataField = 'nome'
       DataSource = dsProjeto
       MaxLength = 0
       TabOrder = 1
+      OnKeyPress = DBEdit1KeyPress
     end
     object DBEdit2: TDBEdit
       Left = 11
@@ -154,6 +155,7 @@ object frmProjeto: TfrmProjeto
       DataSource = dsProjeto
       MaxLength = 0
       TabOrder = 2
+      OnKeyPress = DBEdit2KeyPress
     end
     object DBEdit3: TDBEdit
       Left = 11
@@ -164,6 +166,7 @@ object frmProjeto: TfrmProjeto
       DataSource = dsProjeto
       MaxLength = 0
       TabOrder = 3
+      OnKeyPress = DBEdit3KeyPress
     end
     object Label9: TLabel
       Left = 11
@@ -244,6 +247,66 @@ object frmProjeto: TfrmProjeto
           Align = alClient
         end
       end
+    end
+    object Label11: TLabel
+      Left = 104
+      Height = 15
+      Top = 104
+      Width = 5
+      Caption = '*'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clRed
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+    end
+    object Label12: TLabel
+      Left = 112
+      Height = 15
+      Top = 282
+      Width = 5
+      Caption = '*'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clRed
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+    end
+    object Label13: TLabel
+      Left = 40
+      Height = 15
+      Top = 237
+      Width = 5
+      Caption = '*'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clRed
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+    end
+    object Label14: TLabel
+      Left = 110
+      Height = 15
+      Top = 192
+      Width = 5
+      Caption = '*'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clRed
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+    end
+    object Label15: TLabel
+      Left = 120
+      Height = 15
+      Top = 148
+      Width = 5
+      Caption = '*'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clRed
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
     end
   end
   object qryProjeto: TZQuery

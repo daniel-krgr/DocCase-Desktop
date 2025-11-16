@@ -28,6 +28,11 @@ type
     DBMemo1: TDBMemo;
     dsProjeto: TDataSource;
     dsTime: TDataSource;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
     Thumb: TImage;
     Label1: TLabel;
     Label10: TLabel;
@@ -74,6 +79,9 @@ type
     procedure BitBtn2Click(Sender: TObject);
     procedure btnAnexarClick(Sender: TObject);
     procedure btnRemoverImagemClick(Sender: TObject);
+    procedure DBEdit1KeyPress(Sender: TObject; var Key: char);
+    procedure DBEdit2KeyPress(Sender: TObject; var Key: char);
+    procedure DBEdit3KeyPress(Sender: TObject; var Key: char);
     procedure FormShow(Sender: TObject);
   private
     FImagemSelecionadaID: Integer;
@@ -90,7 +98,8 @@ var
   frmProjeto: TfrmProjeto;
 
 implementation
-
+ uses
+   uSeguranca;
 {$R *.lfm}
 
 { TfrmProjeto }
@@ -170,6 +179,21 @@ begin
   FImagemSelecionadaID := 0;
 end;
 
+procedure TfrmProjeto.DBEdit1KeyPress(Sender: TObject; var Key: char);
+begin
+  FiltraSomenteLetras(Key, True);
+end;
+
+procedure TfrmProjeto.DBEdit2KeyPress(Sender: TObject; var Key: char);
+begin
+  FiltraSomenteLetras(Key, True);
+end;
+
+procedure TfrmProjeto.DBEdit3KeyPress(Sender: TObject; var Key: char);
+begin
+  FiltraSomenteLetras(Key, True);
+end;
+
 procedure TFrmProjeto.CarregarMiniaturas(const PID: Integer);
 var
   Img: TImage;
@@ -223,22 +247,55 @@ end;
 
 procedure TfrmProjeto.BitBtn1Click(Sender: TObject);
 begin
-   begin
-    if cbTime.ItemIndex < 0 then
-    begin
-      ShowMessage('Selecione um time.');
-      Exit;
-    end;
+ if cbTime.ItemIndex < 0 then
+ begin
+  ShowMessage('Selecione um time.');
+  Exit;
+ end;
 
-    qryProjeto.FieldByName('time_idtime').AsInteger :=
-      PtrInt(cbTime.Items.Objects[cbTime.ItemIndex]);
-    qryProjeto.FieldByName('detalhe').AsString := DBMemo1.Lines.Text;
+ if not TamanhoEntre(DBEdit3.Text, 0, 3) then
+  begin
+    ShowMessage('O codigo deve conter no máximo. ');
+    DBEdit3.SetFocus;
+    Exit;
+  end;
 
-    qryProjeto.Post;
-    qryProjeto.ApplyUpdates;
+ if DBEdit1.Text = '' then
+  begin
+   ShowMessage('Descreva o nome do projeto. ');
+   DBEdit1.SetFocus;
+   Exit;
+  end;
 
-    ShowMessage('Projeto salvo com sucesso.');
-   end;
+  if DBEdit2.Text = '' then
+  begin
+   ShowMessage('Descreva a descrição do projeto. ');
+   DBEdit2.SetFocus;
+   Exit;
+  end;
+
+  if DBEdit3.Text = '' then
+  begin
+   ShowMessage('Descreva o código do projeto. ');
+   DBEdit3.SetFocus;
+   Exit;
+  end;
+
+  if DBMemo1.Lines.Text = '' then
+  begin
+   ShowMessage('Digite o detalhe do projeto. ');
+   DBMemo1.SetFocus;
+   Exit;
+  end;
+
+  qryProjeto.FieldByName('time_idtime').AsInteger :=
+  PtrInt(cbTime.Items.Objects[cbTime.ItemIndex]);
+  qryProjeto.FieldByName('detalhe').AsString := DBMemo1.Lines.Text;
+
+  qryProjeto.Post;
+  qryProjeto.ApplyUpdates;
+
+  ShowMessage('Projeto salvo com sucesso.');
 end;
 
 procedure TfrmProjeto.FormShow(Sender: TObject);
@@ -286,8 +343,6 @@ var
   i: Integer;
 begin
   Img := Sender as TImage;
-
-  // salva ID selecionado
   FImagemSelecionadaID := Img.Tag;
 end;
 

@@ -21,6 +21,8 @@ type
     edtPrecondicao: TDBEdit;
     dbmDescricao: TDBMemo;
     Label1: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -28,6 +30,7 @@ type
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
+    Label9: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
     qryCasoUso: TZQuery;
@@ -42,6 +45,8 @@ type
     qryCasoUsoversao: TZRawStringField;
     procedure BitBtn1Click(Sender: TObject);
     procedure edtNomeKeyPress(Sender: TObject; var Key: char);
+    procedure edtPrecondicaoKeyPress(Sender: TObject; var Key: char);
+    procedure edtVersaoKeyPress(Sender: TObject; var Key: char);
     procedure FormShow(Sender: TObject);
   private
    procedure SalvarVersaoAtualNoHistorico;
@@ -58,7 +63,7 @@ var
 
 implementation
 uses
-  uConex, uSeguranca;
+  uConex, uSeguranca, ulistacasouso;
 {$R *.lfm}
 
 { TFrmCasoUso }
@@ -109,6 +114,28 @@ procedure TFrmCasoUso.BitBtn1Click(Sender: TObject);
 var
   v: Integer;
 begin
+
+  if not TamanhoEntre(EdtNome.Text, 5, 100) then
+  begin
+    ShowMessage('O nome deve ter entre 5 e 100 caracteres.');
+    EdtNome.SetFocus;
+    Exit;
+  end;
+
+  if edtVersao.Text = '' then
+  begin
+   ShowMessage('Indique a versão do caso de uso. ');
+   edtVersao.SetFocus;
+   Exit;
+  end;
+
+  if dbmDescricao.Lines.Text = '' then
+  begin
+   ShowMessage('Digite a descrição do caso de uso. ');
+   dbmDescricao.SetFocus;
+   Exit;
+  end;
+
   // garante que tem algo em edição
   if not (qryCasoUso.State in [dsInsert, dsEdit]) then
   begin
@@ -118,13 +145,10 @@ begin
 
   if qryCasoUso.State = dsInsert then
   begin
-    // vínculo com projeto, se tu usa
     qryCasoUso.FieldByName('projeto_idprojeto').AsInteger := ProjetoID;
-
     qryCasoUso.FieldByName('data_criacao').AsDateTime := Date;
     qryCasoUso.FieldByName('hora_criacao').AsDateTime := Time;
 
-    // primeira versão sempre 1
     qryCasoUso.FieldByName('versao').AsString := '1';
   end
   else
@@ -136,29 +160,28 @@ begin
     Inc(v);
     qryCasoUso.FieldByName('versao').AsString := IntToStr(v);
   end;
-
-  // grava o registro principal
   qryCasoUso.Post;
 
-  // se quiser, pode dar um Refresh
-  // qryCasoUso.Refresh;
-
-  // grava no histórico
   SalvarVersaoAtualNoHistorico;
 
   ShowMessage('Caso de uso salvo com sucesso!');
+  FrmListaCasoUso.qryListaCasoUso.Refresh;
   Close;
 end;
 
 procedure TFrmCasoUso.edtNomeKeyPress(Sender: TObject; var Key: char);
 begin
-  if Key = #8 then
-    Exit;
+  FiltraSomenteLetras(Key, True);
+end;
 
-  if (Key in ['a'..'z']) or (Key in ['A'..'Z']) then
-    Exit;
+procedure TFrmCasoUso.edtPrecondicaoKeyPress(Sender: TObject; var Key: char);
+begin
+  FiltraSomenteLetras(Key, True);
+end;
 
-  Key := #0;
+procedure TFrmCasoUso.edtVersaoKeyPress(Sender: TObject; var Key: char);
+begin
+  FiltraSomenteNumeros(Key, False);
 end;
 
 procedure TFrmCasoUso.FormShow(Sender: TObject);

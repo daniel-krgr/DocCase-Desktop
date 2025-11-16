@@ -126,6 +126,7 @@ object FrmAtor: TFrmAtor
       DataSource = dsAtor
       MaxLength = 0
       TabOrder = 1
+      OnKeyPress = edtNomeKeyPress
     end
     object edtFuncao: TDBEdit
       Left = 8

@@ -37,6 +37,7 @@ type
     qryAtorprojeto_idprojeto: TZIntegerField;
     procedure btCancelarClick(Sender: TObject);
     procedure btSalvarClick(Sender: TObject);
+    procedure edtNomeKeyPress(Sender: TObject; var Key: char);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -52,7 +53,7 @@ var
 
 implementation
 uses
-  ulistaator;
+  ulistaator, uSeguranca;
 
 {$R *.lfm}
 
@@ -67,8 +68,6 @@ begin
   if _action_ = 'insert' then
   begin
     qryAtor.Insert;
-
-    // aqui tu pega o ID do projeto direto do form pai
     qryAtor.FieldByName('projeto_idprojeto').AsInteger := FrmListaAtor.ProjetoID;
   end
   else if _action_ = 'edit' then
@@ -99,6 +98,11 @@ begin
   ShowMessage('Ator cadastrado com sucesso. ');
   Close;
   FrmListaAtor.qryAtor.Refresh;
+end;
+
+procedure TFrmAtor.edtNomeKeyPress(Sender: TObject; var Key: char);
+begin
+  FiltraSomenteLetras(Key, True);
 end;
 
 procedure TFrmAtor.FormClose(Sender: TObject; var CloseAction: TCloseAction);

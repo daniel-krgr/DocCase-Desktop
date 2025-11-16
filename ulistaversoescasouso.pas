@@ -30,13 +30,16 @@ type
     qryVersoesprecondicao: TZRawStringField;
     qryVersoesusuario_nome: TZRawStringField;
     qryVersoesversao: TZIntegerField;
+    sbtAtualizar: TSpeedButton;
     sbtNovo: TSpeedButton;
     sbtPesquisar: TSpeedButton;
     qryVersoes: TZQuery;
     procedure FormShow(Sender: TObject);
     procedure qryVersoesdescricaoGetText(Sender: TField; var aText: string;
       DisplayText: Boolean);
+    procedure sbtAtualizarClick(Sender: TObject);
     procedure sbtNovoClick(Sender: TObject);
+    procedure sbtPesquisarClick(Sender: TObject);
   private
    procedure CarregarVersoes;
   public
@@ -104,9 +107,27 @@ begin
   Close;
 end;
 
+procedure TFrmListaVersoesCasoUso.sbtPesquisarClick(Sender: TObject);
+begin
+   if edtPesquisar.Text = '' then
+   begin
+     ShowMessage('para pesquisar um projeto digite o nome do projeto no campo de texto. ');
+     Exit;
+   end;
+
+ qryVersoes.Close;
+  qryVersoes.SQL.Text :=
+    'SELECT * FROM caso_uso_versao ' +
+    'WHERE nome LIKE :nome';
+  qryVersoes.ParamByName('nome').AsString := '%' + edtPesquisar.Text + '%';
+  qryVersoes.Open;
+
+  edtPesquisar.Text:='';
+end;
+
 procedure TFrmListaVersoesCasoUso.FormShow(Sender: TObject);
 begin
-   qryVersoes.Connection := DM.ZConnection;  // usa mesma conexão do sistema
+   qryVersoes.Connection := DM.ZConnection;
   CarregarVersoes;
 end;
 
@@ -114,6 +135,11 @@ procedure TFrmListaVersoesCasoUso.qryVersoesdescricaoGetText(Sender: TField;
   var aText: string; DisplayText: Boolean);
 begin
  aText := ResumirCampoMemo(Sender, 300);
+end;
+
+procedure TFrmListaVersoesCasoUso.sbtAtualizarClick(Sender: TObject);
+begin
+  qryVersoes.Refresh;
 end;
 
 procedure TFrmListaVersoesCasoUso.CarregarVersoes;
@@ -130,7 +156,7 @@ begin
     '  precondicao, ' +
     '  data_versao, ' +
     '  usuario_nome ' +
-    'FROM caso_uso_versao ' +      // nome da tabela no banco
+    'FROM caso_uso_versao ' +
     'ORDER BY nome, versao DESC';
 
   qryVersoes.Open;

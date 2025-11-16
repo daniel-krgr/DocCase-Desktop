@@ -38,6 +38,7 @@ type
     frReport1: TfrReport;
     Image1: TImage;
     Label1: TLabel;
+    Label2: TLabel;
     Label4: TLabel;
     Label6: TLabel;
     lblNumerVersao: TLabel;
@@ -124,19 +125,6 @@ begin
   end;
 
   lblNumerVersao.Caption := IntToStr(qryListaProjetos.RecordCount);
-
-  {if SameText(Trim(frmLogin.UsuarioFuncao), 'Analista') then
-  begin
-    sbtAdicionar.Enabled  := True;
-    sbtEditar.Enabled := True;
-  end
-  else
-  begin
-    sbtAdicionar.Enabled  := False;
-    sbtEditar.Enabled := False;
-    sbtAdicionar.Visible  := False;
-    sbtEditar.Visible := False;
-  end;  }
 end;
 
 procedure TFrmListaProjetos.qryListaProjetosdetalheGetText(Sender: TField;

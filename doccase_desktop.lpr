@@ -25,7 +25,7 @@ begin
   {$POP}
   Application.Initialize;
   Application.CreateForm(TDM, DM);
-  Application.CreateForm(TfrmPrincipal, frmPrincipal); // <- vira MainForm
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
   frmPrincipal.Hide; // só pra garantir que não pisque antes do login
 
   with TFrmLogin.Create(nil) do
@@ -38,7 +38,6 @@ begin
     Free;
 
   end;
-  Application.CreateForm(TFrmListaVersoesCasoUso, FrmListaVersoesCasoUso);
   Application.Run;
 end.
 
