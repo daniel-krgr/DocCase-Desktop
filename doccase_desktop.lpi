@@ -5,7 +5,7 @@
     <PathDelim Value="\"/>
     <General>
       <SessionStorage Value="InProjectDir"/>
-      <Title Value="doccase_desktop"/>
+      <Title Value="DocCase teste"/>
       <Scaled Value="True"/>
       <ResourceType Value="res"/>
       <UseXPManifest Value="True"/>
@@ -25,6 +25,12 @@
       <FormatVersion Value="2"/>
     </RunParams>
     <RequiredPackages>
+      <Item>
+        <PackageName Value="lazreport"/>
+      </Item>
+      <Item>
+        <PackageName Value="TAChartLazarusPkg"/>
+      </Item>
       <Item>
         <PackageName Value="FCL"/>
       </Item>
@@ -65,8 +71,101 @@
         <Filename Value="ucadastrousuario.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrmCadastroUsuario"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uCadastroUsuario"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uator.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmAtor"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ucasodeuso.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmCasoUso"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="udashboard.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmDashboard"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ufluxo.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmFluxo"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ulistaator.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmListaAtor"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ulistacasouso.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmListaCasoUso"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ulistafluxo.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmListaFluxo"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ulistaprojetos.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmListaProjetos"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ulistatime.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmListaTime"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ulistausuarios.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmListaUsuarios"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ulistaversoescasouso.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmListaVersoesCasoUso"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uListaVersoesCasoUso"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ulogin.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmLogin"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uprojeto.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmProjeto"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uProjeto"/>
+      </Unit>
+      <Unit>
+        <Filename Value="useguranca.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uSeguranca"/>
+      </Unit>
+      <Unit>
+        <Filename Value="utime.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmTime"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit>
     </Units>
   </ProjectOptions>
