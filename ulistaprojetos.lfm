@@ -613,7 +613,6 @@ object FrmListaProjetos: TFrmListaProjetos
     end
   end
   object DBGrid1: TDBGrid
-    Cursor = crAppStart
     Left = 200
     Height = 646
     Top = 50

@@ -19,6 +19,7 @@ uses
 
 begin
   RequireDerivedFormResource:=True;
+  Application.Title:='DocCase teste';
   Application.Scaled:=True;
   {$PUSH}{$WARN 5044 OFF}
   Application.MainFormOnTaskbar:=True;
