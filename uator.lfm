@@ -3,10 +3,12 @@ object FrmAtor: TFrmAtor
   Height = 415
   Top = 250
   Width = 518
+  BorderIcons = [biSystemMenu]
   Caption = 'Cadastrar ator'
   ClientHeight = 415
   ClientWidth = 518
   Position = poDesktopCenter
+  LCLVersion = '4.2.0.0'
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow

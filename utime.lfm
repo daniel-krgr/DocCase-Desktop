@@ -3,6 +3,7 @@ object FrmTime: TFrmTime
   Height = 390
   Top = 250
   Width = 445
+  BorderIcons = [biSystemMenu]
   Caption = 'Cadastrar time'
   ClientHeight = 390
   ClientWidth = 445

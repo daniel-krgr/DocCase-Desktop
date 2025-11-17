@@ -33,7 +33,7 @@
         <ComponentName Value="DM"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="12"/>
         <TopLine Value="4"/>
         <CursorPos X="25" Y="16"/>
         <UsageCount Value="24"/>
@@ -47,11 +47,158 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uCadastroUsuario"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="41"/>
+        <TopLine Value="42"/>
         <CursorPos X="5" Y="49"/>
         <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uator.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmAtor"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="9"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ucasodeuso.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmCasoUso"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="8"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="udashboard.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmDashboard"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="5"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ufluxo.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmFluxo"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="98"/>
+        <CursorPos X="47" Y="110"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ulistaator.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmListaAtor"/>
+        <ResourceBaseClass Value="Form"/>
+        <UsageCount Value="20"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ulistacasouso.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmListaCasoUso"/>
+        <ResourceBaseClass Value="Form"/>
+        <UsageCount Value="20"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ulistafluxo.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmListaFluxo"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="3"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ulistaprojetos.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmListaProjetos"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UsageCount Value="20"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ulistatime.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmListaTime"/>
+        <ResourceBaseClass Value="Form"/>
+        <UsageCount Value="20"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ulistausuarios.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmListaUsuarios"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="4"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ulistaversoescasouso.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmListaVersoesCasoUso"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uListaVersoesCasoUso"/>
+        <UsageCount Value="20"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ulogin.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmLogin"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="7"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uprojeto.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmProjeto"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uProjeto"/>
+        <EditorIndex Value="10"/>
+        <TopLine Value="248"/>
+        <CursorPos X="6" Y="254"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="useguranca.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uSeguranca"/>
+        <UsageCount Value="20"/>
+      </Unit>
+      <Unit>
+        <Filename Value="utime.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmTime"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="6"/>
+        <UsageCount Value="20"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -80,14 +227,36 @@
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\lcl\include\customform.inc"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="11"/>
         <TopLine Value="2377"/>
         <CursorPos Y="2396"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
       </Unit>
+      <Unit>
+        <Filename Value="uregranegocio.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmRegraNegocio"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ulistaregranegocios.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmListaRegrasNegocio"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="20"/>
+      </Unit>
     </Units>
-    <JumpHistory HistoryIndex="17">
+    <JumpHistory HistoryIndex="19">
       <Position>
         <Filename Value="uprincipal.pas"/>
       </Position>
@@ -155,6 +324,13 @@
       <Position>
         <Filename Value="uprincipal.pas"/>
         <Caret Line="71" Column="21" TopLine="36"/>
+      </Position>
+      <Position>
+        <Filename Value="ufluxo.pas"/>
+        <Caret TopLine="90"/>
+      </Position>
+      <Position>
+        <Filename Value="uprojeto.pas"/>
       </Position>
     </JumpHistory>
     <RunParams>

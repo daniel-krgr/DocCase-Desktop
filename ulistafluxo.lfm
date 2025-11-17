@@ -3,11 +3,11 @@ object FrmListaFluxo: TFrmListaFluxo
   Height = 709
   Top = 250
   Width = 1193
+  BorderIcons = [biSystemMenu]
   Caption = 'Lista de fluxos'
   ClientHeight = 709
   ClientWidth = 1193
   Position = poDesktopCenter
-  LCLVersion = '4.2.0.0'
   OnShow = FormShow
   object Panel1: TPanel
     Left = 0

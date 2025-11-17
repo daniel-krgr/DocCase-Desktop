@@ -3,6 +3,7 @@ object FrmDashboard: TFrmDashboard
   Height = 707
   Top = 250
   Width = 987
+  BorderIcons = [biSystemMenu]
   Caption = 'Dashboard'
   ClientHeight = 707
   ClientWidth = 987

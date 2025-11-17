@@ -20,6 +20,7 @@ type
     DBMemo1: TDBMemo;
     dsFluxo: TDataSource;
     Label1: TLabel;
+    Label10: TLabel;
     Label11: TLabel;
     Label12: TLabel;
     Label2: TLabel;
@@ -28,6 +29,8 @@ type
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
     qryFluxo: TZQuery;
@@ -101,6 +104,12 @@ begin
    DBEdit1.SetFocus;
    Exit;
   end;
+
+  if DBComboBox1.ItemIndex < 0 then
+   begin
+    ShowMessage('Selecione um tipo de fluxo.' );
+    Exit;
+   end;
 
   if Trim(DBMemo1.Lines.Text) = '' then
   begin
