@@ -19,7 +19,7 @@ uses
 
 begin
   RequireDerivedFormResource:=True;
-  Application.Title:='DocCase teste';
+  Application.Title:='DocCase';
   Application.Scaled:=True;
   {$PUSH}{$WARN 5044 OFF}
   Application.MainFormOnTaskbar:=True;
