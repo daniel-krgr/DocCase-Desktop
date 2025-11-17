@@ -79,24 +79,28 @@
         <Filename Value="uator.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrmAtor"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
       <Unit>
         <Filename Value="ucasodeuso.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrmCasoUso"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
       <Unit>
         <Filename Value="udashboard.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrmDashboard"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
       <Unit>
         <Filename Value="ufluxo.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrmFluxo"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
       <Unit>
@@ -115,6 +119,7 @@
         <Filename Value="ulistafluxo.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrmListaFluxo"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
       <Unit>
@@ -134,6 +139,7 @@
         <Filename Value="ulistausuarios.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrmListaUsuarios"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
       <Unit>
@@ -147,12 +153,14 @@
         <Filename Value="ulogin.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrmLogin"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
       <Unit>
         <Filename Value="uprojeto.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmProjeto"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uProjeto"/>
       </Unit>
@@ -165,6 +173,19 @@
         <Filename Value="utime.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FrmTime"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uregranegocio.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmRegraNegocio"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ulistaregranegocios.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmListaRegrasNegocio"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
     </Units>

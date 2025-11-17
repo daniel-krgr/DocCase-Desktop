@@ -3,6 +3,7 @@ object FrmListaUsuarios: TFrmListaUsuarios
   Height = 696
   Top = 250
   Width = 1197
+  BorderIcons = [biSystemMenu]
   Caption = 'FrmListaUsuarios'
   ClientHeight = 696
   ClientWidth = 1197

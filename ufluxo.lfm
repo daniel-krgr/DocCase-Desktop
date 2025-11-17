@@ -3,6 +3,7 @@ object FrmFluxo: TFrmFluxo
   Height = 700
   Top = 250
   Width = 793
+  BorderIcons = [biSystemMenu]
   Caption = 'Cadastrar fluxo'
   ClientHeight = 700
   ClientWidth = 793
@@ -179,6 +180,42 @@ object FrmFluxo: TFrmFluxo
       Left = 60
       Height = 15
       Top = 240
+      Width = 5
+      Caption = '*'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clRed
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+    end
+    object Label8: TLabel
+      Left = 43
+      Height = 15
+      Top = 108
+      Width = 5
+      Caption = '*'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clRed
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+    end
+    object Label9: TLabel
+      Left = 80
+      Height = 15
+      Top = 160
+      Width = 5
+      Caption = '*'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clRed
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+    end
+    object Label10: TLabel
+      Left = 60
+      Height = 15
+      Top = 208
       Width = 5
       Caption = '*'
       Font.CharSet = ANSI_CHARSET

@@ -3,6 +3,7 @@ object FrmCasoUso: TFrmCasoUso
   Height = 706
   Top = 250
   Width = 1194
+  BorderIcons = [biSystemMenu]
   Caption = 'Cadastro de caso de uso'
   ClientHeight = 706
   ClientWidth = 1194
