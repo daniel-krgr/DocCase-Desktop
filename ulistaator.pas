@@ -95,6 +95,7 @@ begin
   if FrmAtor = nil then
   FrmAtor:= TFrmAtor.Create(self);
   FrmAtor._action_ := 'edit';
+  FrmAtor.idatores := qryAtor.FieldByName('idatores').AsInteger;
   FrmAtor.ShowModal;
   FrmAtor.Free;
   FrmAtor:= nil;

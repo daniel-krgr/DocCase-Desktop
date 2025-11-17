@@ -87,7 +87,7 @@ object frmProjeto: TfrmProjeto
       ParentBackground = False
       TabOrder = 0
       object BitBtn1: TBitBtn
-        Left = 88
+        Left = 1002
         Height = 30
         Top = 8
         Width = 75
@@ -97,7 +97,7 @@ object frmProjeto: TfrmProjeto
         OnClick = BitBtn1Click
       end
       object BitBtn2: TBitBtn
-        Left = 8
+        Left = 922
         Height = 30
         Top = 8
         Width = 75
@@ -135,17 +135,6 @@ object frmProjeto: TfrmProjeto
       Width = 98
       Caption = 'Detalhe do projeto'
     end
-    object DBEdit1: TDBEdit
-      Left = -152
-      Height = 23
-      Top = 360
-      Width = 437
-      DataField = 'nome'
-      DataSource = dsProjeto
-      MaxLength = 0
-      TabOrder = 1
-      OnKeyPress = DBEdit1KeyPress
-    end
     object DBEdit2: TDBEdit
       Left = 11
       Height = 23
@@ -154,7 +143,7 @@ object frmProjeto: TfrmProjeto
       DataField = 'descricao'
       DataSource = dsProjeto
       MaxLength = 0
-      TabOrder = 2
+      TabOrder = 1
       OnKeyPress = DBEdit2KeyPress
     end
     object DBEdit3: TDBEdit
@@ -165,7 +154,7 @@ object frmProjeto: TfrmProjeto
       DataField = 'codigo'
       DataSource = dsProjeto
       MaxLength = 0
-      TabOrder = 3
+      TabOrder = 2
       OnKeyPress = DBEdit3KeyPress
     end
     object Label9: TLabel
@@ -181,7 +170,8 @@ object frmProjeto: TfrmProjeto
       Top = 257
       Width = 192
       ItemHeight = 15
-      TabOrder = 4
+      ReadOnly = True
+      TabOrder = 3
     end
     object DBMemo1: TDBMemo
       Left = 11
@@ -190,7 +180,7 @@ object frmProjeto: TfrmProjeto
       Width = 900
       DataField = 'detalhe'
       DataSource = dsProjeto
-      TabOrder = 5
+      TabOrder = 4
     end
     object Label10: TLabel
       Left = 11
@@ -205,7 +195,7 @@ object frmProjeto: TfrmProjeto
       Top = 579
       Width = 123
       Caption = 'Adicionar imagem'
-      TabOrder = 6
+      TabOrder = 5
       OnClick = btnAnexarClick
     end
     object btnRemoverImagem: TBitBtn
@@ -214,7 +204,7 @@ object frmProjeto: TfrmProjeto
       Top = 579
       Width = 123
       Caption = 'Remover imagem'
-      TabOrder = 7
+      TabOrder = 6
       OnClick = btnRemoverImagemClick
     end
     object ScrollBoxImagens: TScrollBox
@@ -227,7 +217,7 @@ object frmProjeto: TfrmProjeto
       ClientHeight = 292
       ClientWidth = 897
       ParentBackground = False
-      TabOrder = 8
+      TabOrder = 7
       object pnlImagem: TPanel
         Left = 0
         Height = 292
@@ -307,6 +297,17 @@ object frmProjeto: TfrmProjeto
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
+    end
+    object DBEdit1: TDBEdit
+      Left = 11
+      Height = 23
+      Top = 123
+      Width = 437
+      DataField = 'nome'
+      DataSource = dsProjeto
+      MaxLength = 0
+      TabOrder = 8
+      OnKeyPress = DBEdit1KeyPress
     end
   end
   object qryProjeto: TZQuery

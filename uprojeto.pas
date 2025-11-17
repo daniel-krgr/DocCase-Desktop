@@ -18,11 +18,11 @@ type
     btnAnexar: TBitBtn;
     btnRemoverImagem: TBitBtn;
     cbTime: TComboBox;
+    DBEdit1: TDBEdit;
     dsOne: TDataSource;
     dsImgs: TDataSource;
     dsUpImg: TDataSource;
     dsExec: TDataSource;
-    DBEdit1: TDBEdit;
     DBEdit2: TDBEdit;
     DBEdit3: TDBEdit;
     DBMemo1: TDBMemo;
@@ -99,7 +99,7 @@ var
 
 implementation
  uses
-   uSeguranca;
+   uSeguranca, ulistaprojetos;
 {$R *.lfm}
 
 { TfrmProjeto }
@@ -281,11 +281,11 @@ begin
    Exit;
   end;
 
-  if DBMemo1.Lines.Text = '' then
+  if Trim(DBMemo1.Lines.Text) = '' then
   begin
-   ShowMessage('Digite o detalhe do projeto. ');
-   DBMemo1.SetFocus;
-   Exit;
+    ShowMessage('Digite o detalhe do projeto. ');
+    DBMemo1.SetFocus;
+    Exit;
   end;
 
   qryProjeto.FieldByName('time_idtime').AsInteger :=
@@ -296,9 +296,14 @@ begin
   qryProjeto.ApplyUpdates;
 
   ShowMessage('Projeto salvo com sucesso.');
+  FrmListaProjetos.qryListaProjetos.Refresh;
+  Close;
 end;
 
 procedure TfrmProjeto.FormShow(Sender: TObject);
+var
+  vIDTime: Integer;
+  i: Integer;
 begin
  cbTime.Clear;
  qryTime.Close;
@@ -320,6 +325,16 @@ begin
    qryProjeto.ParamByName('id').AsInteger := idprojeto;
    qryProjeto.Open;
    qryProjeto.Edit;
+
+   vIDTime := qryProjeto.FieldByName('time_idtime').AsInteger;
+
+   cbTime.ItemIndex := -1;
+   for i := 0 to cbTime.Items.Count - 1 do
+     if PtrInt(cbTime.Items.Objects[i]) = vIDTime then
+     begin
+       cbTime.ItemIndex := i;
+       Break;
+     end;
 
    CarregarMiniaturas(idprojeto);
  end

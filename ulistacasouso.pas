@@ -42,6 +42,7 @@ type
     qryListaCasoUso: TZQuery;
     sbtNovo1: TSpeedButton;
     sbtPesquisar: TSpeedButton;
+    procedure btnGerenciarVersoesClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure sbtAdicionarClick(Sender: TObject);
     procedure sbtAtualizarClick(Sender: TObject);
@@ -61,7 +62,7 @@ var
 
 implementation
  uses
-   uProjeto, ucasodeuso, uator, ulistaator, ulistafluxo;
+   uProjeto, ucasodeuso, uator, ulistaator, ulistafluxo, uListaVersoesCasoUso;
 
 {$R *.lfm}
 
@@ -84,6 +85,18 @@ begin
     qryListaCasoUso.SQL.Text := 'SELECT * FROM caso_uso WHERE projeto_idprojeto = :id';
     qryListaCasoUso.ParamByName('id').AsInteger := ProjetoID;
     qryListaCasoUso.Open;
+  end;
+end;
+
+procedure TFrmListaCasoUso.btnGerenciarVersoesClick(Sender: TObject);
+begin
+   if FrmListaVersoesCasoUso = nil then
+    FrmListaVersoesCasoUso := TFrmListaVersoesCasoUso.Create(Self);
+  try
+    FrmListaVersoesCasoUso.ShowModal;
+  finally
+    FrmListaVersoesCasoUso.Free;
+    FrmListaVersoesCasoUso := nil;
   end;
 end;
 

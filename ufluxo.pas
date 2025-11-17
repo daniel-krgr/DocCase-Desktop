@@ -94,11 +94,11 @@ begin
    Exit;
   end;
 
-  if DBMemo1.Lines.Text = '' then
+  if Trim(DBMemo1.Lines.Text) = '' then
   begin
-   ShowMessage('Digite a descrição do fluxo. ');
-   DBMemo1.SetFocus;
-   Exit;
+    ShowMessage('Digite a descrição do fluxo. ');
+    DBMemo1.SetFocus;
+    Exit;
   end;
 
   qryFluxo.Post;

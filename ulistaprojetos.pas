@@ -87,7 +87,7 @@ type
     qryImagens: TZQuery;
     procedure actNovoCasoUsoExecute(Sender: TObject);
     procedure actPesquisaExecute(Sender: TObject);
-    procedure DBGrid1CellClick(Column: TColumn);
+    procedure DBGrid1DblClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure qryListaProjetosdetalheGetText(Sender: TField; var aText: string;
@@ -194,7 +194,7 @@ begin
   edtPesquisar.Text:='';
 end;
 
-procedure TFrmListaProjetos.DBGrid1CellClick(Column: TColumn);
+procedure TFrmListaProjetos.DBGrid1DblClick(Sender: TObject);
 var
   Caminho: String;
   MemoData: TfrMemoView;

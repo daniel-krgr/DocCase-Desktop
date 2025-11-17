@@ -48,15 +48,15 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
     ClientHeight = 33
     ClientWidth = 398
     TabOrder = 0
-    object btCancelar: TBitBtn
-      Left = 243
+    object btAlterarSenha: TBitBtn
+      Left = 168
       Height = 23
       Top = 5
       Width = 75
       Align = alRight
-      Caption = 'Cancelar'
+      Caption = 'Alterar senha'
       TabOrder = 0
-      OnClick = btCancelarClick
+      OnClick = btAlterarSenhaClick
     end
     object btSalvar: TBitBtn
       Left = 318
@@ -67,6 +67,16 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
       Caption = 'Salvar'
       TabOrder = 1
       OnClick = btSalvarClick
+    end
+    object btCancelar1: TBitBtn
+      Left = 243
+      Height = 23
+      Top = 5
+      Width = 75
+      Align = alRight
+      Caption = 'Cancelar'
+      TabOrder = 2
+      OnClick = btCancelar1Click
     end
   end
   object edtNome: TDBEdit
@@ -185,6 +195,7 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
       'Tech lead'
     )
     MaxLength = 0
+    ReadOnly = True
     TabOrder = 6
   end
   object qry_usuarios: TZQuery

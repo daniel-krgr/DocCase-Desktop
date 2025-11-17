@@ -922,7 +922,6 @@ object FrmListaCasoUso: TFrmListaCasoUso
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = False
-      OnGetText = qryListaCasoUsodescricaoGetText
       Size = 200
     end
     object qryListaCasoUsoversao: TZRawStringField

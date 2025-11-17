@@ -26,7 +26,7 @@ begin
   Application.Initialize;
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  frmPrincipal.Hide; // só pra garantir que não pisque antes do login
+  frmPrincipal.Hide;
 
   with TFrmLogin.Create(nil) do
   try
@@ -38,6 +38,8 @@ begin
     Free;
 
   end;
+
   Application.Run;
+
 end.
 
