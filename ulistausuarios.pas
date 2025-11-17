@@ -37,11 +37,13 @@ type
     sbtEditar: TSpeedButton;
     sbtPesquisar: TSpeedButton;
     qryUsuarios: TZQuery;
+    sbtVisualizar: TSpeedButton;
     procedure FormShow(Sender: TObject);
     procedure sbtAdicionarClick(Sender: TObject);
     procedure sbtAtualizarClick(Sender: TObject);
     procedure sbtEditarClick(Sender: TObject);
     procedure sbtPesquisarClick(Sender: TObject);
+    procedure sbtVisualizarClick(Sender: TObject);
   private
 
   public
@@ -120,6 +122,18 @@ begin
   qryUsuarios.Open;
 
   edtPesquisar.Text:='';
+end;
+
+procedure TFrmListaUsuarios.sbtVisualizarClick(Sender: TObject);
+begin
+  if FrmCadastroUsuario = nil then
+    FrmCadastroUsuario:= TFrmCadastroUsuario.Create(self);
+    FrmCadastroUsuario._action_ := 'edit';
+    FrmCadastroUsuario.idusuarios := qryUsuarios.FieldByName('idusuarios').AsInteger;
+    FrmCadastroUsuario.btSalvar.Enabled:= False;
+    FrmCadastroUsuario.ShowModal;
+    FrmCadastroUsuario.Free;
+    FrmCadastroUsuario:= nil;
 end;
 
 

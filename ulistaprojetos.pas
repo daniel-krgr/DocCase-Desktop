@@ -53,6 +53,11 @@ type
     qryCasoReportcaso_precondicao: TZRawStringField;
     qryCasoReportidcaso_uso: TZIntegerField;
     qryAtores: TZQuery;
+    qryCasoReportregra_cod: TZIntegerField;
+    qryCasoReportregra_descricao: TZRawStringField;
+    qryCasoReportregra_item: TZIntegerField;
+    qryCasoReportregra_nome: TZRawStringField;
+    qryCasoReportregra_versao: TZRawStringField;
     qryFluxoReportcaso_nome: TZRawStringField;
     qryFluxoReportfluxo_nome: TZRawStringField;
     qryFluxoReportfluxo_pre: TZRawCLobField;
@@ -85,6 +90,7 @@ type
     sbtAtualizar: TSpeedButton;
     qryProjetoReport: TZQuery;
     qryImagens: TZQuery;
+    sbtVisualizar: TSpeedButton;
     procedure actNovoCasoUsoExecute(Sender: TObject);
     procedure actPesquisaExecute(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
@@ -95,6 +101,7 @@ type
     procedure sbtAdicionarClick(Sender: TObject);
     procedure sbtAtualizarClick(Sender: TObject);
     procedure sbtEditarClick(Sender: TObject);
+    procedure sbtVisualizarClick(Sender: TObject);
   private
 
   public
@@ -160,6 +167,18 @@ begin
   frmProjeto:= TfrmProjeto.Create(self);
   frmProjeto._action_ := 'edit';
   frmProjeto.idprojeto := qryListaProjetos.FieldByName('idprojeto').AsInteger;
+  frmProjeto.ShowModal;
+  frmProjeto.Free;
+  frmProjeto:= nil;
+end;
+
+procedure TFrmListaProjetos.sbtVisualizarClick(Sender: TObject);
+begin
+ if frmProjeto = nil then
+  frmProjeto:= TfrmProjeto.Create(self);
+  frmProjeto._action_ := 'edit';
+  frmProjeto.idprojeto := qryListaProjetos.FieldByName('idprojeto').AsInteger;
+  frmProjeto.BitBtn1.Enabled:= False;
   frmProjeto.ShowModal;
   frmProjeto.Free;
   frmProjeto:= nil;
@@ -235,7 +254,7 @@ end;
 procedure TFrmListaProjetos.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
 begin
-  frmPrincipal.qry_projeto_list.Refresh;
+   frmPrincipal.FormShow(frmPrincipal);
 end;
 
 end.

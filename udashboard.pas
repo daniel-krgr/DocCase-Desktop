@@ -100,7 +100,7 @@ begin
     'LEFT JOIN caso_uso c ON c.projeto_idprojeto = p.idprojeto ' +
     'GROUP BY p.nome ' +
     'ORDER BY total DESC ' +
-    'LIMIT 5';  // 🔹 mostra só os 5 maiores
+    'LIMIT 5';
   qryCasosPorProjeto.Open;
 
   ChartCasosPorProjeto.ClearSeries;
@@ -153,7 +153,7 @@ begin
     'LEFT JOIN fluxo f ON f.caso_uso_idcaso_uso = c.idcaso_uso ' +
     'GROUP BY c.nome ' +
     'ORDER BY total DESC ' +
-    'LIMIT 5';  // 🔹 mostra só os 5 maiores
+    'LIMIT 5';
   qryFluxoPorCaso.Open;
 
   ChartFluxosPorCaso.ClearSeries;
