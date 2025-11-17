@@ -149,7 +149,6 @@ begin
     qryCasoUso.FieldByName('data_criacao').AsDateTime := Date;
     qryCasoUso.FieldByName('hora_criacao').AsDateTime := Time;
 
-    qryCasoUso.FieldByName('versao').AsString := '1';
   end
   else
   if qryCasoUso.State = dsEdit then
@@ -162,6 +161,7 @@ begin
   end;
   qryCasoUso.Post;
 
+  qryCasoUsoetiqueta_idetiqueta.AsInteger:=1;
   SalvarVersaoAtualNoHistorico;
 
   ShowMessage('Caso de uso salvo com sucesso!');
@@ -195,7 +195,7 @@ begin
   begin
     qryCasoUso.Insert;
     qryCasoUso.FieldByName('projeto_idprojeto').AsInteger := ProjetoID;
-    qryCasoUso.FieldByName('etiqueta_idetiqueta').AsInteger := 1; // sempre 1
+    qryCasoUso.FieldByName('etiqueta_idetiqueta').AsInteger := 1;
     qryCasoUso.FieldByName('data_criacao').AsDateTime := Date;
     qryCasoUso.FieldByName('hora_criacao').AsDateTime := Time;
   end

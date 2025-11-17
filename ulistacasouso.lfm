@@ -1,23 +1,24 @@
 object FrmListaCasoUso: TFrmListaCasoUso
   Left = 348
-  Height = 696
+  Height = 768
   Top = 250
-  Width = 1197
+  Width = 1322
   BorderIcons = [biSystemMenu]
   Caption = 'Lista de casos de uso'
-  ClientHeight = 696
-  ClientWidth = 1197
+  ClientHeight = 768
+  ClientWidth = 1322
+  DesignTimePPI = 106
   Position = poDesktopCenter
   OnShow = FormShow
   object Panel1: TPanel
     Left = 0
-    Height = 646
-    Top = 50
-    Width = 200
+    Height = 713
+    Top = 55
+    Width = 221
     Align = alLeft
     BevelOuter = bvNone
-    ClientHeight = 646
-    ClientWidth = 200
+    ClientHeight = 713
+    ClientWidth = 221
     Color = 8537640
     Font.CharSet = ANSI_CHARSET
     Font.Color = clWhite
@@ -29,9 +30,9 @@ object FrmListaCasoUso: TFrmListaCasoUso
     TabOrder = 0
     object sbtNovo: TSpeedButton
       Left = 0
-      Height = 48
-      Top = 24
-      Width = 200
+      Height = 53
+      Top = 32
+      Width = 221
       Caption = 'Fluxos'
       Color = 7879710
       Flat = True
@@ -157,9 +158,9 @@ object FrmListaCasoUso: TFrmListaCasoUso
     end
     object Panel2: TPanel
       Left = 0
-      Height = 64
-      Top = 582
-      Width = 200
+      Height = 71
+      Top = 642
+      Width = 221
       Align = alBottom
       BevelOuter = bvNone
       Color = 10704434
@@ -169,9 +170,9 @@ object FrmListaCasoUso: TFrmListaCasoUso
     end
     object sbtNovo1: TSpeedButton
       Left = 0
-      Height = 48
-      Top = 80
-      Width = 200
+      Height = 53
+      Top = 88
+      Width = 221
       Caption = 'Cadastrar ator'
       Color = 7879710
       Flat = True
@@ -297,9 +298,9 @@ object FrmListaCasoUso: TFrmListaCasoUso
     end
     object btnGerenciarVersoes: TSpeedButton
       Left = 0
-      Height = 48
-      Top = 130
-      Width = 200
+      Height = 53
+      Top = 144
+      Width = 221
       Caption = 'Historico de casos'
       Color = 7879710
       Flat = True
@@ -425,9 +426,9 @@ object FrmListaCasoUso: TFrmListaCasoUso
     end
     object btnRegrasNegocio: TSpeedButton
       Left = 0
-      Height = 48
-      Top = 192
-      Width = 200
+      Height = 53
+      Top = 200
+      Width = 221
       Caption = 'Regras de negócio'
       Color = 7879710
       Flat = True
@@ -554,36 +555,36 @@ object FrmListaCasoUso: TFrmListaCasoUso
   end
   object Panel3: TPanel
     Left = 0
-    Height = 50
+    Height = 55
     Top = 0
-    Width = 1197
+    Width = 1322
     Align = alTop
     BevelOuter = bvNone
-    ClientHeight = 50
-    ClientWidth = 1197
+    ClientHeight = 55
+    ClientWidth = 1322
     Color = 8537640
     ParentBackground = False
     ParentColor = False
     TabOrder = 1
     object Label4: TLabel
-      Left = 52
-      Height = 32
-      Top = 11
-      Width = 113
+      Left = 57
+      Height = 35
+      Top = 12
+      Width = 122
       Caption = 'DocCase'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -27
+      Font.Height = -30
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
     end
     object Image1: TImage
-      Left = 16
-      Height = 35
-      Top = 8
-      Width = 34
+      Left = 18
+      Height = 39
+      Top = 9
+      Width = 38
       Picture.Data = {
         1754506F727461626C654E6574776F726B477261706869631202000089504E47
         0D0A1A0A0000000D49484452000000230000002308060000001ED9B359000000
@@ -606,10 +607,10 @@ object FrmListaCasoUso: TFrmListaCasoUso
       }
     end
     object sbtAtualizar: TSpeedButton
-      Left = 199
-      Height = 31
-      Top = 19
-      Width = 31
+      Left = 220
+      Height = 34
+      Top = 21
+      Width = 34
       Flat = True
       Glyph.Data = {
         36090000424D3609000000000000360000002800000018000000180000000100
@@ -690,10 +691,10 @@ object FrmListaCasoUso: TFrmListaCasoUso
       OnClick = sbtAtualizarClick
     end
     object sbtAdicionar: TSpeedButton
-      Left = 227
-      Height = 31
-      Top = 19
-      Width = 31
+      Left = 251
+      Height = 34
+      Top = 21
+      Width = 34
       Flat = True
       Glyph.Data = {
         36090000424D3609000000000000360000002800000018000000180000000100
@@ -774,10 +775,10 @@ object FrmListaCasoUso: TFrmListaCasoUso
       OnClick = sbtAdicionarClick
     end
     object sbtEditar: TSpeedButton
-      Left = 256
-      Height = 31
-      Top = 19
-      Width = 31
+      Left = 283
+      Height = 34
+      Top = 21
+      Width = 34
       Flat = True
       Glyph.Data = {
         36090000424D3609000000000000360000002800000018000000180000000100
@@ -858,10 +859,10 @@ object FrmListaCasoUso: TFrmListaCasoUso
       OnClick = sbtEditarClick
     end
     object Label1: TLabel
-      Left = 951
-      Height = 15
-      Top = 20
-      Width = 46
+      Left = 1050
+      Height = 17
+      Top = 22
+      Width = 51
       Anchors = [akTop, akLeft, akRight]
       Caption = 'Pesquisa'
       Font.CharSet = ANSI_CHARSET
@@ -871,18 +872,18 @@ object FrmListaCasoUso: TFrmListaCasoUso
       ParentFont = False
     end
     object edtPesquisar: TEdit
-      Left = 1001
-      Height = 23
-      Top = 16
-      Width = 160
+      Left = 1105
+      Height = 25
+      Top = 18
+      Width = 177
       Anchors = [akTop, akLeft, akRight]
       TabOrder = 0
     end
     object sbtPesquisar: TSpeedButton
-      Left = 1163
-      Height = 27
-      Top = 14
-      Width = 31
+      Left = 1284
+      Height = 30
+      Top = 15
+      Width = 35
       Anchors = [akTop, akLeft, akRight]
       Flat = True
       Glyph.Data = {
@@ -965,36 +966,36 @@ object FrmListaCasoUso: TFrmListaCasoUso
       OnClick = sbtPesquisarClick
     end
     object lblNomeCasoPai: TLabel
-      Left = 447
-      Height = 21
-      Top = 24
-      Width = 114
+      Left = 494
+      Height = 25
+      Top = 26
+      Width = 129
       Caption = 'lblNomeCasoPai'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -16
+      Font.Height = -18
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
     end
     object Label2: TLabel
-      Left = 328
-      Height = 21
-      Top = 24
-      Width = 115
+      Left = 362
+      Height = 25
+      Top = 26
+      Width = 135
       Caption = 'Casos de uso de:'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -16
+      Font.Height = -18
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
     end
     object sbtVisualizar: TSpeedButton
-      Left = 286
-      Height = 31
-      Top = 19
-      Width = 31
+      Left = 316
+      Height = 34
+      Top = 21
+      Width = 34
       Flat = True
       Glyph.Data = {
         460E0000424D460E00000000000036000000280000001E0000001E0000000100
@@ -1117,32 +1118,32 @@ object FrmListaCasoUso: TFrmListaCasoUso
     end
   end
   object DBGrid1: TDBGrid
-    Left = 200
-    Height = 646
-    Top = 50
-    Width = 997
+    Left = 221
+    Height = 713
+    Top = 55
+    Width = 1101
     Align = alClient
     BorderStyle = bsNone
     Color = clWindow
     Columns = <    
       item
         Title.Caption = 'Nome'
-        Width = 150
+        Width = 166
         FieldName = 'nome'
       end    
       item
         Title.Caption = 'Descrição'
-        Width = 550
+        Width = 607
         FieldName = 'descricao'
       end    
       item
         Title.Caption = 'Versão'
-        Width = 150
+        Width = 166
         FieldName = 'versao'
       end    
       item
         Title.Caption = 'Data de criação'
-        Width = 100
+        Width = 110
         FieldName = 'data_criacao'
       end>
     DataSource = dsListaCasoUso
@@ -1156,8 +1157,8 @@ object FrmListaCasoUso: TFrmListaCasoUso
       'SELECT * FROM caso_uso'
     )
     Params = <>
-    Left = 1112
-    Top = 84
+    Left = 1228
+    Top = 93
     object qryListaCasoUsoidcaso_uso: TZIntegerField
       FieldKind = fkData
       FieldName = 'idcaso_uso'
@@ -1246,13 +1247,13 @@ object FrmListaCasoUso: TFrmListaCasoUso
   end
   object dsListaCasoUso: TDataSource
     DataSet = qryListaCasoUso
-    Left = 1116
-    Top = 140
+    Left = 1232
+    Top = 155
   end
   object dsAux: TDataSource
     DataSet = qryAux
-    Left = 1052
-    Top = 140
+    Left = 1162
+    Top = 155
   end
   object qryAux: TZQuery
     Connection = DM.ZConnection
@@ -1260,7 +1261,7 @@ object FrmListaCasoUso: TFrmListaCasoUso
       'SELECT * FROM caso_uso'
     )
     Params = <>
-    Left = 1048
-    Top = 84
+    Left = 1157
+    Top = 93
   end
 end

@@ -129,7 +129,7 @@ begin
 
   FrmCasoUso._action_ := 'insert';
   FrmCasoUso.ProjetoID := ProjetoID;
-  FrmCasoUso.NomeProjeto := lblNomeCasoPai.Caption; // se quiser exibir no topo
+  FrmCasoUso.NomeProjeto := lblNomeCasoPai.Caption;
 
   FrmCasoUso.ShowModal;
   FrmCasoUso.Free;
