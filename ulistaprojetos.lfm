@@ -651,7 +651,7 @@ object FrmListaProjetos: TFrmListaProjetos
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     TabOrder = 2
     TitleStyle = tsNative
-    OnCellClick = DBGrid1CellClick
+    OnDblClick = DBGrid1DblClick
   end
   object sbtAtualizar2: TSpeedButton
     Left = 199

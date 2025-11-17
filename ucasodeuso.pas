@@ -129,11 +129,11 @@ begin
    Exit;
   end;
 
-  if dbmDescricao.Lines.Text = '' then
+  if Trim(dbmDescricao.Lines.Text) = '' then
   begin
-   ShowMessage('Digite a descrição do caso de uso. ');
-   dbmDescricao.SetFocus;
-   Exit;
+    ShowMessage('Digite a descrição do caso de uso. ');
+    dbmDescricao.SetFocus;
+    Exit;
   end;
 
   // garante que tem algo em edição
@@ -204,6 +204,7 @@ begin
     qryCasoUso.Close;
     qryCasoUso.SQL.Text := 'SELECT * FROM caso_uso WHERE idcaso_uso = :id';
     qryCasoUso.ParamByName('id').AsInteger := IdCasoUso;
+    edtVersao.Enabled:= False;
     qryCasoUso.Open;
     qryCasoUso.Edit;
   end;

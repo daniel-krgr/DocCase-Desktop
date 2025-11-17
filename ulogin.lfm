@@ -3,10 +3,11 @@ object FrmLogin: TFrmLogin
   Height = 342
   Top = 250
   Width = 423
-  Caption = 'FrmLogin'
+  Caption = 'Login'
   ClientHeight = 342
   ClientWidth = 423
   Position = poDesktopCenter
+  LCLVersion = '4.2.0.0'
   object Panel1: TPanel
     Left = 0
     Height = 120

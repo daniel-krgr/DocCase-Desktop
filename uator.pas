@@ -45,7 +45,7 @@ type
 
   public
    _action_:String;//edit,insert
-   idator:Integer;
+   idatores:Integer;
   end;
 
 var
@@ -74,7 +74,7 @@ begin
   begin
     qryAtor.Close;
     qryAtor.SQL.Text := 'SELECT * FROM atores WHERE idatores = :id';
-    qryAtor.ParamByName('id').AsInteger := idAtor;
+    qryAtor.ParamByName('id').AsInteger := idAtores;
     qryAtor.Open;
     qryAtor.Edit;
   end;

@@ -13,7 +13,8 @@ type
   { TFrmCadastroUsuario }
 
   TFrmCadastroUsuario = class(TForm)
-    btCancelar: TBitBtn;
+    btAlterarSenha: TBitBtn;
+    btCancelar1: TBitBtn;
     btSalvar: TBitBtn;
     DBComboBox1: TDBComboBox;
     edtSenha: TEdit;
@@ -41,7 +42,8 @@ type
     qry_usuariossenha: TZRawStringField;
     qry_usuariossobrenome: TZRawStringField;
     qry_usuariosstatus: TZRawStringField;
-    procedure btCancelarClick(Sender: TObject);
+    procedure btAlterarSenhaClick(Sender: TObject);
+    procedure btCancelar1Click(Sender: TObject);
     procedure btSalvarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
@@ -63,16 +65,26 @@ uses
 
 { TFrmCadastroUsuario }
 
-procedure TFrmCadastroUsuario.btCancelarClick(Sender: TObject);
+procedure TFrmCadastroUsuario.btAlterarSenhaClick(Sender: TObject);
 begin
-  close;
+  edtSenha.Enabled:=True;
+end;
+
+procedure TFrmCadastroUsuario.btCancelar1Click(Sender: TObject);
+begin
+ Close;
 end;
 
 procedure TFrmCadastroUsuario.btSalvarClick(Sender: TObject);
 var
   SenhaHash: String;
+  Email: String;
+  NovaSenha: String;
+  Novo: Boolean;
 begin
-//>>>>>>>>>>>>>>>>>>>>  Validação do Nome  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  Novo := qry_usuarios.State = dsInsert;
+
+  //>>>>>>>>>>>>>>>>>>>>  Validação do Nome  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   edtNome.Text := Trim(edtNome.Text);
 
@@ -86,8 +98,8 @@ begin
   if Length(edtNome.Text) < 3 then
   begin
     ShowMessage('O nome deve conter pelo menos 3 caracteres. ');
-    Exit;
     edtNome.SetFocus;
+    Exit;
   end;
 
   if Length(edtNome.Text) > 45 then
@@ -97,7 +109,7 @@ begin
     Exit;
   end;
 
-//>>>>>>>>>>>>>>>>>>>>  Validação do sobrenome  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  //>>>>>>>>>>>>>>>>>>>>  Validação do sobrenome  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   edtSobrenome.Text := Trim(edtSobrenome.Text);
 
@@ -111,8 +123,8 @@ begin
   if Length(edtSobrenome.Text) < 3 then
   begin
     ShowMessage('O sobrenome deve conter pelo menos 3 caracteres.');
-    Exit;
     edtSobrenome.SetFocus;
+    Exit;
   end;
 
   if Length(edtSobrenome.Text) > 120 then
@@ -122,23 +134,72 @@ begin
     Exit;
   end;
 
-//>>>>>>>>>>>>>>>>>>>>  Validação do email  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  //>>>>>>>>>>>>>>>>>>>>  Validação do e-mail  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-  //if Length(edtEmail);
+  Email := Trim(EdtEmail.Text);
 
+  if not EmailValido(Email) then
+  begin
+    ShowMessage('Informe um e-mail válido.');
+    EdtEmail.SetFocus;
+    Exit;
+  end;
 
-  SenhaHash := GeraMD5(edtSenha.Text);
-  qry_usuarios.FieldByName('senha').AsString     := SenhaHash;
+  //>>>>>>>>>>>>>>>>>>>>  Validação da função (combo)  >>>>>>>>>>>>>>>>>>>>>>>>
 
+  if DBComboBox1.ItemIndex < 0 then
+  begin
+    ShowMessage('Selecione uma função. ');
+    DBComboBox1.SetFocus;
+    Exit;
+  end;
+
+  //>>>>>>>>>>>>>>>>>>>>  SENHA  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+  NovaSenha := Trim(edtSenha.Text);
+
+  if Novo then
+  begin
+    // NOVO USUÁRIO
+    if Length(NovaSenha) < 3 then
+    begin
+      ShowMessage('A senha deve conter pelo menos 3 caracteres.');
+      edtSenha.SetFocus;
+      Exit;
+    end;
+
+    SenhaHash := GeraMD5(NovaSenha);
+    qry_usuarios.FieldByName('senha').AsString := SenhaHash;
+  end
+  else
+  begin
+    // EDITAR USUÁRIO
+    if NovaSenha <> '' then
+    begin
+      if Length(NovaSenha) < 3 then
+      begin
+        ShowMessage('A nova senha deve conter pelo menos 3 caracteres.');
+        edtSenha.SetFocus;
+        Exit;
+      end;
+
+      SenhaHash := GeraMD5(NovaSenha);
+      qry_usuarios.FieldByName('senha').AsString := SenhaHash;
+    end;
+    // se NovaSenha = '' -> não mexe no campo senha, continua o hash que já veio do banco
+  end;
+
+  //>>>>>>>>>>>>>>>>>>>>  SALVAR  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
   qry_usuarios.Post;
   ShowMessage('Dados salvos com sucesso!');
   FrmListaUsuarios.qryUsuarios.Refresh;
+  Close;
 end;
 
 procedure TFrmCadastroUsuario.FormShow(Sender: TObject);
 begin
-   // 🟨 Ação: editar projeto existente
+   // Editar
   if _action_ = 'edit' then
   begin
     with qry_usuarios do
@@ -148,10 +209,11 @@ begin
       ParamByName('id').AsInteger := idusuarios;
       Open;
       Edit;
+      edtSenha.Enabled:= False;
     end;
   end
 
-  // 🟩 Ação: inserir novo projeto
+  // Novo
   else if _action_ = 'insert' then
   begin
     with qry_usuarios do
@@ -162,7 +224,6 @@ begin
       Insert;
     end;
   end;
-
 end;
 
 end.

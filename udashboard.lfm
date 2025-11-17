@@ -6,6 +6,7 @@ object FrmDashboard: TFrmDashboard
   Caption = 'Dashboard'
   ClientHeight = 707
   ClientWidth = 987
+  Position = poDesktopCenter
   LCLVersion = '4.2.0.0'
   OnShow = FormShow
   object Panel1: TPanel
