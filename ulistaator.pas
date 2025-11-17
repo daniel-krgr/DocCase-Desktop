@@ -32,11 +32,13 @@ type
     sbtAtualizar: TSpeedButton;
     sbtEditar: TSpeedButton;
     sbtPesquisar: TSpeedButton;
+    sbtVisualizar: TSpeedButton;
     procedure FormShow(Sender: TObject);
     procedure sbtAdicionarClick(Sender: TObject);
     procedure sbtAtualizarClick(Sender: TObject);
     procedure sbtEditarClick(Sender: TObject);
     procedure sbtPesquisarClick(Sender: TObject);
+    procedure sbtVisualizarClick(Sender: TObject);
   private
 
   public
@@ -118,6 +120,18 @@ begin
   qryAtor.Open;
 
   edtPesquisar.Text:='';
+end;
+
+procedure TFrmListaAtor.sbtVisualizarClick(Sender: TObject);
+begin
+  if FrmAtor = nil then
+  FrmAtor:= TFrmAtor.Create(self);
+  FrmAtor._action_ := 'edit';
+  FrmAtor.idatores := qryAtor.FieldByName('idatores').AsInteger;
+  FrmAtor.btSalvar.Enabled:= False;
+  FrmAtor.ShowModal;
+  FrmAtor.Free;
+  FrmAtor:= nil;
 end;
 
 end.

@@ -35,6 +35,7 @@ type
     sbtEditar: TSpeedButton;
     sbtPesquisar: TSpeedButton;
     qryFluxo: TZQuery;
+    sbtVisualizar: TSpeedButton;
     procedure FormShow(Sender: TObject);
     procedure qryFluxopre_requisitoGetText(Sender: TField; var aText: string;
       DisplayText: Boolean);
@@ -42,6 +43,7 @@ type
     procedure sbtAtualizarClick(Sender: TObject);
     procedure sbtEditarClick(Sender: TObject);
     procedure sbtPesquisarClick(Sender: TObject);
+    procedure sbtVisualizarClick(Sender: TObject);
   private
 
   public
@@ -104,15 +106,36 @@ begin
    qryFluxo.Close;
    qryFluxo.SQL.Text :=
      'SELECT * FROM fluxo ' +
-     'WHERE caso_uso_idcaso_uso = :id ' +   // filtra pelo caso de uso atual
+     'WHERE caso_uso_idcaso_uso = :id ' +
      '  AND nome LIKE :nome';
 
-   qryFluxo.ParamByName('id').AsInteger   := CasoUsoID;  // propriedade do form
+   qryFluxo.ParamByName('id').AsInteger   := CasoUsoID;
    qryFluxo.ParamByName('nome').AsString := '%' + edtPesquisar.Text + '%';
 
    qryFluxo.Open;
 
    edtPesquisar.Text := '';
+end;
+
+procedure TFrmListaFluxo.sbtVisualizarClick(Sender: TObject);
+begin
+   if not qryFluxo.IsEmpty then
+  begin
+    if FrmFluxo = nil then
+      FrmFluxo := TFrmFluxo.Create(Self);
+
+    FrmFluxo._action_ := 'edit';
+    FrmFluxo.IdFluxo := qryFluxo.FieldByName('idfluxo').AsInteger;
+    FrmFluxo.BitBtn1.Enabled:= False;
+    FrmFluxo.ProjetoID := ProjetoID;
+    FrmFluxo.CasoUsoID := CasoUsoID;
+    FrmFluxo.ShowModal;
+
+    FrmFluxo.Free;
+    FrmFluxo := nil;
+
+    qryFluxo.Refresh;
+  end;
 end;
 
 procedure TFrmListaFluxo.FormShow(Sender: TObject);

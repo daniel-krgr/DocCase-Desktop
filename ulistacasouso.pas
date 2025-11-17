@@ -13,6 +13,8 @@ type
   { TFrmListaCasoUso }
 
   TFrmListaCasoUso = class(TForm)
+    btnGerenciarVersoes: TSpeedButton;
+    btnRegrasNegocio: TSpeedButton;
     dsListaCasoUso: TDataSource;
     DBGrid1: TDBGrid;
     dsAux: TDataSource;
@@ -38,11 +40,13 @@ type
     sbtAdicionar: TSpeedButton;
     sbtAtualizar: TSpeedButton;
     sbtEditar: TSpeedButton;
+    sbtVisualizar: TSpeedButton;
     sbtNovo: TSpeedButton;
     qryListaCasoUso: TZQuery;
     sbtNovo1: TSpeedButton;
     sbtPesquisar: TSpeedButton;
     procedure btnGerenciarVersoesClick(Sender: TObject);
+    procedure btnRegrasNegocioClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure sbtAdicionarClick(Sender: TObject);
     procedure sbtAtualizarClick(Sender: TObject);
@@ -50,6 +54,7 @@ type
     procedure sbtNovo1Click(Sender: TObject);
     procedure sbtNovoClick(Sender: TObject);
     procedure sbtPesquisarClick(Sender: TObject);
+    procedure sbtVisualizarClick(Sender: TObject);
   private
 
   public
@@ -62,7 +67,7 @@ var
 
 implementation
  uses
-   uProjeto, ucasodeuso, uator, ulistaator, ulistafluxo, uListaVersoesCasoUso;
+   uProjeto, ucasodeuso, uator, ulistaator, ulistafluxo, uListaVersoesCasoUso, ulistaregranegocios;
 
 {$R *.lfm}
 
@@ -97,6 +102,23 @@ begin
   finally
     FrmListaVersoesCasoUso.Free;
     FrmListaVersoesCasoUso := nil;
+  end;
+end;
+
+procedure TFrmListaCasoUso.btnRegrasNegocioClick(Sender: TObject);
+begin
+ if qryListaCasoUso.IsEmpty then
+    Exit;
+
+  if FrmListaRegrasNegocio = nil then
+    FrmListaRegrasNegocio := TFrmListaRegrasNegocio.Create(Self);
+  try
+    FrmListaRegrasNegocio.idcaso_uso :=
+      qryListaCasoUso.FieldByName('idcaso_uso').AsInteger;
+    FrmListaRegrasNegocio.ShowModal;
+  finally
+    FrmListaRegrasNegocio.Free;
+    FrmListaRegrasNegocio := nil;
   end;
 end;
 
@@ -188,6 +210,26 @@ begin
   qryListaCasoUso.Open;
 
   edtPesquisar.Text:='';
+end;
+
+procedure TFrmListaCasoUso.sbtVisualizarClick(Sender: TObject);
+begin
+ if not qryListaCasoUso.IsEmpty then
+  begin
+    if FrmCasoUso = nil then
+      FrmCasoUso := TFrmCasoUso.Create(Self);
+
+    FrmCasoUso._action_ := 'edit';
+    FrmCasoUso.ProjetoID := ProjetoID;
+    FrmCasoUso.IdCasoUso := qryListaCasoUso.FieldByName('idcaso_uso').AsInteger;
+    FrmCasoUso.BitBtn1.Enabled:= False;
+
+    FrmCasoUso.ShowModal;
+    FrmCasoUso.Free;
+    FrmCasoUso := nil;
+
+    qryListaCasoUso.Refresh;
+  end;
 end;
 
 end.

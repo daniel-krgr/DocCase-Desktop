@@ -13,7 +13,8 @@ uses
   Forms, tachartlazaruspkg, uPrincipal, rxnew, uConex, zcomponent,
   uCadastroUsuario, ucasodeuso, udashboard, ufluxo, ulistaator, ulistacasouso,
   ulistafluxo, ulistaprojetos, ulistatime, ulistausuarios, uProjeto, utime,
-  useguranca, ulogin, uator, uListaVersoesCasoUso;
+  useguranca, ulogin, uator, uListaVersoesCasoUso, ulistaregranegocios, 
+uregranegocio;
 
 {$R *.res}
 
@@ -39,7 +40,6 @@ begin
     Free;
 
   end;
-
   Application.Run;
 
 end.

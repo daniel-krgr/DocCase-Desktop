@@ -42,6 +42,8 @@ type
     procedure BitBtn2Click(Sender: TObject);
     procedure DBEdit1KeyPress(Sender: TObject; var Key: char);
     procedure FormShow(Sender: TObject);
+    procedure qryFluxopre_requisitoGetText(Sender: TField; var aText: string;
+      DisplayText: Boolean);
   private
 
   public
@@ -83,6 +85,12 @@ begin
     qryFluxo.Open;
     qryFluxo.Edit;
   end;
+end;
+
+procedure TFrmFluxo.qryFluxopre_requisitoGetText(Sender: TField;
+  var aText: string; DisplayText: Boolean);
+begin
+  aText := ResumirCampoMemo(Sender, 300);
 end;
 
 procedure TFrmFluxo.BitBtn1Click(Sender: TObject);
