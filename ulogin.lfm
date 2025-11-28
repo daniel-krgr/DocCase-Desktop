@@ -1,31 +1,31 @@
 object FrmLogin: TFrmLogin
   Left = 310
-  Height = 342
+  Height = 378
   Top = 250
-  Width = 423
+  Width = 467
   BorderIcons = [biSystemMenu]
   Caption = 'Login'
-  ClientHeight = 342
-  ClientWidth = 423
+  ClientHeight = 378
+  ClientWidth = 467
+  DesignTimePPI = 106
   Position = poDesktopCenter
-  LCLVersion = '4.2.0.0'
   object Panel1: TPanel
     Left = 0
-    Height = 120
+    Height = 132
     Top = 0
-    Width = 423
+    Width = 467
     Align = alTop
-    ClientHeight = 120
-    ClientWidth = 423
+    ClientHeight = 132
+    ClientWidth = 467
     Color = 8537640
     ParentBackground = False
     ParentColor = False
     TabOrder = 0
     object Image1: TImage
-      Left = 6
-      Height = 112
-      Top = 8
-      Width = 402
+      Left = 7
+      Height = 124
+      Top = 9
+      Width = 444
       Picture.Data = {
         1754506F727461626C654E6574776F726B47726170686963CC14000089504E47
         0D0A1A0A0000000D49484452000001790000007808060000001728822C000000
@@ -200,71 +200,73 @@ object FrmLogin: TFrmLogin
   end
   object Panel2: TPanel
     Left = 0
-    Height = 222
-    Top = 120
-    Width = 423
+    Height = 246
+    Top = 132
+    Width = 467
     Align = alClient
-    ClientHeight = 222
-    ClientWidth = 423
+    ClientHeight = 246
+    ClientWidth = 467
     Color = clWhite
     ParentBackground = False
     ParentColor = False
     TabOrder = 1
     object edtUsuario: TEdit
-      Left = 8
-      Height = 23
-      Top = 43
-      Width = 216
+      Left = 9
+      Height = 25
+      Top = 47
+      Width = 239
       TabOrder = 0
+      OnKeyPress = edtUsuarioKeyPress
     end
     object Label1: TLabel
-      Left = 8
-      Height = 15
-      Top = 24
-      Width = 33
+      Left = 9
+      Height = 17
+      Top = 26
+      Width = 36
       Caption = 'Nome'
     end
     object Label2: TLabel
-      Left = 8
-      Height = 15
-      Top = 72
-      Width = 32
+      Left = 9
+      Height = 17
+      Top = 80
+      Width = 35
       Caption = 'Senha'
     end
     object edtSenha: TEdit
-      Left = 8
-      Height = 23
-      Top = 88
-      Width = 216
+      Left = 9
+      Height = 25
+      Top = 97
+      Width = 239
       EchoMode = emPassword
       PasswordChar = '*'
       TabOrder = 1
+      OnKeyPress = edtSenhaKeyPress
     end
     object Panel3: TPanel
       Left = 1
-      Height = 35
-      Top = 186
-      Width = 421
+      Height = 39
+      Top = 206
+      Width = 465
       Align = alBottom
       BevelOuter = bvNone
-      ClientHeight = 35
-      ClientWidth = 421
+      ClientHeight = 39
+      ClientWidth = 465
       ParentBackground = False
       TabOrder = 2
       object btEntrar: TBitBtn
-        Left = 344
-        Height = 30
+        Left = 380
+        Height = 33
         Top = 2
-        Width = 75
+        Width = 83
         Caption = 'Entrar'
         TabOrder = 0
         OnClick = btEntrarClick
       end
       object BitBtn2: TBitBtn
-        Left = 268
-        Height = 30
+        Left = 296
+        Height = 33
         Top = 2
-        Width = 75
+        Width = 83
         Caption = 'Cancelar'
         TabOrder = 1
         OnClick = BitBtn2Click
@@ -274,12 +276,12 @@ object FrmLogin: TFrmLogin
   object qryLogin: TZQuery
     Connection = DM.ZConnection
     Params = <>
-    Left = 337
-    Top = 145
+    Left = 372
+    Top = 160
   end
   object dsLogin: TDataSource
     DataSet = qryLogin
-    Left = 337
-    Top = 200
+    Left = 372
+    Top = 221
   end
 end

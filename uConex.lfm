@@ -1,10 +1,11 @@
 object DM: TDM
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 535
-  HorizontalOffset = 457
-  VerticalOffset = 250
-  Width = 1017
+  Height = 591
+  HorizontalOffset = 505
+  VerticalOffset = 276
+  Width = 1123
+  PPI = 106
   object ZConnection: TZConnection
     ControlsCodePage = cCP_UTF8
     Properties.Strings = (
@@ -16,10 +17,10 @@ object DM: TDM
     Port = 3306
     Database = 'doccase'
     User = 'root'
-    Password = 'masterkey'
+    Password = 'unipar123'
     Protocol = 'mysql'
     LibraryLocation = 'libmysql.dll'
-    Left = 50
-    Top = 40
+    Left = 55
+    Top = 44
   end
 end

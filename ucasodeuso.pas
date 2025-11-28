@@ -44,6 +44,7 @@ type
     qryCasoUsoprojeto_idprojeto: TZIntegerField;
     qryCasoUsoversao: TZRawStringField;
     procedure BitBtn1Click(Sender: TObject);
+    procedure BitBtn2Click(Sender: TObject);
     procedure edtNomeKeyPress(Sender: TObject; var Key: char);
     procedure edtPrecondicaoKeyPress(Sender: TObject; var Key: char);
     procedure edtVersaoKeyPress(Sender: TObject; var Key: char);
@@ -166,6 +167,11 @@ begin
 
   ShowMessage('Caso de uso salvo com sucesso!');
   FrmListaCasoUso.qryListaCasoUso.Refresh;
+  Close;
+end;
+
+procedure TFrmCasoUso.BitBtn2Click(Sender: TObject);
+begin
   Close;
 end;
 

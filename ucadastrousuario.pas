@@ -16,7 +16,6 @@ type
     btAlterarSenha: TBitBtn;
     btCancelar1: TBitBtn;
     btSalvar: TBitBtn;
-    DBComboBox1: TDBComboBox;
     edtSenha: TEdit;
     edtSobrenome: TDBEdit;
     edtEmail: TDBEdit;
@@ -29,6 +28,9 @@ type
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
     Panel1: TPanel;
     Panel3: TPanel;
     qry_usuarios: TZQuery;
@@ -142,15 +144,6 @@ begin
   begin
     ShowMessage('Informe um e-mail válido.');
     EdtEmail.SetFocus;
-    Exit;
-  end;
-
-  //>>>>>>>>>>>>>>>>>>>>  Validação da função (combo)  >>>>>>>>>>>>>>>>>>>>>>>>
-
-  if DBComboBox1.ItemIndex < 0 then
-  begin
-    ShowMessage('Selecione uma função. ');
-    DBComboBox1.SetFocus;
     Exit;
   end;
 

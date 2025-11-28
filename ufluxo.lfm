@@ -1,30 +1,31 @@
 object FrmFluxo: TFrmFluxo
   Left = 348
-  Height = 700
+  Height = 773
   Top = 250
-  Width = 793
+  Width = 876
   BorderIcons = [biSystemMenu]
   Caption = 'Cadastrar fluxo'
-  ClientHeight = 700
-  ClientWidth = 793
+  ClientHeight = 773
+  ClientWidth = 876
+  DesignTimePPI = 106
   Position = poDesktopCenter
   OnShow = FormShow
   object Panel1: TPanel
     Left = 0
-    Height = 700
+    Height = 773
     Top = 0
-    Width = 793
+    Width = 876
     Align = alClient
-    ClientHeight = 700
-    ClientWidth = 793
+    ClientHeight = 773
+    ClientWidth = 876
     Color = clWhite
     ParentBackground = False
     ParentColor = False
     TabOrder = 0
     object Label4: TLabel
       Left = 0
-      Height = 15
-      Top = 88
+      Height = 17
+      Top = 97
       Width = 900
       Caption = '____________________________________________________________________________________________________________________________________________________________________________________'
       Font.CharSet = ANSI_CHARSET
@@ -34,10 +35,10 @@ object FrmFluxo: TFrmFluxo
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 8
-      Height = 15
-      Top = 85
-      Width = 81
+      Left = 9
+      Height = 17
+      Top = 94
+      Width = 92
       Caption = 'Dados do fluxo'
       Font.CharSet = ANSI_CHARSET
       Font.Color = 12615680
@@ -48,43 +49,43 @@ object FrmFluxo: TFrmFluxo
       ParentFont = False
     end
     object Label2: TLabel
-      Left = 8
-      Height = 17
-      Top = 40
-      Width = 104
+      Left = 9
+      Height = 19
+      Top = 44
+      Width = 107
       Caption = 'Cadastro de fluxo'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clGray
-      Font.Height = -13
+      Font.Height = -14
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
     end
     object Label1: TLabel
-      Left = 8
-      Height = 21
-      Top = 8
-      Width = 128
+      Left = 9
+      Height = 25
+      Top = 9
+      Width = 142
       Caption = 'Detalhe do fluxo'
       Font.CharSet = ANSI_CHARSET
-      Font.Height = -16
+      Font.Height = -18
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       Font.Style = [fsBold]
       ParentFont = False
     end
     object Label5: TLabel
-      Left = 8
-      Height = 15
-      Top = 108
-      Width = 33
+      Left = 9
+      Height = 17
+      Top = 119
+      Width = 36
       Caption = 'Nome'
     end
     object DBEdit1: TDBEdit
-      Left = 8
-      Height = 23
-      Top = 128
-      Width = 208
+      Left = 9
+      Height = 25
+      Top = 141
+      Width = 230
       DataField = 'nome'
       DataSource = dsFluxo
       MaxLength = 0
@@ -92,27 +93,27 @@ object FrmFluxo: TFrmFluxo
       OnKeyPress = DBEdit1KeyPress
     end
     object Label6: TLabel
-      Left = 8
-      Height = 15
-      Top = 160
-      Width = 69
+      Left = 9
+      Height = 17
+      Top = 177
+      Width = 77
       Caption = 'Tipo de fluxo'
     end
     object Label7: TLabel
-      Left = 8
-      Height = 15
-      Top = 208
-      Width = 51
+      Left = 9
+      Height = 17
+      Top = 230
+      Width = 57
       Caption = 'Descrição'
     end
     object DBComboBox1: TDBComboBox
-      Left = 8
-      Height = 23
-      Top = 178
-      Width = 208
+      Left = 9
+      Height = 25
+      Top = 197
+      Width = 230
       DataField = 'tipo_fluxo'
       DataSource = dsFluxo
-      ItemHeight = 15
+      ItemHeight = 17
       Items.Strings = (
         'Principal'
         'Alternativo'
@@ -121,43 +122,43 @@ object FrmFluxo: TFrmFluxo
         'Sistema'
       )
       MaxLength = 0
-      ReadOnly = True
+      Style = csDropDownList
       TabOrder = 1
     end
     object DBMemo1: TDBMemo
-      Left = 8
-      Height = 258
-      Top = 232
-      Width = 774
+      Left = 9
+      Height = 285
+      Top = 256
+      Width = 855
       DataField = 'pre_requisito'
       DataSource = dsFluxo
       TabOrder = 2
     end
     object Panel2: TPanel
       Left = 1
-      Height = 35
-      Top = 664
-      Width = 791
+      Height = 39
+      Top = 733
+      Width = 874
       Align = alBottom
-      ClientHeight = 35
-      ClientWidth = 791
+      ClientHeight = 39
+      ClientWidth = 874
       ParentBackground = False
       TabOrder = 3
       object BitBtn1: TBitBtn
-        Left = 712
-        Height = 30
+        Left = 786
+        Height = 33
         Top = 2
-        Width = 75
+        Width = 84
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Salvar'
         TabOrder = 0
         OnClick = BitBtn1Click
       end
       object BitBtn2: TBitBtn
-        Left = 636
-        Height = 30
+        Left = 702
+        Height = 33
         Top = 2
-        Width = 75
+        Width = 84
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Cancelar'
         TabOrder = 1
@@ -165,9 +166,9 @@ object FrmFluxo: TFrmFluxo
       end
     end
     object Label11: TLabel
-      Left = 42
-      Height = 15
-      Top = 140
+      Left = 46
+      Height = 17
+      Top = 155
       Width = 5
       Caption = '*'
       Font.CharSet = ANSI_CHARSET
@@ -177,9 +178,9 @@ object FrmFluxo: TFrmFluxo
       ParentFont = False
     end
     object Label12: TLabel
-      Left = 60
-      Height = 15
-      Top = 240
+      Left = 66
+      Height = 17
+      Top = 265
       Width = 5
       Caption = '*'
       Font.CharSet = ANSI_CHARSET
@@ -189,9 +190,9 @@ object FrmFluxo: TFrmFluxo
       ParentFont = False
     end
     object Label8: TLabel
-      Left = 43
-      Height = 15
-      Top = 108
+      Left = 47
+      Height = 17
+      Top = 119
       Width = 5
       Caption = '*'
       Font.CharSet = ANSI_CHARSET
@@ -201,9 +202,9 @@ object FrmFluxo: TFrmFluxo
       ParentFont = False
     end
     object Label9: TLabel
-      Left = 80
-      Height = 15
-      Top = 160
+      Left = 88
+      Height = 17
+      Top = 177
       Width = 5
       Caption = '*'
       Font.CharSet = ANSI_CHARSET
@@ -213,9 +214,9 @@ object FrmFluxo: TFrmFluxo
       ParentFont = False
     end
     object Label10: TLabel
-      Left = 60
-      Height = 15
-      Top = 208
+      Left = 66
+      Height = 17
+      Top = 230
       Width = 5
       Caption = '*'
       Font.CharSet = ANSI_CHARSET
@@ -232,7 +233,7 @@ object FrmFluxo: TFrmFluxo
       ''
     )
     Params = <>
-    Left = 728
+    Left = 804
     object qryFluxoidfluxo: TZIntegerField
       FieldKind = fkData
       FieldName = 'idfluxo'
@@ -305,7 +306,7 @@ object FrmFluxo: TFrmFluxo
   end
   object dsFluxo: TDataSource
     DataSet = qryFluxo
-    Left = 728
-    Top = 51
+    Left = 804
+    Top = 56
   end
 end

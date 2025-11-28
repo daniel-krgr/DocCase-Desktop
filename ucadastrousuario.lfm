@@ -1,78 +1,79 @@
 object FrmCadastroUsuario: TFrmCadastroUsuario
   Left = 350
-  Height = 413
+  Height = 456
   Top = 250
-  Width = 398
+  Width = 439
   BorderIcons = [biSystemMenu]
   Caption = 'Cadastro de Usuário'
-  ClientHeight = 413
-  ClientWidth = 398
+  ClientHeight = 456
+  ClientWidth = 439
+  DesignTimePPI = 106
   Position = poScreenCenter
   OnShow = FormShow
   object Label1: TLabel
-    Left = 36
-    Height = 15
-    Top = 56
-    Width = 36
+    Left = 40
+    Height = 17
+    Top = 62
+    Width = 39
     Caption = 'Nome:'
   end
   object Label2: TLabel
-    Left = 36
-    Height = 15
-    Top = 114
-    Width = 64
+    Left = 40
+    Height = 17
+    Top = 126
+    Width = 71
     Caption = 'Sobrenome:'
   end
   object Label3: TLabel
-    Left = 36
-    Height = 15
-    Top = 172
-    Width = 32
+    Left = 40
+    Height = 17
+    Top = 190
+    Width = 34
     Caption = 'Email:'
   end
   object Label4: TLabel
-    Left = 36
-    Height = 15
-    Top = 230
-    Width = 35
+    Left = 40
+    Height = 17
+    Top = 254
+    Width = 38
     Caption = 'Senha:'
   end
   object Panel3: TPanel
     Left = 0
-    Height = 33
-    Top = 380
-    Width = 398
+    Height = 36
+    Top = 420
+    Width = 439
     Align = alBottom
     BevelOuter = bvNone
     BorderWidth = 5
-    ClientHeight = 33
-    ClientWidth = 398
+    ClientHeight = 36
+    ClientWidth = 439
     TabOrder = 0
     object btAlterarSenha: TBitBtn
-      Left = 168
-      Height = 23
+      Left = 185
+      Height = 26
       Top = 5
-      Width = 75
+      Width = 83
       Align = alRight
       Caption = 'Alterar senha'
       TabOrder = 0
       OnClick = btAlterarSenhaClick
     end
     object btSalvar: TBitBtn
-      Left = 318
-      Height = 23
+      Left = 351
+      Height = 26
       Top = 5
-      Width = 75
+      Width = 83
       Align = alRight
       Caption = 'Salvar'
       TabOrder = 1
       OnClick = btSalvarClick
     end
     object btCancelar1: TBitBtn
-      Left = 243
-      Height = 23
+      Left = 268
+      Height = 26
       Top = 5
-      Width = 75
+      Width = 83
       Align = alRight
       Caption = 'Cancelar'
       TabOrder = 2
@@ -80,30 +81,30 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
     end
   end
   object edtNome: TDBEdit
-    Left = 36
-    Height = 23
-    Top = 78
-    Width = 326
+    Left = 40
+    Height = 25
+    Top = 86
+    Width = 360
     DataField = 'nome'
     DataSource = ds_usuarios
     MaxLength = 0
     TabOrder = 1
   end
   object edtSobrenome: TDBEdit
-    Left = 36
-    Height = 23
-    Top = 136
-    Width = 326
+    Left = 40
+    Height = 25
+    Top = 150
+    Width = 360
     DataField = 'sobrenome'
     DataSource = ds_usuarios
     MaxLength = 0
     TabOrder = 2
   end
   object edtEmail: TDBEdit
-    Left = 36
-    Height = 23
-    Top = 194
-    Width = 326
+    Left = 40
+    Height = 25
+    Top = 214
+    Width = 360
     DataField = 'email'
     DataSource = ds_usuarios
     MaxLength = 0
@@ -111,35 +112,35 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
   end
   object Panel1: TPanel
     Left = 0
-    Height = 45
+    Height = 50
     Top = 0
-    Width = 398
+    Width = 439
     Align = alTop
-    ClientHeight = 45
-    ClientWidth = 398
+    ClientHeight = 50
+    ClientWidth = 439
     Color = 8537640
     ParentBackground = False
     ParentColor = False
     TabOrder = 4
     object Label6: TLabel
-      Left = 42
-      Height = 32
-      Top = 9
-      Width = 113
+      Left = 46
+      Height = 35
+      Top = 10
+      Width = 122
       Caption = 'DocCase'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -27
+      Font.Height = -30
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
     end
     object Image1: TImage
-      Left = 6
-      Height = 35
-      Top = 6
-      Width = 34
+      Left = 7
+      Height = 39
+      Top = 7
+      Width = 38
       Picture.Data = {
         1754506F727461626C654E6574776F726B477261706869631202000089504E47
         0D0A1A0A0000000D49484452000000230000002308060000001ED9B359000000
@@ -163,40 +164,61 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
     end
   end
   object edtSenha: TEdit
-    Left = 36
-    Height = 23
-    Top = 255
-    Width = 326
+    Left = 40
+    Height = 25
+    Top = 282
+    Width = 360
     EchoMode = emPassword
     PasswordChar = '*'
     TabOrder = 5
   end
   object Label5: TLabel
-    Left = 36
-    Height = 15
-    Top = 288
-    Width = 42
-    Caption = 'Função:'
+    Left = 83
+    Height = 17
+    Top = 62
+    Width = 5
+    Caption = '*'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clRed
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
   end
-  object DBComboBox1: TDBComboBox
-    Left = 36
-    Height = 23
-    Top = 314
-    Width = 326
-    DataField = 'funcao'
-    DataSource = ds_usuarios
-    ItemHeight = 15
-    Items.Strings = (
-      'Desenvolvedor'
-      'Analista'
-      'Qa'
-      'Project owner'
-      'Suporte'
-      'Tech lead'
-    )
-    MaxLength = 0
-    ReadOnly = True
-    TabOrder = 6
+  object Label7: TLabel
+    Left = 115
+    Height = 17
+    Top = 124
+    Width = 5
+    Caption = '*'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clRed
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+  end
+  object Label8: TLabel
+    Left = 78
+    Height = 17
+    Top = 188
+    Width = 5
+    Caption = '*'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clRed
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+  end
+  object Label9: TLabel
+    Left = 82
+    Height = 17
+    Top = 252
+    Width = 5
+    Caption = '*'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clRed
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
   end
   object qry_usuarios: TZQuery
     Connection = DM.ZConnection
@@ -204,8 +226,8 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
       'select * from usuarios'
     )
     Params = <>
-    Left = 43
-    Top = 355
+    Left = 47
+    Top = 392
     object qry_usuariosidusuarios: TZIntegerField
       FieldKind = fkData
       FieldName = 'idusuarios'
@@ -307,7 +329,7 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
   end
   object ds_usuarios: TDataSource
     DataSet = qry_usuarios
-    Left = 101
-    Top = 355
+    Left = 112
+    Top = 392
   end
 end
