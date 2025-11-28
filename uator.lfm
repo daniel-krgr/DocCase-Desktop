@@ -1,49 +1,49 @@
 object FrmAtor: TFrmAtor
   Left = 348
-  Height = 415
+  Height = 458
   Top = 250
-  Width = 518
+  Width = 572
   BorderIcons = [biSystemMenu]
   Caption = 'Cadastrar ator'
-  ClientHeight = 415
-  ClientWidth = 518
+  ClientHeight = 458
+  ClientWidth = 572
+  DesignTimePPI = 106
   Position = poDesktopCenter
-  LCLVersion = '4.2.0.0'
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
   object Panel1: TPanel
     Left = 0
-    Height = 50
+    Height = 55
     Top = 0
-    Width = 518
+    Width = 572
     Align = alTop
     BevelOuter = bvNone
-    ClientHeight = 50
-    ClientWidth = 518
+    ClientHeight = 55
+    ClientWidth = 572
     Color = 8537640
     ParentBackground = False
     ParentColor = False
     TabOrder = 0
     object Label4: TLabel
-      Left = 42
-      Height = 32
-      Top = 9
-      Width = 113
+      Left = 46
+      Height = 35
+      Top = 10
+      Width = 122
       Caption = 'DocCase'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -27
+      Font.Height = -30
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
     end
     object Image1: TImage
-      Left = 6
-      Height = 35
-      Top = 6
-      Width = 34
+      Left = 7
+      Height = 39
+      Top = 7
+      Width = 38
       Picture.Data = {
         1754506F727461626C654E6574776F726B477261706869631202000089504E47
         0D0A1A0A0000000D49484452000000230000002308060000001ED9B359000000
@@ -68,44 +68,44 @@ object FrmAtor: TFrmAtor
   end
   object Panel2: TPanel
     Left = 0
-    Height = 365
-    Top = 50
-    Width = 518
+    Height = 403
+    Top = 55
+    Width = 572
     Align = alClient
     BevelOuter = bvNone
-    ClientHeight = 365
-    ClientWidth = 518
+    ClientHeight = 403
+    ClientWidth = 572
     Color = clWhite
     ParentBackground = False
     ParentColor = False
     TabOrder = 1
     object Panel3: TPanel
       Left = 0
-      Height = 35
-      Top = 330
-      Width = 518
+      Height = 39
+      Top = 364
+      Width = 572
       Align = alBottom
       BevelOuter = bvNone
-      ClientHeight = 35
-      ClientWidth = 518
+      ClientHeight = 39
+      ClientWidth = 572
       ParentBackground = False
       ParentColor = False
       TabOrder = 0
       object btSalvar: TBitBtn
-        Left = 441
-        Height = 30
+        Left = 487
+        Height = 33
         Top = 3
-        Width = 75
+        Width = 83
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Salvar'
         TabOrder = 0
         OnClick = btSalvarClick
       end
       object btCancelar: TBitBtn
-        Left = 364
-        Height = 30
+        Left = 402
+        Height = 33
         Top = 3
-        Width = 75
+        Width = 83
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Cancelar'
         TabOrder = 1
@@ -113,17 +113,17 @@ object FrmAtor: TFrmAtor
       end
     end
     object Label1: TLabel
-      Left = 8
-      Height = 15
-      Top = 32
-      Width = 33
+      Left = 9
+      Height = 17
+      Top = 35
+      Width = 36
       Caption = 'Nome'
     end
     object edtNome: TDBEdit
-      Left = 8
-      Height = 23
-      Top = 49
-      Width = 256
+      Left = 9
+      Height = 25
+      Top = 54
+      Width = 283
       DataField = 'nome'
       DataSource = dsAtor
       MaxLength = 0
@@ -131,37 +131,37 @@ object FrmAtor: TFrmAtor
       OnKeyPress = edtNomeKeyPress
     end
     object edtFuncao: TDBEdit
-      Left = 8
-      Height = 23
-      Top = 97
-      Width = 256
+      Left = 9
+      Height = 25
+      Top = 107
+      Width = 283
       DataField = 'funcao'
       DataSource = dsAtor
       MaxLength = 0
       TabOrder = 2
     end
     object label2: TLabel
-      Left = 8
-      Height = 15
-      Top = 80
-      Width = 39
+      Left = 9
+      Height = 17
+      Top = 88
+      Width = 41
       Caption = 'Funcão'
     end
     object Label3: TLabel
-      Left = 8
-      Height = 15
-      Top = 120
-      Width = 27
+      Left = 9
+      Height = 17
+      Top = 132
+      Width = 29
       Caption = 'Nível'
     end
     object dbcNivel: TDBComboBox
-      Left = 8
-      Height = 23
-      Top = 136
-      Width = 256
+      Left = 9
+      Height = 25
+      Top = 150
+      Width = 283
       DataField = 'nivel'
       DataSource = dsAtor
-      ItemHeight = 15
+      ItemHeight = 17
       Items.Strings = (
         'Primário'
         'Secundário'
@@ -171,12 +171,13 @@ object FrmAtor: TFrmAtor
       )
       MaxLength = 0
       ReadOnly = True
+      Style = csDropDownList
       TabOrder = 3
     end
     object Label5: TLabel
-      Left = 42
-      Height = 15
-      Top = 32
+      Left = 46
+      Height = 17
+      Top = 35
       Width = 5
       Caption = '*'
       Font.CharSet = ANSI_CHARSET
@@ -186,9 +187,9 @@ object FrmAtor: TFrmAtor
       ParentFont = False
     end
     object Label6: TLabel
-      Left = 48
-      Height = 15
-      Top = 80
+      Left = 53
+      Height = 17
+      Top = 88
       Width = 5
       Caption = '*'
       Font.CharSet = ANSI_CHARSET
@@ -204,8 +205,8 @@ object FrmAtor: TFrmAtor
       'SELECT * FROM atores'
     )
     Params = <>
-    Left = 448
-    Top = 72
+    Left = 495
+    Top = 80
     object qryAtoridatores: TZIntegerField
       FieldKind = fkData
       FieldName = 'idatores'
@@ -257,7 +258,7 @@ object FrmAtor: TFrmAtor
   end
   object dsAtor: TDataSource
     DataSet = qryAtor
-    Left = 448
-    Top = 120
+    Left = 495
+    Top = 133
   end
 end

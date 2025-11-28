@@ -1,23 +1,24 @@
 object FrmListaVersoesCasoUso: TFrmListaVersoesCasoUso
   Left = 348
-  Height = 710
+  Height = 784
   Top = 250
-  Width = 1196
+  Width = 1321
   BorderIcons = [biSystemMenu]
-  Caption = 'FrmListaVersoesCasoUso'
-  ClientHeight = 710
-  ClientWidth = 1196
+  Caption = 'Versões de casos'
+  ClientHeight = 784
+  ClientWidth = 1321
+  DesignTimePPI = 106
   Position = poDesktopCenter
   OnShow = FormShow
   object Panel1: TPanel
     Left = 0
-    Height = 660
-    Top = 50
-    Width = 200
+    Height = 729
+    Top = 55
+    Width = 221
     Align = alLeft
     BevelOuter = bvNone
-    ClientHeight = 660
-    ClientWidth = 200
+    ClientHeight = 729
+    ClientWidth = 221
     Color = 8537640
     Font.CharSet = ANSI_CHARSET
     Font.Color = clWhite
@@ -29,9 +30,9 @@ object FrmListaVersoesCasoUso: TFrmListaVersoesCasoUso
     TabOrder = 0
     object Panel2: TPanel
       Left = 0
-      Height = 64
-      Top = 596
-      Width = 200
+      Height = 71
+      Top = 658
+      Width = 221
       Align = alBottom
       BevelOuter = bvNone
       Color = 10704434
@@ -41,9 +42,9 @@ object FrmListaVersoesCasoUso: TFrmListaVersoesCasoUso
     end
     object sbtNovo: TSpeedButton
       Left = 0
-      Height = 48
-      Top = 24
-      Width = 200
+      Height = 53
+      Top = 26
+      Width = 221
       Caption = 'Tornar caso ativo'
       Color = 7879710
       Flat = True
@@ -170,36 +171,36 @@ object FrmListaVersoesCasoUso: TFrmListaVersoesCasoUso
   end
   object Panel3: TPanel
     Left = 0
-    Height = 50
+    Height = 55
     Top = 0
-    Width = 1196
+    Width = 1321
     Align = alTop
     BevelOuter = bvNone
-    ClientHeight = 50
-    ClientWidth = 1196
+    ClientHeight = 55
+    ClientWidth = 1321
     Color = 8537640
     ParentBackground = False
     ParentColor = False
     TabOrder = 1
     object Label4: TLabel
-      Left = 52
-      Height = 32
-      Top = 11
-      Width = 113
+      Left = 57
+      Height = 35
+      Top = 12
+      Width = 122
       Caption = 'DocCase'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -27
+      Font.Height = -30
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
     end
     object Image1: TImage
-      Left = 16
-      Height = 35
-      Top = 8
-      Width = 34
+      Left = 18
+      Height = 39
+      Top = 9
+      Width = 38
       Picture.Data = {
         1754506F727461626C654E6574776F726B477261706869631202000089504E47
         0D0A1A0A0000000D49484452000000230000002308060000001ED9B359000000
@@ -222,11 +223,11 @@ object FrmListaVersoesCasoUso: TFrmListaVersoesCasoUso
       }
     end
     object sbtPesquisar: TSpeedButton
-      Left = 1163
-      Height = 27
-      Top = 14
-      Width = 30
-      Anchors = [akTop, akLeft, akRight]
+      Left = 1284
+      Height = 30
+      Top = 16
+      Width = 34
+      Anchors = [akTop, akRight]
       Flat = True
       Glyph.Data = {
         36090000424D3609000000000000360000002800000018000000180000000100
@@ -308,19 +309,19 @@ object FrmListaVersoesCasoUso: TFrmListaVersoesCasoUso
       OnClick = sbtPesquisarClick
     end
     object edtPesquisar: TEdit
-      Left = 1001
-      Height = 23
-      Top = 16
-      Width = 159
-      Anchors = [akTop, akLeft, akRight]
+      Left = 1105
+      Height = 25
+      Top = 18
+      Width = 176
+      Anchors = [akTop, akRight]
       TabOrder = 0
     end
     object Label1: TLabel
-      Left = 951
-      Height = 15
-      Top = 20
-      Width = 45
-      Anchors = [akTop, akLeft, akRight]
+      Left = 1049
+      Height = 17
+      Top = 22
+      Width = 51
+      Anchors = [akTop, akRight]
       Caption = 'Pesquisa'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
@@ -329,10 +330,10 @@ object FrmListaVersoesCasoUso: TFrmListaVersoesCasoUso
       ParentFont = False
     end
     object sbtAtualizar: TSpeedButton
-      Left = 199
-      Height = 31
-      Top = 19
-      Width = 31
+      Left = 220
+      Height = 34
+      Top = 21
+      Width = 34
       Flat = True
       Glyph.Data = {
         36090000424D3609000000000000360000002800000018000000180000000100
@@ -414,36 +415,36 @@ object FrmListaVersoesCasoUso: TFrmListaVersoesCasoUso
     end
   end
   object DBGrid1: TDBGrid
-    Left = 200
-    Height = 660
-    Top = 50
-    Width = 996
+    Left = 221
+    Height = 729
+    Top = 55
+    Width = 1100
     Align = alClient
     Color = clWindow
     Columns = <    
       item
         Title.Caption = 'Nome'
-        Width = 200
+        Width = 221
         FieldName = 'nome'
       end    
       item
         Title.Caption = 'Versão'
-        Width = 100
+        Width = 110
         FieldName = 'versao'
       end    
       item
         Title.Caption = 'Descrição'
-        Width = 400
+        Width = 442
         FieldName = 'descricao'
       end    
       item
         Title.Caption = 'Precondição'
-        Width = 150
+        Width = 166
         FieldName = 'precondicao'
       end    
       item
         Title.Caption = 'Data'
-        Width = 130
+        Width = 144
         FieldName = 'data_versao'
       end>
     DataSource = dsVersoes
@@ -457,8 +458,8 @@ object FrmListaVersoesCasoUso: TFrmListaVersoesCasoUso
       'SELECT * FROM caso_uso_versao'
     )
     Params = <>
-    Left = 1015
-    Top = 98
+    Left = 1121
+    Top = 108
     object qryVersoesidversao: TZIntegerField
       FieldKind = fkData
       FieldName = 'idversao'
@@ -540,7 +541,7 @@ object FrmListaVersoesCasoUso: TFrmListaVersoesCasoUso
   end
   object dsVersoes: TDataSource
     DataSet = qryVersoes
-    Left = 1015
-    Top = 150
+    Left = 1121
+    Top = 166
   end
 end

@@ -27,6 +27,8 @@ type
     qryLogin: TZQuery;
     procedure BitBtn2Click(Sender: TObject);
     procedure btEntrarClick(Sender: TObject);
+    procedure edtSenhaKeyPress(Sender: TObject; var Key: char);
+    procedure edtUsuarioKeyPress(Sender: TObject; var Key: char);
   private
 
   public
@@ -92,6 +94,22 @@ begin
   end
   else
     ShowMessage('Nome ou senha incorretos!');
+end;
+
+procedure TFrmLogin.edtSenhaKeyPress(Sender: TObject; var Key: char);
+begin
+  if Key=#13 then
+  begin
+    btEntrar.Click;
+  end;
+end;
+
+procedure TFrmLogin.edtUsuarioKeyPress(Sender: TObject; var Key: char);
+begin
+  if Key=#13 then
+  begin
+    edtSenha.SetFocus;
+  end;
 end;
 
 end.

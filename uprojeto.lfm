@@ -1,36 +1,38 @@
 object frmProjeto: TfrmProjeto
   Left = 457
-  Height = 1000
+  Height = 1104
   Top = 250
-  Width = 1085
+  Width = 1198
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Cadastro de projeto'
-  ClientHeight = 1000
-  ClientWidth = 1085
+  ClientHeight = 1059
+  ClientWidth = 1198
   Color = clWhite
+  DesignTimePPI = 106
   Position = poDesktopCenter
+  WindowState = wsMaximized
   OnShow = FormShow
   object ScrollBox1: TScrollBox
     Left = 0
-    Height = 1000
+    Height = 1059
     Top = 0
-    Width = 1085
-    HorzScrollBar.Page = 912
-    VertScrollBar.Page = 901
+    Width = 1198
+    HorzScrollBar.Page = 1007
+    VertScrollBar.Page = 995
     Align = alClient
-    ClientHeight = 996
-    ClientWidth = 1081
+    ClientHeight = 1055
+    ClientWidth = 1194
     ParentBackground = False
     TabOrder = 0
     object Label1: TLabel
-      Left = 11
-      Height = 17
-      Top = 11
-      Width = 114
+      Left = 12
+      Height = 19
+      Top = 12
+      Width = 117
       Caption = 'Detalhe do projeto'
       Font.CharSet = ANSI_CHARSET
-      Font.Height = -13
+      Font.Height = -14
       Font.Name = 'Segoe UI Semibold'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -38,10 +40,10 @@ object frmProjeto: TfrmProjeto
       ParentFont = False
     end
     object Label2: TLabel
-      Left = 11
-      Height = 15
-      Top = 32
-      Width = 104
+      Left = 12
+      Height = 17
+      Top = 35
+      Width = 119
       Caption = 'Cadastro de projeto'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clGray
@@ -50,10 +52,10 @@ object frmProjeto: TfrmProjeto
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 11
-      Height = 15
-      Top = 64
-      Width = 92
+      Left = 12
+      Height = 17
+      Top = 71
+      Width = 106
       Caption = 'Dados do projeto'
       Font.CharSet = ANSI_CHARSET
       Font.Color = 12615680
@@ -64,9 +66,9 @@ object frmProjeto: TfrmProjeto
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 11
-      Height = 15
-      Top = 72
+      Left = 12
+      Height = 17
+      Top = 80
       Width = 900
       Caption = '____________________________________________________________________________________________________________________________________________________________________________________'
       Font.CharSet = ANSI_CHARSET
@@ -77,69 +79,69 @@ object frmProjeto: TfrmProjeto
     end
     object Panel1: TPanel
       Left = 0
-      Height = 46
-      Top = 950
-      Width = 1081
+      Height = 51
+      Top = 1004
+      Width = 1194
       Align = alBottom
       BevelOuter = bvNone
-      ClientHeight = 46
-      ClientWidth = 1081
+      ClientHeight = 51
+      ClientWidth = 1194
       ParentBackground = False
       TabOrder = 0
       object BitBtn1: TBitBtn
-        Left = 1002
-        Height = 30
-        Top = 8
-        Width = 75
-        Anchors = [akTop, akLeft, akRight, akBottom]
+        Left = 1106
+        Height = 33
+        Top = 9
+        Width = 84
+        Anchors = [akTop, akRight, akBottom]
         Caption = 'Gravar'
         TabOrder = 0
         OnClick = BitBtn1Click
       end
       object BitBtn2: TBitBtn
-        Left = 922
-        Height = 30
-        Top = 8
-        Width = 75
-        Anchors = [akTop, akLeft, akRight, akBottom]
+        Left = 1018
+        Height = 33
+        Top = 9
+        Width = 83
+        Anchors = [akTop, akRight, akBottom]
         Caption = 'Cancelar'
         TabOrder = 1
         OnClick = BitBtn2Click
       end
     end
     object Label5: TLabel
-      Left = 11
-      Height = 15
-      Top = 104
-      Width = 91
+      Left = 12
+      Height = 17
+      Top = 115
+      Width = 103
       Caption = 'Nome do projeto'
     end
     object Label6: TLabel
-      Left = 11
-      Height = 15
-      Top = 148
-      Width = 109
+      Left = 12
+      Height = 17
+      Top = 163
+      Width = 124
       Caption = 'Descrição do projeto'
     end
     object Label7: TLabel
-      Left = 11
-      Height = 15
-      Top = 192
-      Width = 97
+      Left = 12
+      Height = 17
+      Top = 212
+      Width = 110
       Caption = 'Codigo do projeto'
     end
     object Label8: TLabel
-      Left = 11
-      Height = 15
-      Top = 282
-      Width = 98
+      Left = 12
+      Height = 17
+      Top = 311
+      Width = 111
       Caption = 'Detalhe do projeto'
     end
     object DBEdit2: TDBEdit
-      Left = 11
-      Height = 23
-      Top = 167
-      Width = 437
+      Left = 12
+      Height = 25
+      Top = 184
+      Width = 483
       DataField = 'descricao'
       DataSource = dsProjeto
       MaxLength = 0
@@ -147,10 +149,10 @@ object frmProjeto: TfrmProjeto
       OnKeyPress = DBEdit2KeyPress
     end
     object DBEdit3: TDBEdit
-      Left = 11
-      Height = 23
-      Top = 209
-      Width = 101
+      Left = 12
+      Height = 25
+      Top = 231
+      Width = 112
       DataField = 'codigo'
       DataSource = dsProjeto
       MaxLength = 0
@@ -158,90 +160,91 @@ object frmProjeto: TfrmProjeto
       OnKeyPress = DBEdit3KeyPress
     end
     object Label9: TLabel
-      Left = 11
-      Height = 15
-      Top = 237
-      Width = 26
+      Left = 12
+      Height = 17
+      Top = 262
+      Width = 28
       Caption = 'Time'
     end
     object cbTime: TComboBox
-      Left = 11
-      Height = 23
-      Top = 257
-      Width = 192
-      ItemHeight = 15
+      Left = 12
+      Height = 25
+      Top = 284
+      Width = 212
+      ItemHeight = 17
       ReadOnly = True
+      Style = csDropDownList
       TabOrder = 3
     end
     object DBMemo1: TDBMemo
-      Left = 11
-      Height = 266
-      Top = 304
-      Width = 900
+      Left = 12
+      Height = 294
+      Top = 336
+      Width = 994
       DataField = 'detalhe'
       DataSource = dsProjeto
       TabOrder = 4
     end
     object Label10: TLabel
-      Left = 11
-      Height = 15
-      Top = 581
-      Width = 55
+      Left = 12
+      Height = 17
+      Top = 642
+      Width = 61
       Caption = 'Protótipos'
     end
     object btnAnexar: TBitBtn
-      Left = 69
-      Height = 23
-      Top = 579
-      Width = 123
+      Left = 76
+      Height = 25
+      Top = 639
+      Width = 136
       Caption = 'Adicionar imagem'
       TabOrder = 5
       OnClick = btnAnexarClick
     end
     object btnRemoverImagem: TBitBtn
-      Left = 192
-      Height = 23
-      Top = 579
-      Width = 123
+      Left = 212
+      Height = 25
+      Top = 639
+      Width = 136
       Caption = 'Remover imagem'
       TabOrder = 6
       OnClick = btnRemoverImagemClick
     end
     object ScrollBoxImagens: TScrollBox
-      Left = 11
-      Height = 296
-      Top = 605
-      Width = 901
-      HorzScrollBar.Page = 92
-      VertScrollBar.Page = 92
-      ClientHeight = 292
-      ClientWidth = 897
+      Left = 12
+      Height = 327
+      Top = 668
+      Width = 995
+      HorzScrollBar.Page = 101
+      VertScrollBar.Page = 101
+      ClientHeight = 323
+      ClientWidth = 991
       ParentBackground = False
       TabOrder = 7
       object pnlImagem: TPanel
         Left = 0
-        Height = 292
+        Height = 323
         Top = 0
-        Width = 897
+        Width = 991
         Align = alClient
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
-        ClientHeight = 292
-        ClientWidth = 897
+        ClientHeight = 323
+        ClientWidth = 991
         ParentBackground = False
         TabOrder = 0
         object Thumb: TImage
           Left = 1
-          Height = 290
+          Height = 321
           Top = 1
-          Width = 895
+          Width = 989
           Align = alClient
         end
       end
     end
     object Label11: TLabel
-      Left = 104
-      Height = 15
-      Top = 104
+      Left = 115
+      Height = 17
+      Top = 115
       Width = 5
       Caption = '*'
       Font.CharSet = ANSI_CHARSET
@@ -251,9 +254,9 @@ object frmProjeto: TfrmProjeto
       ParentFont = False
     end
     object Label12: TLabel
-      Left = 112
-      Height = 15
-      Top = 282
+      Left = 124
+      Height = 17
+      Top = 311
       Width = 5
       Caption = '*'
       Font.CharSet = ANSI_CHARSET
@@ -263,9 +266,9 @@ object frmProjeto: TfrmProjeto
       ParentFont = False
     end
     object Label13: TLabel
-      Left = 40
-      Height = 15
-      Top = 237
+      Left = 44
+      Height = 17
+      Top = 262
       Width = 5
       Caption = '*'
       Font.CharSet = ANSI_CHARSET
@@ -275,9 +278,9 @@ object frmProjeto: TfrmProjeto
       ParentFont = False
     end
     object Label14: TLabel
-      Left = 110
-      Height = 15
-      Top = 192
+      Left = 121
+      Height = 17
+      Top = 212
       Width = 5
       Caption = '*'
       Font.CharSet = ANSI_CHARSET
@@ -287,9 +290,9 @@ object frmProjeto: TfrmProjeto
       ParentFont = False
     end
     object Label15: TLabel
-      Left = 120
-      Height = 15
-      Top = 148
+      Left = 132
+      Height = 17
+      Top = 163
       Width = 5
       Caption = '*'
       Font.CharSet = ANSI_CHARSET
@@ -299,10 +302,10 @@ object frmProjeto: TfrmProjeto
       ParentFont = False
     end
     object DBEdit1: TDBEdit
-      Left = 11
-      Height = 23
-      Top = 123
-      Width = 437
+      Left = 12
+      Height = 25
+      Top = 136
+      Width = 483
       DataField = 'nome'
       DataSource = dsProjeto
       MaxLength = 0
@@ -316,8 +319,8 @@ object frmProjeto: TfrmProjeto
       'SELECT * FROM projeto'
     )
     Params = <>
-    Left = 1014
-    Top = 38
+    Left = 1120
+    Top = 42
     object qryProjetoidprojeto: TZIntegerField
       FieldKind = fkData
       FieldName = 'idprojeto'
@@ -399,8 +402,8 @@ object frmProjeto: TfrmProjeto
   end
   object dsProjeto: TDataSource
     DataSet = qryProjeto
-    Left = 1014
-    Top = 96
+    Left = 1120
+    Top = 106
   end
   object qryTime: TZQuery
     Connection = DM.ZConnection
@@ -408,8 +411,8 @@ object frmProjeto: TfrmProjeto
       'SELECT * FROM time'
     )
     Params = <>
-    Left = 960
-    Top = 38
+    Left = 1060
+    Top = 42
     object qryTimeidtime: TZIntegerField
       FieldKind = fkData
       FieldName = 'idtime'
@@ -432,55 +435,55 @@ object frmProjeto: TfrmProjeto
   end
   object dsTime: TDataSource
     DataSet = qryTime
-    Left = 960
-    Top = 96
+    Left = 1060
+    Top = 106
   end
   object OpenDialog1: TOpenDialog
-    Left = 1014
-    Top = 160
+    Left = 1120
+    Top = 177
   end
   object qryOne: TZQuery
     Connection = DM.ZConnection
     Params = <>
-    Left = 858
-    Top = 616
+    Left = 947
+    Top = 680
   end
   object dsOne: TDataSource
     DataSet = qryOne
-    Left = 858
-    Top = 672
+    Left = 947
+    Top = 742
   end
   object dsImgs: TDataSource
     DataSet = qryImgs
-    Left = 936
-    Top = 672
+    Left = 1034
+    Top = 742
   end
   object qryImgs: TZQuery
     Connection = DM.ZConnection
     Params = <>
-    Left = 936
-    Top = 616
+    Left = 1034
+    Top = 680
   end
   object dsUpImg: TDataSource
     DataSet = qryUpImg
-    Left = 1008
-    Top = 672
+    Left = 1113
+    Top = 742
   end
   object qryUpImg: TZQuery
     Connection = DM.ZConnection
     Params = <>
-    Left = 1008
-    Top = 616
+    Left = 1113
+    Top = 680
   end
   object dsExec: TDataSource
     DataSet = qryExec
-    Left = 800
-    Top = 672
+    Left = 883
+    Top = 742
   end
   object qryExec: TZQuery
     Connection = DM.ZConnection
     Params = <>
-    Left = 800
-    Top = 616
+    Left = 883
+    Top = 680
   end
 end
